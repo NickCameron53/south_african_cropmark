@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../../../abouttheguide.dart';
 import '../../../../main.dart';
 import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
-import '../../../select species/forage grass/endophyte_card.dart';
-
 
 
 void launchURL(url) async {
@@ -33,11 +30,6 @@ class maverickg2 extends StatefulWidget {
 }
 
 class _maverickg2State extends State<maverickg2> {
-  List<String> endophytetype = [
-    'Nil',
-  ];
-
-  int selectedIndex1 = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -128,26 +120,7 @@ class _maverickg2State extends State<maverickg2> {
                             "\u25BA A late heading diploid short rotation ryegrass with good winter and spring yields, improved summer production and summer forage quality, low aftermath heading.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://pggwrightsonseeds.com/pasture/grasses/short-long-rotation/maverick-gii');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -278,258 +251,13 @@ class _maverickg2State extends State<maverickg2> {
                           indent: 1,
                           endIndent: 1,
                         ),
-                        SizedBox(height: 10),
 
-                        Row(
-                          children: [
-                            Container(
-                              // Wrap Text with a container and define its width
-                              width: 220.0, // Adjust width as needed
-                              child: Text(
-                                'Available Endophytes    ',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700]),
-                                maxLines: 2, // Limit text lines (optional)
-                                overflow: TextOverflow
-                                    .ellipsis, // Add ellipsis for overflow (optional)
-                              ),
-                            ),
-                            IconButton(
-                              icon: _buildInfoIconButton(),
-                              onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const InfoCard()),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        Container(
-                          height: 50,
-                          child: ListView(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              children: endophytetype.map((endophyte) {
-                                final bool isSelected = selectedIndex1 ==
-                                    endophytetype.indexOf(endophyte);
-                                return _standardendophyteButton(endophytetype,
-                                    endophyte, selectedIndex1, isSelected, () {
-                                  setState(() {
-                                    // Call setState here
-                                    selectedIndex1 =
-                                        endophytetype.indexOf(endophyte);
-                                  });
-                                });
-                              }).toList()),
-                        ),
-
-                        // ==================   nil endophyte information ============================================
-                        if (selectedIndex1 == endophytetype.indexOf('Nil')) ...[
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Nil Endophyte',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ])),
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text('Animal safety',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Suitable for: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ])),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Dairy.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Beef.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Sheep.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Deer.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Goat.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Horse.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Alpaca.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Ryegrass staggers: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text:
-                                            'Does not cause ryegrass staggers.\n\n',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text('Insect pest control',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700])),
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: 'Provides no insect control.',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(height: 10),
-                        ],
-                        // ========= end of nil endophyte ==================
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Downloads',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
                         SizedBox(height: 20),
                         Container(
                           width: double.infinity,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    launchURL(
-                                        'https://www.agricom.co.nz/Files/Files/Public/Agricom/Agrinote/Supreme-Agrinote.pdf');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    child: Row(
-                                      children: [
-                                        Icon(MdiIcons.fromString(
-                                            'file-outline')),
-                                        Text('Brochure')
-                                      ],
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightGreen,
-                                    minimumSize: Size(100, 50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          30), // Rounded corners
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
-                                SizedBox(height: 10),
                                 SizedBox(
                                   width: double.infinity,
                                   child: Text('Sowing information',
@@ -682,7 +410,6 @@ class _maverickg2State extends State<maverickg2> {
                       );
                       break;
 
-
                     // ...
                   }
                 },
@@ -699,55 +426,9 @@ class _maverickg2State extends State<maverickg2> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-                 
                 ],
               ),
             )));
   }
 }
 
-Widget _standardendophyteButton(List<String> endophytetype, String title,
-    int selectedIndex1, bool isSelected, void Function() onPressed) {
-  final bool isSelected = selectedIndex1 == endophytetype.indexOf(title);
-  return AnimatedContainer(
-    duration: Duration(milliseconds: 200),
-    curve: Curves.easeIn,
-    child: ElevatedButton(
-      onPressed: onPressed, // Call the passed-in callback function
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 13,
-        ),
-      ),
-      style: ElevatedButton.styleFrom(
-        foregroundColor: isSelected ? Colors.white : Colors.white,
-        backgroundColor: isSelected ? Colors.lime : Colors.white,
-        // Adjust background color based on selection
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40.0),
-        ),
-        minimumSize: Size(60, 60),
-        side: BorderSide(
-          color: Colors.black, // Set the border color to black
-          width: 1.0, // Adjust the border width as needed (optional)
-        ),
-      ),
-    ),
-  );
-}
-
-Widget _buildInfoIconButton() {
-  return Container(
-    decoration: const ShapeDecoration(
-      shape: CircleBorder(),
-      color: Colors.lime,
-    ),
-    padding: const EdgeInsets.all(1.0),
-    child: const Icon(
-      Icons.info,
-      color: Colors.white,
-    ),
-  );
-}

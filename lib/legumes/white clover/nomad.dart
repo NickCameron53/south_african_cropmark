@@ -6,8 +6,6 @@ import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 
-
-
 void launchURL(url) async {
   if (await launchUrl(Uri.parse(url))) {
     print("Successfully launched URL: $url"); // Optional success message
@@ -125,26 +123,7 @@ class _nomadState extends State<nomad> {
                             "\n\u25BA Suited for dryland set stocked grazing systems.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://www.agricom.co.nz/products/legumes/white-clover/nomad');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -295,162 +274,12 @@ class _nomadState extends State<nomad> {
                           endIndent: 1,
                         ),
 
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Animal safety',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Suitable for: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                  ])),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Beef.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Sheep.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Deer.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Goat.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Horse.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Alpaca.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-
-                        SizedBox(height: 20),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Insect pest control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'Good tolerance to clover root weevil.',
-                                    ),
-                                  ])),
-                        ),
-
-                        SizedBox(height: 10),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Downloads',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
                         Container(
                           width: double.infinity,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    launchURL(
-                                        'https://www.agricom.co.nz/Files/Files/Public/Agricom/Agrinote/Nomad-Agrinote.pdf');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    child: Row(
-                                      children: [
-                                        Icon(MdiIcons.fromString(
-                                            'file-outline')),
-                                        Text('Brochure')
-                                      ],
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightGreen,
-                                    minimumSize: Size(100, 50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          30), // Rounded corners
-                                    ),
-                                  ),
-                                ),
                                 SizedBox(height: 20),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
-                                SizedBox(height: 10),
                                 SizedBox(
                                   width: double.infinity,
                                   child: Text('Sowing information',
@@ -603,7 +432,6 @@ class _nomadState extends State<nomad> {
                       );
                       break;
 
-                   
                     // ...
                   }
                 },
@@ -620,7 +448,6 @@ class _nomadState extends State<nomad> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-                 
                 ],
               ),
             )));

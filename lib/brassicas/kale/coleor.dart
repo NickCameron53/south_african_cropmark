@@ -460,7 +460,7 @@ class _coleorState extends State<coleor> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Coleor_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Coleor-tech-sheet_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -468,7 +468,7 @@ class _coleorState extends State<coleor> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Trial Data')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

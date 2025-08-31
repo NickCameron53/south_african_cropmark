@@ -124,26 +124,7 @@ class _mainstayState extends State<mainstay> {
                             "\n\u25BA Suited for dairy or rotational grazing beef systems.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://www.agricom.co.nz/products/legumes/white-clover/mainstay');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -294,170 +275,18 @@ class _mainstayState extends State<mainstay> {
                           endIndent: 1,
                         ),
 
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Animal safety',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Suitable for: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                  ])),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Dairy.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Beef.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Sheep.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Deer.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Goat.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Horse.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Alpaca.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
 
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Insect pest control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'Some tolerance to clover root weevil.',
-                                    ),
-                                  ])),
-                        ),
 
                         SizedBox(height: 10),
 
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Downloads',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
+
                         Container(
                           width: double.infinity,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    launchURL(
-                                        'https://www.agricom.co.nz/Files/Files/Public/Agricom/Agrinote/Mainstay-Final.pdf');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    child: Row(
-                                      children: [
-                                        Icon(MdiIcons.fromString(
-                                            'file-outline')),
-                                        Text('Brochure')
-                                      ],
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightGreen,
-                                    minimumSize: Size(100, 50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          30), // Rounded corners
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
+
+
                                 SizedBox(height: 10),
                                 SizedBox(
                                   width: double.infinity,

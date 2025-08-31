@@ -245,11 +245,14 @@ class _pillarState extends State<pillar> {
                                   ),
                                   children: [
                                     TextSpan(
-                                        text: 'Suitable for: ',
+                                        text: 'Recommended for: ',
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24,
+                                            color: Colors.green[700])),
                                   ])),
                         ),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -282,7 +285,13 @@ class _pillarState extends State<pillar> {
                         ),
 
                         SizedBox(height: 20),
-
+                        Divider(
+                          color: Colors.green,
+                          thickness: 1,
+                          height: 20,
+                          indent: 1,
+                          endIndent: 1,
+                        ),
                         SizedBox(
                           width: double.infinity,
                           child: Text('Disease control',
@@ -313,7 +322,14 @@ class _pillarState extends State<pillar> {
                                   ])),
                         ),
 
-                        SizedBox(height: 30),
+                        SizedBox(height: 20),
+                        Divider(
+                          color: Colors.green,
+                          thickness: 1,
+                          height: 20,
+                          indent: 1,
+                          endIndent: 1,
+                        ),
                         SizedBox(
                           width: double.infinity,
                           child: Text('Insect pest control',
@@ -371,7 +387,7 @@ class _pillarState extends State<pillar> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Pillar_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Pillar-tech-sheet_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -379,7 +395,7 @@ class _pillarState extends State<pillar> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Brochure')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

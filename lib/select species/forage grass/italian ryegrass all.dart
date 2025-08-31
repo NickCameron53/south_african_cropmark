@@ -161,7 +161,6 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'A very persistent and very high yielding diploid Italian ryegrass, which bounces back from hard grazings well.',
                                   date: 'Late to V. Late +26',
-                                  endophyte: 'Nil',
                                   ploidy: 'diploid'),
                             ),
                             SizedBox(height: 40),
@@ -175,7 +174,6 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'Strong disease resistance including rust, resulting in improved animal acceptance high quality forage',
                                   date: 'Late +22',
-                                  endophyte: 'Nil',
                                   ploidy: 'diploid'),
                             ),
                             SizedBox(height: 40),
@@ -189,22 +187,7 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'A reliable option for undersowing into worn out pastures.',
                                   date: 'Late +20',
-                                  endophyte: 'Nil',
                                   ploidy: 'diploid'),
-                            ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcard(
-                                  title: 'Lush',
-                                  link: lushar37(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'A more persistent tetraploid cultivar with relatively low aftermath heading. It can cause ryegrass staggers and should only be used as an under sowing option. Good rust tolerance.',
-                                  date: 'Medium to Late +17',
-                                  endophyte: 'AR37',
-                                  ploidy: 'tetraploid'),
                             ),
                             SizedBox(height: 40),
                             Container(
@@ -217,7 +200,19 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'A tetraploid Italian ryegrass selection from Concord with a similar heading date.',
                                   date: 'Medium to Late +17',
-                                  endophyte: 'Nil',
+                                  ploidy: 'tetraploid'),
+                            ),
+                            SizedBox(height: 40),
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Lush',
+                                  link: lushar37(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'A more persistent tetraploid cultivar with relatively low aftermath heading. It can cause ryegrass staggers and should only be used as an under sowing option. Good rust tolerance.',
+                                  date: 'Medium to Late +17',
                                   ploidy: 'tetraploid'),
                             ),
                             SizedBox(height: 40),
@@ -231,22 +226,7 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'Good winter activity, with limited persistence and will not tolerate drier summer conditions',
                                   date: 'Medium to Late +16',
-                                  endophyte: 'Nil',
                                   ploidy: 'tetraploid'),
-                            ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcard(
-                                  title: 'Grasslands Asset',
-                                  link: asset(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'Higher tiller density and relatively low aftermath heading.',
-                                  date: 'Medium to Late +14',
-                                  endophyte: 'Nil',
-                                  ploidy: 'diploid'),
                             ),
                             SizedBox(height: 40),
                             Container(
@@ -259,7 +239,19 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'Manta has an upright habit, medium tiller size, and broad leaves.',
                                   date: 'Late +15',
-                                  endophyte: 'Nil',
+                                  ploidy: 'diploid'),
+                            ),
+                            SizedBox(height: 40),
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Grasslands Asset',
+                                  link: asset(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'Higher tiller density and relatively low aftermath heading.',
+                                  date: 'Medium to Late +14',
                                   ploidy: 'diploid'),
                             ),
                             SizedBox(height: 40),
@@ -273,7 +265,6 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'An inter-species cross between Italian ryegrass and meadow fescue bred in Europe under conservation management systems.',
                                   date: 'Medium +12',
-                                  endophyte: 'Nil',
                                   ploidy: 'tetraploid'),
                             ),
                             SizedBox(height: 40),
@@ -285,9 +276,8 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                     region: widget.region,
                                   ),
                                   description:
-                                      'Large upright strong tillers and very leafy, with good yields in autumn- mid summer over many regions.',
+                                      'large upright strong tillers and very leafy, with good yields in autumn- mid summer over many regions.',
                                   date: 'Medium +11',
-                                  endophyte: 'Nil',
                                   ploidy: 'diploid'),
                             ),
                             SizedBox(height: 40),
@@ -301,9 +291,9 @@ class _italianryegrassallState extends State<italianryegrassall> {
                                   description:
                                       'A European bred, densely tillered, fine leafed and palatable diploid cultivar.',
                                   date: 'Medium +8',
-                                  endophyte: 'Nil',
                                   ploidy: 'diploid'),
                             ),
+                            SizedBox(height: 40),
                           ],
                         ),
                       ),

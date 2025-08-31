@@ -136,7 +136,6 @@ class _meadowfescueState extends State<meadowfescue> {
                                   description:
                                       'A persistent perennial inter-species cross with broad insect resistance above and below ground. ',
                                   date: 'Medium +10',
-                                  endophyte: 'U2',
                                   ploidy: 'diploid'),
                             ),
                             SizedBox(height: 40),

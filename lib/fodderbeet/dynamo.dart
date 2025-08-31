@@ -466,7 +466,7 @@ class _dynamoState extends State<dynamo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Dynamo_B.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Dynamo-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

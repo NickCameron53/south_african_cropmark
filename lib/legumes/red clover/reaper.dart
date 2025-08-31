@@ -6,8 +6,6 @@ import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 
-
-
 void launchURL(url) async {
   if (await launchUrl(Uri.parse(url))) {
     print("Successfully launched URL: $url"); // Optional success message
@@ -354,166 +352,6 @@ class _reaperState extends State<reaper> {
                           endIndent: 1,
                         ),
 
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Animal safety',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Suitable for: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                  ])),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Dairy.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Beef.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Sheep.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Deer.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Goat.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Horse.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Alpaca.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Insect pest control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Grass grub: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'some tolerance',
-                                    ),
-                                  ])),
-                        ),
-
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Black Beetle larvae: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'some tolerance',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Clover Root Weevil: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'tolerance',
-                                    ),
-                                  ])),
-                        ),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
                         SizedBox(
                           width: double.infinity,
                           child: Text('Downloads',
@@ -529,14 +367,13 @@ class _reaperState extends State<reaper> {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
                                 SizedBox(
                                   height: 10,
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Reaper_TS.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Reaper-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -717,7 +554,7 @@ class _reaperState extends State<reaper> {
                         MaterialPageRoute(builder: (context) => toollist()),
                       );
                       break;
-                   
+
                     // ...
                   }
                 },
@@ -734,7 +571,6 @@ class _reaperState extends State<reaper> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-                 
                 ],
               ),
             )));

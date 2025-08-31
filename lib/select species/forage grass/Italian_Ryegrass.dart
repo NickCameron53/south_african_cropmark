@@ -1,7 +1,6 @@
 import '../../abouttheguide.dart';
 import '../../orders/orderform.dart';
 import '../../select%20species/forage%20grass/italian%20ryegrass%20all.dart';
-import '../../select%20species/forage%20grass/italian%20ryegrass%20safe.dart';
 import '../../webpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
@@ -13,6 +12,7 @@ class italianryegrass extends StatelessWidget {
   final List<String> headings = [];
   final List<String> description = [];
   final List links = [];
+  final List<bool> showCultivarsButton = [];
 
   final String country,
       region,
@@ -42,33 +42,29 @@ class italianryegrass extends StatelessWidget {
     // display content according to the user inputs
     if (summerrain != "      Low\n(<150mm)" &&
         soilacidity != "   Acid\n<pH5.5") {
-      if (animaltype != "Horses" &&
-          animaltype != "Deer" &&
-          animaltype != "Alpacas") {
-        // add all of the italian ryegrasses if summer rain and soil acidity not low and NOT in South Island
+
+        // add all of the italian ryegrasses if summer rain and soil acidity not low
         images.add('assets/italianryegrasspic.png');
         headings.add('Italian ryegrass');
         description.add(
             "Italian ryegrasses are usually erect shorter term grasses producing very high winter and early spring yield of high quality."
-            "\n\nItalian ryegrasses require a winter period to form seed heads.");
+                "\n\nItalian ryegrasses require a winter period to form seed heads.");
         links.add(italianryegrassall(
           country: country,
           region: region,
         ));
-      } else if (animaltype == "Horses" ||
-          animaltype == "Alpacas" ||
-          animaltype == "Deer") {
-        // remove the AR37 cultivars ... italianryegrasssafe
-        images.add('assets/italianryegrasspic.png');
-        headings.add('Italian ryegrass (Safe)');
-        description.add(
-            "Italian ryegrasses are usually erect shorter term grasses producing very high winter and early spring yield of high quality."
-            "\n\nItalian ryegrasses require a winter period to form seed heads.");
-        links.add(italianryegrasssafe(
-          country: country,
-          region: region,
-        )); // put the italianryegrasssafe dart here
-      }
+        showCultivarsButton.add(true);
+
+    }
+    if (soilacidity == "   Acid\n<pH5.5" ||
+        summerrain == "      Low\n(<150mm)") {
+      images.add('assets/italianryegrasspic.png');
+      headings.add('Italian Ryegrass');
+      description.add(
+        "The soil acidity or summer moisture is too low for good ryegrass growth.",
+      );
+      links.add(Container()); // Add empty container as placeholder
+      showCultivarsButton.add(false); // Hide button for this item
     }
 
     return Scaffold(
@@ -197,23 +193,23 @@ class italianryegrass extends StatelessWidget {
                                       //   SizedBox(height: 10),
                                       SingleChildScrollView(
                                         child: Container(
-                                          child: Text(description[index],
-                                              style: TextStyle(fontSize: 14)),
+                                          child: Text(
+                                            description[index],
+                                            style: TextStyle(fontSize: 14),
+                                          ),
                                         ),
                                       ),
-
-                                      //    SizedBox(height: 10),
                                       Container(
-                                        padding: EdgeInsets.fromLTRB(
-                                            0.0, 30.0, 0.0, 0.0),
-                                        child: ElevatedButton(
+                                        padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                                        // Conditionally show the button based on our flag
+                                        child: showCultivarsButton[index]
+                                            ? ElevatedButton(
                                           onPressed: () {
-                                            // Add your button onPressed logic here
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      links[index]),
+                                                builder: (context) => links[index],
+                                              ),
                                             );
                                           },
                                           child: Text('View cultivars'),
@@ -221,30 +217,28 @@ class italianryegrass extends StatelessWidget {
                                             backgroundColor: Colors.lightGreen,
                                             minimumSize: Size(100, 50),
                                             shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      20), // Rounded corners
+                                              borderRadius: BorderRadius.circular(20),
                                             ),
                                           ),
-                                        ),
+                                        )
+                                            : SizedBox.shrink(), // Hide button if not needed
                                       ),
-                                    ]))
+                                    ],
+                                ),
+                            ),
                           ],
                         );
                       },
                       itemCount: images.length,
                       loop: true,
                       itemWidth: 200,
-                      // Specify the width of each item
                       itemHeight: 60,
-                      // Specify the height of each item
                       viewportFraction: 0.9,
                       scale: 0.5,
                       pagination: SwiperPagination(
                         builder: DotSwiperPaginationBuilder(
                           color: Colors.grey,
-                          activeColor: Colors
-                              .green, // Change the color of the active dot
+                          activeColor: Colors.green,
                         ),
                       ),
                     ),

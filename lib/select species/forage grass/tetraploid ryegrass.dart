@@ -1,17 +1,22 @@
-import 'package:southafrica_seed_guide/grasses/hybrid%20grasses/splicear1.dart';
 import '../../abouttheguide.dart';
-import '../../grasses/hybrid%20grasses/forgenea.dart';
-import '../../grasses/hybrid%20grasses/palliserar37.dart';
+import '../../grasses/perennial grasses/tetraploid ryegrass/4frontnea2.dart';
+import '../../grasses/perennial grasses/tetraploid ryegrass/alignar37.dart';
+import '../../grasses/perennial grasses/tetraploid ryegrass/vastar37.dart';
+import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/abergainnil.dart';
+import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/basear1.dart';
+import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/haloar1.dart';
+import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/viscountnil.dart';
 import '../../orders/orderform.dart';
 import '../../webpage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
+
 import 'cultivar_card_grasses.dart';
 import 'grass_maturity_card.dart';
 
-class hybridryegrasstoxic extends StatefulWidget {
-  hybridryegrasstoxic({
+class tetraploidryegrasssafe extends StatefulWidget {
+  tetraploidryegrasssafe({
     Key? key,
     required this.country,
     required this.region,
@@ -19,12 +24,12 @@ class hybridryegrasstoxic extends StatefulWidget {
   final String country, region;
 
   @override
-  State<hybridryegrasstoxic> createState() {
-    return _hybridryegrasstoxicState();
+  State<tetraploidryegrasssafe> createState() {
+    return _tetraploidryegrasssafeState();
   }
 }
 
-class _hybridryegrasstoxicState extends State<hybridryegrasstoxic> {
+class _tetraploidryegrasssafeState extends State<tetraploidryegrasssafe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +42,8 @@ class _hybridryegrasstoxicState extends State<hybridryegrasstoxic> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Hybrid ryegrass',
-                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  'Tetraploid perennial ryegrass',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -75,7 +80,7 @@ class _hybridryegrasstoxicState extends State<hybridryegrasstoxic> {
                       .width, // Takes full width of the screen
                   height: 100,
                   child: Image.asset(
-                    'assets/italianryegrasspic.png',
+                    'assets/diploidlp.png',
                     fit: BoxFit
                         .cover, // Use BoxFit.cover to cover the entire area
                   ),
@@ -92,9 +97,9 @@ class _hybridryegrasstoxicState extends State<hybridryegrasstoxic> {
                           children: [
                             Row(
                               children: [
-                                Text('Hybrid ryegrass',
+                                Text('Tetraploid perennial ryegrass',
                                     style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 19,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.green[700])),
                                 IconButton(
@@ -118,9 +123,7 @@ class _hybridryegrasstoxicState extends State<hybridryegrasstoxic> {
                             SizedBox(height: 10),
                             Container(
                               child: Text(
-                                  "A cross between Perennial ryegrass and Italian or Annual ryegrass. Hybrids generally have high annual yields and will persist for 2-3+ years depending on their percentage of perennial ryegrass parentage, climatic conditions, insect pressure and paddock management."
-                                  "\n\nHybrids which contain a greater percentage of Italian ryegrass parentage, can grow almost as much winter feed as a straight Italian ryegrass cultivar but with improved persistence. Hybrids with a greater percentage of perennial ryegrass tend to have greater persistence."
-                                  "\n\nEndophyte can enhance insect tolerance and improve overall persistence. Tetraploid types are larger plants which perform best under high fertility moist conditions.",
+                                  'Tetraploids have larger seeds than diploids and require a higher sowing rate of 25 to 35 kg/ha alone or 15 to 20 kg/ha in a mixture. They also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650 mm p.a.) to perform well.',
                                   style: TextStyle(fontSize: 15)),
                             ),
                             SizedBox(height: 10),
@@ -142,48 +145,106 @@ class _hybridryegrasstoxicState extends State<hybridryegrasstoxic> {
                                         color: Colors.green[700])),
                               ],
                             ),
+
                             SizedBox(height: 40),
                             Container(
                               child: cultivarcard(
-                                  title: 'Splice',
-                                  link: splicear1(
+                                  title: 'Vast',
+                                  link: vastar37(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      ' An improved heat tolerant, highly winter productive festulolium hybrid grass. Splice to be used as a medium term (2 - 4 year) pasture, or for over-sowing into run-out or damaged pastures to extend their life.',
+                                      'Diploid-level tiller density to enhance persistence.',
+                                  date: 'Very Late +36',
+                                  ploidy: 'tetraploid'),
+                            ),
+                            // Matrix
+                            SizedBox(height: 40),
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Align',
+                                  link: alignar37(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'A dense and productive growth habit throughout August and September.',
+                                  date: 'Very Late +35',
+                                  ploidy: 'tetraploid'),
+                            ),
+                            SizedBox(height: 40),
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Grasslands Halo',
+                                  link: haloar1(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'High quality summer feed offering good winter & summer growth.',
+                                  date: 'Late +25',
+                                  ploidy: 'tetraploid'),
+                            ),
+                            // Array
+                            SizedBox(height: 40),
+
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Abergain',
+                                  link: abergainnil(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'High quality summer feed offering good winter & summer growth.',
+                                  date: 'Late +24',
+                                  ploidy: 'tetraploid'),
+                            ),
+                            // Array
+                            SizedBox(height: 40),
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Base',
+                                  link: basear1(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'A densely tillered cultivar with strong cool season growth & late spring quality.',
+                                  date: 'Late +22',
+                                  ploidy: 'tetraploid'),
+                            ),
+
+                            SizedBox(height: 40),
+                            Container(
+                              child: cultivarcard(
+                                  title: 'Viscount',
+                                  link: viscountnil(
+                                    country: widget.country,
+                                    region: widget.region,
+                                  ),
+                                  description:
+                                      'An upright variety offering good early spring growth.',
                                   date: 'Late +19',
-                                  endophyte: 'AR1',
                                   ploidy: 'tetraploid'),
                             ),
+                            // One50
                             SizedBox(height: 40),
+
                             Container(
                               child: cultivarcard(
-                                  title: 'Forge',
-                                  link: forgenea(
+                                  title: '4Front',
+                                  link: fourfrontnea2(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      ' Forge is a new tetraploid hybrid ryegrass with good cool season production.',
-                                  date: 'Medium +11',
-                                  endophyte: 'NEA',
+                                      'More densely tillered and high yielding.',
+                                  date: 'Medium to\nLate +15',
                                   ploidy: 'tetraploid'),
                             ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcard(
-                                  title: 'Palliser',
-                                  link: palliserar37(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      ' Can be used as either a short or long rotation ryegrass.',
-                                  date: 'Very Late +25',
-                                  endophyte: 'AR37',
-                                  ploidy: 'tetraploid'),
-                            ),
+                            // Three60
                             SizedBox(height: 40),
                           ],
                         ),

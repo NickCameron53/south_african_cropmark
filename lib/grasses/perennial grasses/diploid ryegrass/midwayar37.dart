@@ -4,8 +4,6 @@ import '../../../../main.dart';
 import '../../../../webpage.dart';
 import '../../../Species_Tool_List.dart';
 
-
-import '../../../select species/forage grass/endophyte_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void launchURL(url) async {
@@ -32,12 +30,6 @@ class midwayar37 extends StatefulWidget {
 }
 
 class _midwayar37State extends State<midwayar37> {
-  List<String> endophytetype = [
-    'AR37',
-  ];
-
-  int selectedIndex1 = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,26 +119,7 @@ class _midwayar37State extends State<midwayar37> {
                             "\n\u25BA Excellent rust tolerance.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://pggwrightsonseeds.com/pasture/grasses/perennial/midway');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -268,266 +241,6 @@ class _midwayar37State extends State<midwayar37> {
                                   ])),
                         ),
                         SizedBox(height: 10),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-
-                        Row(
-                          children: [
-                            Container(
-                              // Wrap Text with a container and define its width
-                              width: 220.0, // Adjust width as needed
-                              child: Text(
-                                'Available Endophytes    ',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700]),
-                                maxLines: 2, // Limit text lines (optional)
-                                overflow: TextOverflow
-                                    .ellipsis, // Add ellipsis for overflow (optional)
-                              ),
-                            ),
-                            IconButton(
-                              icon: _buildInfoIconButton(),
-                              onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const InfoCard()),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        Container(
-                          height: 50,
-                          child: ListView(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              children: endophytetype.map((endophyte) {
-                                final bool isSelected = selectedIndex1 ==
-                                    endophytetype.indexOf(endophyte);
-                                return _standardendophyteButton(endophytetype,
-                                    endophyte, selectedIndex1, isSelected, () {
-                                  setState(() {
-                                    // Call setState here
-                                    selectedIndex1 =
-                                        endophytetype.indexOf(endophyte);
-                                  });
-                                });
-                              }).toList()),
-                        ),
-
-                        // ==================   AR37 information ============================================
-                        if (selectedIndex1 ==
-                            endophytetype.indexOf('AR37')) ...[
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'AR37',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text: '\nProduces epoxy janthitrem.',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text('Animal safety',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Suitable for: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ])),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Dairy.ico'),
-                                height: 100,
-                                width: 100,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Beef.ico'),
-                                height: 100,
-                                width: 100,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Sheep.ico'),
-                                height: 100,
-                                width: 100,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Ryegrass staggers: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text:
-                                        'Can at times cause moderate staggers.\n\n',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text('Insect pest control',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700])),
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Argentine stem weevil: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text: 'Very good',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Pasture mealy bug: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text: 'Very good',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Black beetle adult: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text: 'Good',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Root aphid: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text: 'Very good',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Porina caterpillar: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text: 'Good',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                        ],
-                        // ========= end of ar37 endophyte ==================
 
                         Divider(
                           color: Colors.green,
@@ -696,7 +409,6 @@ class _midwayar37State extends State<midwayar37> {
                       );
                       break;
 
-
                     // ...
                   }
                 },
@@ -713,55 +425,8 @@ class _midwayar37State extends State<midwayar37> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-
                 ],
               ),
             )));
   }
-}
-
-Widget _standardendophyteButton(List<String> endophytetype, String title,
-    int selectedIndex1, bool isSelected, void Function() onPressed) {
-  final bool isSelected = selectedIndex1 == endophytetype.indexOf(title);
-  return AnimatedContainer(
-    duration: Duration(milliseconds: 200),
-    curve: Curves.easeIn,
-    child: ElevatedButton(
-      onPressed: onPressed, // Call the passed-in callback function
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 13,
-        ),
-      ),
-      style: ElevatedButton.styleFrom(
-        foregroundColor: isSelected ? Colors.white : Colors.white,
-        backgroundColor: isSelected ? Colors.lime : Colors.white,
-        // Adjust background color based on selection
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40.0),
-        ),
-        minimumSize: Size(60, 60),
-        side: BorderSide(
-          color: Colors.black, // Set the border color to black
-          width: 1.0, // Adjust the border width as needed (optional)
-        ),
-      ),
-    ),
-  );
-}
-
-Widget _buildInfoIconButton() {
-  return Container(
-    decoration: const ShapeDecoration(
-      shape: CircleBorder(),
-      color: Colors.lime,
-    ),
-    padding: const EdgeInsets.all(1.0),
-    child: const Icon(
-      Icons.info,
-      color: Colors.white,
-    ),
-  );
 }

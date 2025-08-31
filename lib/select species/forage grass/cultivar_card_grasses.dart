@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 class cultivarcard extends StatelessWidget {
   const cultivarcard({
     super.key,
-
     required this.title,
     required this.link,
     required this.description,
     required this.date,
-    required this.endophyte,
     required this.ploidy,
   });
 
-  final String  title, description, date, endophyte, ploidy;
+  final String title, description, date, ploidy;
   final Widget link;
 
   @override
@@ -112,18 +110,7 @@ class cultivarcard extends StatelessWidget {
                                               fontSize: 11)),
                                     ],
                                   )),
-                              Container(
-                                  margin: EdgeInsets.all(5.0),
-                                  child: Column(
-                                    children: [
-                                      Text('Endophyte:',
-                                          style: TextStyle(fontSize: 11)),
-                                      Text(endophyte,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 11)),
-                                    ],
-                                  )),
+                              SizedBox(width: 60),
                               Container(
                                   margin: EdgeInsets.all(5.0),
                                   child: Column(

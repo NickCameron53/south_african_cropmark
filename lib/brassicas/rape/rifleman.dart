@@ -6,8 +6,6 @@ import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 
-
-
 void launchURL(url) async {
   if (await launchUrl(Uri.parse(url))) {
     print("Successfully launched URL: $url"); // Optional success message
@@ -64,8 +62,8 @@ class _riflemanState extends State<rifleman> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => MyHomePage(
-                            title: '',
-                          )),
+                                title: '',
+                              )),
                     );
                   },
                 ),
@@ -82,7 +80,7 @@ class _riflemanState extends State<rifleman> {
                 child: Image.asset(
                   'assets/riflemanpic.png',
                   fit:
-                  BoxFit.cover, // Use BoxFit.cover to cover the entire area
+                      BoxFit.cover, // Use BoxFit.cover to cover the entire area
                 ),
               ),
               Container(
@@ -106,7 +104,7 @@ class _riflemanState extends State<rifleman> {
                         Text(
                             'Bred in New Zealand, Rifleman is a dual purpose rape that is exceptionally leafy with a high regrowth ability for multiple grazings. Rifleman is mid maturity rape and is ready for grazing on average 70 to 90 days post sowing, depending on environmental conditions which will dictate exact maturity time till grazing. Post grazing, regrowth is leafy with new leaves developing from low on the main stem delivering high quality feed for stock performance during Summer and Autumn. Expect two to three Summer and Autumn grazings depending on management and seasonal conditions. Rifleman yields well from a late Spring/early Autumn sowing and can also be used as a single graze option providing quality forage throughout the Winter.',
                             style:
-                            TextStyle(fontSize: 15, color: Colors.black)),
+                                TextStyle(fontSize: 15, color: Colors.black)),
                         SizedBox(height: 10),
                         Divider(
                           color: Colors.green,
@@ -245,11 +243,14 @@ class _riflemanState extends State<rifleman> {
                                   ),
                                   children: [
                                     TextSpan(
-                                        text: 'Suitable for: ',
+                                        text: 'Recommended for: ',
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24,
+                                            color: Colors.green[700])),
                                   ])),
                         ),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -281,8 +282,15 @@ class _riflemanState extends State<rifleman> {
                           ],
                         ),
 
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
 
+                        Divider(
+                          color: Colors.green,
+                          thickness: 1,
+                          height: 20,
+                          indent: 1,
+                          endIndent: 1,
+                        ),
                         SizedBox(
                           width: double.infinity,
                           child: Text('Disease control',
@@ -312,8 +320,16 @@ class _riflemanState extends State<rifleman> {
                                     ),
                                   ])),
                         ),
+                        SizedBox(height: 10),
 
-                        SizedBox(height: 30),
+                        Divider(
+                          color: Colors.green,
+                          thickness: 1,
+                          height: 20,
+                          indent: 1,
+                          endIndent: 1,
+                        ),
+
                         SizedBox(
                           width: double.infinity,
                           child: Text('Insect pest control',
@@ -371,7 +387,7 @@ class _riflemanState extends State<rifleman> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Rifleman_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Rifleman-Rape_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -379,7 +395,7 @@ class _riflemanState extends State<rifleman> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Brochure')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),
@@ -427,7 +443,7 @@ class _riflemanState extends State<rifleman> {
                                                 text: 'Sowing rate alone: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                    FontWeight.bold)),
+                                                        FontWeight.bold)),
                                             TextSpan(
                                               text: "4 kg/ha.",
                                             ),
@@ -448,7 +464,7 @@ class _riflemanState extends State<rifleman> {
                                                 text: 'Sowing rate mixture: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                    FontWeight.bold)),
+                                                        FontWeight.bold)),
                                             TextSpan(
                                               text: "1 - 2 kg/ha.",
                                             ),
@@ -469,7 +485,7 @@ class _riflemanState extends State<rifleman> {
                                                 text: 'Sowing depth: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                    FontWeight.bold)),
+                                                        FontWeight.bold)),
                                             TextSpan(
                                               text: '5 - 15 mm',
                                             ),
@@ -490,7 +506,7 @@ class _riflemanState extends State<rifleman> {
                                                 text: 'Sowing season: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                    FontWeight.bold)),
+                                                        FontWeight.bold)),
                                             TextSpan(
                                               text: 'Spring or Autumn',
                                             ),
@@ -533,7 +549,7 @@ class _riflemanState extends State<rifleman> {
                 onTap: (index) {
                   switch (index) {
                     case 0:
-                    // Navigate to About the Guide page
+                      // Navigate to About the Guide page
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -541,22 +557,21 @@ class _riflemanState extends State<rifleman> {
                       );
                       break;
                     case 1:
-                    // Navigate to Webpage
+                      // Navigate to Webpage
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => webpage()),
                       );
                       break;
                     case 2:
-                    // Navigate to Toolkit page
+                      // Navigate to Toolkit page
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => toollist()),
                       );
                       break;
 
-
-                  // ...
+                    // ...
                   }
                 },
                 items: [
@@ -572,7 +587,6 @@ class _riflemanState extends State<rifleman> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-
                 ],
               ),
             )));

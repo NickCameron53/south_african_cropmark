@@ -467,7 +467,7 @@ class _geronimoState extends State<geronimo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Geronimo_B-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Geronimo_B_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -494,7 +494,7 @@ class _geronimoState extends State<geronimo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Geronimo_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Geronimo-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -502,7 +502,7 @@ class _geronimoState extends State<geronimo> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Trial Data')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

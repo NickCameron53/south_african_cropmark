@@ -4,7 +4,7 @@ import '../../../../main.dart';
 import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
-import '../../../select species/forage grass/endophyte_card.dart';
+
 
 
 
@@ -32,12 +32,7 @@ class winterstar2 extends StatefulWidget {
 }
 
 class _winterstar2State extends State<winterstar2> {
-  List<String> endophytetype = [
-    'Nil',
-  ];
-
-  int selectedIndex1 = 0;
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,25 +123,7 @@ class _winterstar2State extends State<winterstar2> {
                             "\n\u25BA Improved rust resistance and recommended for quick winter to early spring feed.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://pggwrightsonseeds.com/pasture/grasses/annual/winter-star-ii');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
+
                         SizedBox(height: 10),
                         Divider(
                           color: Colors.green,
@@ -271,223 +248,21 @@ class _winterstar2State extends State<winterstar2> {
                         ),
                         SizedBox(height: 10),
 
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-
-                        Row(
-                          children: [
-                            Container(
-                              // Wrap Text with a container and define its width
-                              width: 220.0, // Adjust width as needed
-                              child: Text(
-                                'Available Endophytes    ',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700]),
-                                maxLines: 2, // Limit text lines (optional)
-                                overflow: TextOverflow
-                                    .ellipsis, // Add ellipsis for overflow (optional)
-                              ),
-                            ),
-                            IconButton(
-                              icon: _buildInfoIconButton(),
-                              onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const InfoCard()),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        Container(
-                          height: 50,
-                          child: ListView(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              children: endophytetype.map((endophyte) {
-                                final bool isSelected = selectedIndex1 ==
-                                    endophytetype.indexOf(endophyte);
-                                return _standardendophyteButton(endophytetype,
-                                    endophyte, selectedIndex1, isSelected, () {
-                                  setState(() {
-                                    // Call setState here
-                                    selectedIndex1 =
-                                        endophytetype.indexOf(endophyte);
-                                  });
-                                });
-                              }).toList()),
-                        ),
-
-                        // ==================   nil endophyte information ============================================
-                        if (selectedIndex1 == endophytetype.indexOf('Nil')) ...[
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Nil Endophyte',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ])),
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text('Animal safety',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Suitable for: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ])),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Dairy.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Beef.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Sheep.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Deer.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Goat.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                              Image(
-                                image: AssetImage('assets/Horse.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: AssetImage('assets/Alpaca.ico'),
-                                height: 80,
-                                width: 80,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                          text: 'Ryegrass staggers: ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      TextSpan(
-                                        text:
-                                            'Does not cause ryegrass staggers.\n\n',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text('Insect pest control',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[700])),
-                          ),
-                          SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RichText(
-                                textAlign: TextAlign.left,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: 'Provides no insect control.',
-                                      ),
-                                    ])),
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(height: 10),
-                        ],
-                        // ========= end of nil endophyte ==================
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-
                         Container(
                           width: double.infinity,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Divider(
+                                  color: Colors.green,
+                                  thickness: 1,
+                                  height: 20,
+                                  indent: 1,
+                                  endIndent: 1,
+                                ),
                                 SizedBox(height: 10),
                                 SizedBox(
                                   width: double.infinity,
@@ -513,7 +288,7 @@ class _winterstar2State extends State<winterstar2> {
                                                 text: 'Sowing rate: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                        FontWeight.bold)),
+                                                    FontWeight.bold)),
                                             TextSpan(
                                               text: '25 - 30 kg/ha',
                                             ),
@@ -534,7 +309,7 @@ class _winterstar2State extends State<winterstar2> {
                                                 text: 'Pasture mix: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                        FontWeight.bold)),
+                                                    FontWeight.bold)),
                                             TextSpan(
                                               text: '10 - 15 kg/ha',
                                             ),
@@ -555,7 +330,7 @@ class _winterstar2State extends State<winterstar2> {
                                                 text: 'Sowing depth: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                        FontWeight.bold)),
+                                                    FontWeight.bold)),
                                             TextSpan(
                                               text: '1-2 cm',
                                             ),
@@ -576,7 +351,7 @@ class _winterstar2State extends State<winterstar2> {
                                                 text: 'Sowing season: ',
                                                 style: TextStyle(
                                                     fontWeight:
-                                                        FontWeight.bold)),
+                                                    FontWeight.bold)),
                                             TextSpan(
                                               text: 'Autumn',
                                             ),
@@ -665,48 +440,4 @@ class _winterstar2State extends State<winterstar2> {
   }
 }
 
-Widget _standardendophyteButton(List<String> endophytetype, String title,
-    int selectedIndex1, bool isSelected, void Function() onPressed) {
-  final bool isSelected = selectedIndex1 == endophytetype.indexOf(title);
-  return AnimatedContainer(
-    duration: Duration(milliseconds: 200),
-    curve: Curves.easeIn,
-    child: ElevatedButton(
-      onPressed: onPressed, // Call the passed-in callback function
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 13,
-        ),
-      ),
-      style: ElevatedButton.styleFrom(
-        foregroundColor: isSelected ? Colors.white : Colors.white,
-        backgroundColor: isSelected ? Colors.lime : Colors.white,
-        // Adjust background color based on selection
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40.0),
-        ),
-        minimumSize: Size(60, 60),
-        side: BorderSide(
-          color: Colors.black, // Set the border color to black
-          width: 1.0, // Adjust the border width as needed (optional)
-        ),
-      ),
-    ),
-  );
-}
 
-Widget _buildInfoIconButton() {
-  return Container(
-    decoration: const ShapeDecoration(
-      shape: CircleBorder(),
-      color: Colors.lime,
-    ),
-    padding: const EdgeInsets.all(1.0),
-    child: const Icon(
-      Icons.info,
-      color: Colors.white,
-    ),
-  );
-}

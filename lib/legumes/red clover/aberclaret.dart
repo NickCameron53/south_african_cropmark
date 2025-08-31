@@ -6,8 +6,6 @@ import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 
-
-
 void launchURL(url) async {
   if (await launchUrl(Uri.parse(url))) {
     print("Successfully launched URL: $url"); // Optional success message
@@ -123,26 +121,7 @@ class _aberclaretState extends State<aberclaret> {
                             "\n\u25BA Good yield under grazing and conservation.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://germinal.co.nz/product/aberclaret-red-clover/');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -354,213 +333,11 @@ class _aberclaretState extends State<aberclaret> {
                           endIndent: 1,
                         ),
 
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Animal safety',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Suitable for: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                  ])),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Dairy.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Beef.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Sheep.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Deer.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Goat.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Horse.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Alpaca.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Insect pest control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Grass grub: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'some tolerance',
-                                    ),
-                                  ])),
-                        ),
-
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Black Beetle larvae: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'some tolerance',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Clover Root Weevil: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'tolerance',
-                                    ),
-                                  ])),
-                        ),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Downloads',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
                         Container(
                           width: double.infinity,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    launchURL(
-                                        'https://germinal.co.nz/wp-content/uploads/2019/04/AberClaret.pdf');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    child: Row(
-                                      children: [
-                                        Icon(MdiIcons.fromString(
-                                            'file-outline')),
-                                        Text('Brochure')
-                                      ],
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightGreen,
-                                    minimumSize: Size(100, 50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          30), // Rounded corners
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
                                 SizedBox(height: 10),
                                 SizedBox(
                                   width: double.infinity,
@@ -730,7 +507,6 @@ class _aberclaretState extends State<aberclaret> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-
                 ],
               ),
             )));

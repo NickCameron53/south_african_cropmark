@@ -12,6 +12,7 @@ class annualryegrass extends StatelessWidget {
   final List<String> headings = [];
   final List<String> description = [];
   final List links = [];
+  final List<bool> showCultivarsButton = [];
 
   final String country,
       region,
@@ -46,7 +47,16 @@ class annualryegrass extends StatelessWidget {
       description.add(
         "Annual (Westerwolds) ryegrasses are used as a temporary cool season feed between crops and will produce seed from a spring sowing. Sown in late summer or autumn, it persists for only 6-8 months, producing high volumes of quality feed.",
       );
-      links.add(annualryegrasssafe(country: country, region: region,));
+      links.add(annualryegrasssafe(country: country, region: region,)); showCultivarsButton.add(true);
+    }
+    if (soilacidity == "   Acid\n<pH5.5" ) {
+      images.add('assets/annualryegrasspic.png');
+      headings.add('Annual Ryegrass');
+      description.add(
+        "The soil acidity is too low for good ryegrass growth.",
+      );
+      links.add(Container()); // Add empty container as placeholder
+      showCultivarsButton.add(false);
     }
 
     return Scaffold(
@@ -175,23 +185,23 @@ class annualryegrass extends StatelessWidget {
                                       //   SizedBox(height: 10),
                                       SingleChildScrollView(
                                         child: Container(
-                                          child: Text(description[index],
-                                              style: TextStyle(fontSize: 14)),
+                                          child: Text(
+                                            description[index],
+                                            style: TextStyle(fontSize: 14),
+                                          ),
                                         ),
                                       ),
-
-                                      //    SizedBox(height: 10),
                                       Container(
-                                        padding: EdgeInsets.fromLTRB(
-                                            0.0, 20.0, 0.0, 18.0),
-                                        child: ElevatedButton(
+                                        padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                                        // Conditionally show the button based on our flag
+                                        child: showCultivarsButton[index]
+                                            ? ElevatedButton(
                                           onPressed: () {
-                                            // Add your button onPressed logic here
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      links[index]),
+                                                builder: (context) => links[index],
+                                              ),
                                             );
                                           },
                                           child: Text('View cultivars'),
@@ -199,30 +209,28 @@ class annualryegrass extends StatelessWidget {
                                             backgroundColor: Colors.lightGreen,
                                             minimumSize: Size(100, 50),
                                             shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      20), // Rounded corners
+                                              borderRadius: BorderRadius.circular(20),
                                             ),
                                           ),
-                                        ),
+                                        )
+                                            : SizedBox.shrink(), // Hide button if not needed
                                       ),
-                                    ]))
+                                    ],
+                                ),
+                            ),
                           ],
                         );
                       },
                       itemCount: images.length,
                       loop: true,
                       itemWidth: 200,
-                      // Specify the width of each item
                       itemHeight: 60,
-                      // Specify the height of each item
                       viewportFraction: 0.9,
                       scale: 0.5,
                       pagination: SwiperPagination(
                         builder: DotSwiperPaginationBuilder(
                           color: Colors.grey,
-                          activeColor: Colors
-                              .green, // Change the color of the active dot
+                          activeColor: Colors.green,
                         ),
                       ),
                     ),

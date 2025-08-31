@@ -460,7 +460,7 @@ class _keaState extends State<kea> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Coleor_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Kea-Kale-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -468,7 +468,7 @@ class _keaState extends State<kea> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Trial Data')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

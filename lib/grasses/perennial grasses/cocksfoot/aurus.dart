@@ -4,7 +4,6 @@ import '../../../../main.dart';
 import '../../../../webpage.dart';
 import '../../../Species_Tool_List.dart';
 
-
 import 'package:url_launcher/url_launcher.dart';
 
 void launchURL(url) async {
@@ -120,26 +119,7 @@ class _aurusState extends State<aurus> {
                             "\u25BA An upright winter-active and later heading cocksfoot with good winter growth and strong disease resistance.",
                             style: TextStyle(fontSize: 15)),
                         SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://pggwrightsonseeds.com/pasture/grasses/cocksfoot/aurus');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -263,162 +243,6 @@ class _aurusState extends State<aurus> {
 
                         SizedBox(height: 10),
 
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Animal safety',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Suitable for: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                  ])),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Dairy.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Beef.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Sheep.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Deer.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Goat.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Horse.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Alpaca.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Ryegrass staggers: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text:
-                                          'Does not cause ryegrass staggers.\n\n',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Insect pest control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Porina caterpillar: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'moderate',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Grass grub: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'moderate',
-                                    ),
-                                  ])),
-                        ),
                         SizedBox(height: 10),
 
                         Divider(
@@ -588,7 +412,6 @@ class _aurusState extends State<aurus> {
                       );
                       break;
 
-
                     // ...
                   }
                 },
@@ -605,7 +428,6 @@ class _aurusState extends State<aurus> {
                     label: 'Tools',
                     icon: Icon(Icons.calculate),
                   ),
-                 
                 ],
               ),
             )));
