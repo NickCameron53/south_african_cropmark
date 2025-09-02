@@ -49,10 +49,8 @@ class _SeedTypeState extends State<SeedType> {
     'Sheep',
     'Beef',
     'Dairy',
-    'Horses',
     'Goats',
-    'Deer',
-    'Alpacas',
+
   ];
 
   static const List<String> summerRainOptions = [
@@ -392,7 +390,7 @@ class _SeedTypeState extends State<SeedType> {
 
               // Summer Rainfall
               _buildSelectionSection(
-                "Summer Rainfall:",
+                "Summer Rainfall or irrigation:",
                 summerRainOptions,
                 selectedSummerRainIndex,
                 (index) => setState(() => selectedSummerRainIndex = index),

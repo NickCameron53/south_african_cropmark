@@ -460,7 +460,7 @@ class _keaState extends State<kea> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Kea-Kale-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Kea-Kale-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

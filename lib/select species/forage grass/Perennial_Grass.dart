@@ -10,13 +10,24 @@ import 'diploid ryegrass.dart';
 import 'meadow fescue.dart';
 import 'tetraploid ryegrass.dart';
 
-class perennialgrass extends StatelessWidget {
-  final List<String> images = [];
-  final List<String> headings = [];
-  final List<String> description = [];
-  final List links = [];
-  final List<bool> showCultivarsButton = [];
+class GrassOption {
+  final String image;
+  final String heading;
+  final String description;
+  final Widget link;
+  final bool showCultivarsButton;
 
+  GrassOption({
+    required this.image,
+    required this.heading,
+    required this.description,
+    required this.link,
+    required this.showCultivarsButton,
+  });
+}
+
+class perennialgrass extends StatelessWidget {
+  final List<GrassOption> options = [];
   final String country,
       region,
       representative,
@@ -42,59 +53,86 @@ class perennialgrass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // display content according to the user inputs
-    // ==========    if not Southland then can use toxic endos)===============
+    options.clear();
+    // Check conditions first
+    bool isSummerRainLow = summerrain == "      Low\n(<150mm)";
+    bool isSoilAcidic = soilacidity == "   Acid\n<pH5.5";
 
-    if (summerrain != "      Low\n(<150mm)" &&
-        soilacidity != "   Acid\n<pH5.5") {
-      images.add('assets/diploidlp.png');
-      headings.add('Diploid perennial ryegrass');
-      description.add(
-          'Bred specifically for tougher environments diploids combine yield and robustness, meaning that even in poorer conditions, they are more likely to deliver for your stock.');
-      links.add(diploidryegrasssafe(country: country,region: region,));showCultivarsButton.add(true);
-      images.add('assets/diploidlp.png');
-      headings.add('Tetraploid perennial ryegrass');
-      description.add(
-          'Tetraploids have larger seeds than diploids and require a higher sowing rate of 25 to 35 kg/ha alone or 15 to 20 kg/ha in a mixture. They also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650mm p.a.) to perform well.');
-      links.add(tetraploidryegrasssafe(
-        country: country,
-        region: region,
-      ));showCultivarsButton.add(true);
-      images.add('assets/barrierpic.png');
-      headings.add('Festulolium grass');
-      description.add(
-          'Festuloliums are crosses between Lolium and Festuca species incorporating the useful endophytes and root systems of Fescues with the winter activity and higher yields of the Lolium species. Sow at 25 to 28kg/hectare along  with 3 to 4kgs of clover, plus 2 to 4kgs of herbs (chicory and/or plantain) if desired.');
-      links.add(meadowfescue(
-        country: country,
-        region: region,
-      ));showCultivarsButton.add(true);
-      images.add('assets/cocksfootpic.png');
-      headings.add('Cocksfoot');
-      description.add(
-          'A slower establishing, productive, drought tolerant perennial grass species which grows strongly in summer. Cocksfoot is best used in drier, moderate fertility and free draining soils.');
-      links.add(cocksfoot(
-        region: region,
-        country: country,
-      ));showCultivarsButton.add(true);
-    } else if (soilacidity == "   Acid\n<pH5.5" ||
-        summerrain == "      Low\n(<150mm)") {
-      images.add('assets/diploidlp.png');
-      headings.add('Perennial Ryegrasses');
-      description.add(
-        "The soil acidity or summer moisture is too low for good ryegrass growth.",
-      );showCultivarsButton.add(false);
+    // display content according to the user inputs
+    if (!isSummerRainLow && !isSoilAcidic) {
+      options.addAll([
+        GrassOption(
+          // Normal case - neither condition is problematic
+          image: 'assets/diploidlp.png',
+          heading: 'Diploid perennial ryegrass',
+          description:
+              'Bred specifically for tougher environments diploids combine yield and robustness, meaning that even in poorer conditions, they are more likely to deliver for your stock.',
+          link: diploidryegrasssafe(country: country, region: region),
+          showCultivarsButton: true,
+        ),
+        GrassOption(
+          image: 'assets/diploidlp.png',
+          heading: 'Tetraploid perennial ryegrass',
+          description:
+              'Tetraploids have larger seeds than diploids and require a higher sowing rate of 25 to 35 kg/ha alone or 15 to 20 kg/ha in a mixture. They also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650mm p.a.) to perform well.',
+          link: tetraploidryegrasssafe(country: country, region: region),
+          showCultivarsButton: true,
+        ),
+        GrassOption(
+            image: 'assets/barrierpic.png',
+            heading: 'Festulolium grass',
+            description:
+                'Festuloliums are crosses between Lolium and Festuca species incorporating the useful endophytes and root systems of Fescues with the winter activity and higher yields of the Lolium species. Sow at 25 to 28kg/hectare along  with 3 to 4kgs of clover, plus 2 to 4kgs of herbs (chicory and/or plantain) if desired.',
+            link: meadowfescue(country: country, region: region),
+            showCultivarsButton: true),
+        GrassOption(
+            image: 'assets/cocksfootpic.png',
+            heading: 'Cocksfoot',
+            description:
+                'A slower establishing, productive, drought tolerant perennial grass species which grows strongly in summer. Cocksfoot is best used in drier, moderate fertility and free draining soils.',
+            link: cocksfoot(region: region, country: country),
+            showCultivarsButton: true),
+      ]);
+    } else if (isSummerRainLow && isSoilAcidic) {
+      // Both conditions are problematic
+      options.add(GrassOption(
+        image: 'assets/diploidlp.png',
+        heading: 'Perennial Ryegrasses',
+        description:
+            "The soil acidity and summer moisture levels are too low for good ryegrass growth.",
+        link: Container(),
+        showCultivarsButton: false,
+      ));
+    } else if (isSoilAcidic) {
+      // Only soil acidity is problematic
+      options.add(GrassOption(
+        image: 'assets/diploidlp.png',
+        heading: 'Perennial Ryegrasses',
+        description: "The soil acidity is too low for good ryegrass growth.",
+        link: Container(),
+        showCultivarsButton: false,
+      ));
+    } else if (isSummerRainLow) {
+      // Only summer rain is problematic
+      options.add(GrassOption(
+        image: 'assets/diploidlp.png',
+        heading: 'Perennial Ryegrasses',
+        description: "The summer moisture is too low for good ryegrass growth.",
+        link: Container(),
+        showCultivarsButton: false,
+      ));
     }
 
-    if (summerrain == "      Low\n(<150mm)" ||
-        soilacidity == "   Acid\n<pH5.5") {
-      images.add('assets/cocksfootpic.png');
-      headings.add('Cocksfoot');
-      description.add(
-          'A slower establishing, productive, drought tolerant perennial grass species which grows strongly in summer. Cocksfoot is best used in drier, moderate fertility and free draining soils.');
-      links.add(cocksfoot(
-        region: region,
-        country: country,
-      ));showCultivarsButton.add(true);
+    // Add cocksfoot if either condition is problematic
+    if (isSummerRainLow || isSoilAcidic) {
+      options.add(GrassOption(
+        image: 'assets/cocksfootpic.png',
+        heading: 'Cocksfoot',
+        description:
+            'A slower establishing, productive, drought tolerant perennial grass species which grows strongly in summer. Cocksfoot is best used in drier, moderate fertility and free draining soils.',
+        link: cocksfoot(region: region, country: country),
+        showCultivarsButton: true,
+      ));
     }
 
     return Scaffold(
@@ -158,7 +196,7 @@ class perennialgrass extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                   child: Text(
-                    'Swipe across to see ${images.length} solutions which match your requirements.',
+                    'Swipe across to see ${options.length} solutions which match your requirements.',
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                     textAlign: TextAlign.center,
                   ),
@@ -167,14 +205,13 @@ class perennialgrass extends StatelessWidget {
                 Container(
                   height: 460,
                   width: MediaQuery.of(context).size.width,
-                  //  width: 300,
                   child: Swiper(
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 70, // increase pic size
+                            height: 70,
                             width: 300,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
@@ -187,81 +224,77 @@ class perennialgrass extends StatelessWidget {
                                 topRight: Radius.circular(20.0),
                               ),
                               child: Image.asset(
-                                images[index],
-                                fit: BoxFit
-                                    .cover, // Use BoxFit.cover to cover the entire area
+                                options[index].image,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           Container(
-                              height: 380,
-                              // decrease white box size
-                              width: 300,
-                              padding: EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(20.0),
-                                    bottomRight: Radius.circular(20.0),
-                                  )),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    //   SizedBox(height: 10),
-                                    Text(headings[index],
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green[700])),
-                                    //     SizedBox(height: 10),
-                                    Divider(
-                                      color: Colors.green,
-                                      thickness: 1,
-                                      height: 20,
-                                      indent: 20,
-                                      endIndent: 20,
+                            height: 380,
+                            width: 300,
+                            padding: EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                )),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(options[index].heading,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green[700])),
+                                Divider(
+                                  color: Colors.green,
+                                  thickness: 1,
+                                  height: 20,
+                                  indent: 20,
+                                  endIndent: 20,
+                                ),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    child: Text(
+                                      options[index].description,
+                                      style: TextStyle(fontSize: 14),
                                     ),
-
-                                    //   SizedBox(height: 10),
-                                    SingleChildScrollView(
-                                      child: Container(
-                                        child: Text(
-                                          description[index],
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                                      // Conditionally show the button based on our flag
-                                      child: showCultivarsButton[index]
-                                          ? ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => links[index],
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                      EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                                  child: options[index].showCultivarsButton
+                                      ? ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    options[index].link,
+                                              ),
+                                            );
+                                          },
+                                          child: Text('View cultivars'),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.lightGreen,
+                                            minimumSize: Size(100, 50),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
                                             ),
-                                          );
-                                        },
-                                        child: Text('View cultivars'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.lightGreen,
-                                          minimumSize: Size(100, 50),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(20),
                                           ),
-                                        ),
-                                      )
-                                          : SizedBox.shrink(), // Hide button if not needed
-                                    ),
-                                  ],
-                              ),
+                                        )
+                                      : SizedBox.shrink(),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       );
                     },
-                    itemCount: images.length,
+                    itemCount: options.length,
                     loop: true,
                     itemWidth: 200,
                     itemHeight: 60,
@@ -281,11 +314,10 @@ class perennialgrass extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Colors.green.shade800, // Add the background color here
+        color: Colors.green.shade800,
         child: ClipRRect(
           borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
           child: Container(
-            // This container is now just for the border
             decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(width: 6.0, color: Colors.green.shade700),
