@@ -20,6 +20,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class ProductItem {
+  String forageType;
+  String product;
+  String quantity;
+  String unit;
+
+  ProductItem({
+    required this.forageType,
+    required this.product,
+    required this.quantity,
+    required this.unit,
+  });
+}
+
 class OrderForm extends StatefulWidget {
   @override
   _OrderFormState createState() => _OrderFormState();
@@ -32,14 +46,15 @@ class _OrderFormState extends State<OrderForm> {
   final firstname = TextEditingController();
   final secondname = TextEditingController();
   final phonenum = TextEditingController();
-  final amount = TextEditingController();
   final deliveryaddress = TextEditingController();
   final areasown = TextEditingController();
   final emailController = TextEditingController();
 
-  String unit = 'kg';
+  List<ProductItem> products = [];
   String _selectedForageType = 'Forage Grasses';
   String _selectedProduct = '';
+  final _quantityController = TextEditingController();
+  String _selectedUnit = 'kg';
 
   List<String> _forageTypes = [
     'Forage Grasses',
@@ -90,7 +105,7 @@ class _OrderFormState extends State<OrderForm> {
       'Kokomo',
     ],
     'Other': [
-      '',
+      'Other Product',
     ],
   };
 
@@ -103,13 +118,46 @@ class _OrderFormState extends State<OrderForm> {
     }).toList();
   }
 
-  List<DropdownMenuItem<String>> _buildProductItems() {
-    return _products[_selectedForageType]!.map((product) {
+  List<DropdownMenuItem<String>> _buildProductItems(String forageType) {
+    return _products[forageType]!.map((product) {
       return DropdownMenuItem(
         value: product,
         child: Text(product),
       );
     }).toList();
+  }
+
+  void _addProduct() {
+    if (_selectedProduct.isEmpty || _quantityController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please select a product and enter quantity'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 3),
+        ),
+      );
+      return;
+    }
+
+    setState(() {
+      products.add(ProductItem(
+        forageType: _selectedForageType,
+        product: _selectedProduct,
+        quantity: _quantityController.text,
+        unit: _selectedUnit,
+      ));
+
+      // Reset form for next product
+      _selectedProduct = '';
+      _quantityController.clear();
+      _selectedUnit = 'kg';
+    });
+  }
+
+  void _removeProduct(int index) {
+    setState(() {
+      products.removeAt(index);
+    });
   }
 
   void _showValidationError(String fieldName) {
@@ -145,12 +193,8 @@ class _OrderFormState extends State<OrderForm> {
       _showValidationError('Delivery Address');
       return false;
     }
-    if (_selectedProduct.isEmpty) {
-      _showValidationError('Product');
-      return false;
-    }
-    if (amount.text.isEmpty) {
-      _showValidationError('Quantity');
+    if (products.isEmpty) {
+      _showValidationError('At least one product');
       return false;
     }
     return true;
@@ -167,10 +211,14 @@ class _OrderFormState extends State<OrderForm> {
     var _phonenum = phonenum.text;
     var _deliveryaddress = deliveryaddress.text;
     var _areasown = areasown.text;
-    var _product = _selectedProduct;
-    var _amount = amount.text;
-    var _unit = unit;
     var _emailText = emailController.text;
+
+    // Build products list
+    String productsList = '';
+    for (int i = 0; i < products.length; i++) {
+      var product = products[i];
+      productsList += 'Product ${i + 1}: ${product.product} - ${product.quantity} ${product.unit}\n';
+    }
 
     var inputMessage = 'Date: $_date\n\n'
         'Client: $_firstname $_secondname\n\n'
@@ -178,7 +226,7 @@ class _OrderFormState extends State<OrderForm> {
         'Phone: $_phonenum\n\n'
         'Delivery address: $_deliveryaddress\n\n'
         'Area to be sown: $_areasown ha\n\n'
-        'Product: $_product $_amount $_unit\n\n';
+        'PRODUCTS:\n$productsList\n';
 
     Email email = Email(
       body: inputMessage,
@@ -277,7 +325,7 @@ class _OrderFormState extends State<OrderForm> {
                 // Phone field
                 _buildLabel('Phone Number *'),
                 _buildTextField(phonenum, '000 000 0000', true,
-                    showPhoneIcon: true),
+                    showPhoneIcon: true, keyboardType: TextInputType.phone),
 
                 // Delivery address
                 _buildLabel('Delivery Address *'),
@@ -286,32 +334,32 @@ class _OrderFormState extends State<OrderForm> {
 
                 // Area to be sown
                 _buildLabel('Area to be sown (ha)'),
-                _buildTextField(areasown, 'Area to be sown (ha)', false),
+                _buildTextField(areasown, 'Area to be sown (ha)', false,
+                    keyboardType: TextInputType.number),
 
-                // Forage type dropdown
-                _buildLabel('Select Forage Type'),
-                _buildForageTypeDropdown(),
+                // Products section
+                _buildLabel('Products *'),
 
-                // Product dropdown
-                _buildLabel('Select Product *'),
-                _buildProductDropdown(),
+                // Display added products
+                if (products.isNotEmpty) ...[
+                  _buildProductsList(),
+                  SizedBox(height: 20),
+                ],
 
-                // Quantity and unit
-                _buildLabel('Quantity *'),
-                IntrinsicHeight(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: _buildTextField(amount, 'Quantity', true),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        flex: 1,
-                        child: _buildUnitDropdown(),
-                      ),
-                    ],
+                // Add product form
+                _buildAddProductForm(),
+
+                // Add product button
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: ElevatedButton.icon(
+                    icon: Icon(Icons.add),
+                    label: Text("Add Product"),
+                    onPressed: _addProduct,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen,
+                      foregroundColor: Colors.black,
+                    ),
                   ),
                 ),
 
@@ -326,7 +374,7 @@ class _OrderFormState extends State<OrderForm> {
                       backgroundColor: Colors.lightGreen,
                       foregroundColor: Colors.black,
                       padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                      EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     ),
                   ),
                 ),
@@ -335,6 +383,65 @@ class _OrderFormState extends State<OrderForm> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildProductsList() {
+    return Column(
+      children: [
+        for (int i = 0; i < products.length; i++)
+          Card(
+            color: Colors.lime[100],
+            margin: EdgeInsets.symmetric(vertical: 5),
+            child: ListTile(
+              title: Text(
+                '${products[i].product}',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                '${products[i].quantity} ${products[i].unit} (${products[i].forageType})',
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.delete, color: Colors.red),
+                onPressed: () => _removeProduct(i),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildAddProductForm() {
+    return Column(
+      children: [
+        // Forage type dropdown
+        _buildLabel('Forage Type'),
+        _buildForageTypeDropdown(),
+
+        // Product dropdown
+        _buildLabel('Product'),
+        _buildProductDropdown(),
+
+        // Quantity and unit
+        _buildLabel('Quantity'),
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 2,
+                child: _buildTextField(_quantityController, 'Quantity', false,
+                    keyboardType: TextInputType.number),
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                flex: 1,
+                child: _buildUnitDropdown(),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -352,9 +459,10 @@ class _OrderFormState extends State<OrderForm> {
   Widget _buildTextField(
       TextEditingController controller, String hint, bool required,
       {bool showPersonIcon = false,
-      bool showEmailIcon = false,
-      bool showPhoneIcon = false,
-      bool showAddressIcon = false}) {
+        bool showEmailIcon = false,
+        bool showPhoneIcon = false,
+        bool showAddressIcon = false,
+        TextInputType keyboardType = TextInputType.text}) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
@@ -373,6 +481,7 @@ class _OrderFormState extends State<OrderForm> {
         ),
       ),
       style: TextStyle(color: Colors.black),
+      keyboardType: keyboardType,
     );
   }
 
@@ -436,7 +545,7 @@ class _OrderFormState extends State<OrderForm> {
       child: DropdownButton<String>(
         value: _selectedProduct.isEmpty ? null : _selectedProduct,
         isExpanded: true,
-        items: _buildProductItems(),
+        items: _buildProductItems(_selectedForageType),
         onChanged: (value) {
           setState(() {
             _selectedProduct = value!;
@@ -451,28 +560,27 @@ class _OrderFormState extends State<OrderForm> {
 
   Widget _buildUnitDropdown() {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.lime[500],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 12),
-      child: DropdownButton<String>(
-        value: unit,
-        isExpanded: true,
-        items: <String>['kg', 'tonnes', 'seeds'].map((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
-        onChanged: (value) {
-          setState(() {
-            unit = value!;
-          });
-        },
-        dropdownColor: Colors.lime[500],
-        underline: SizedBox(),
-      ),
-    );
+        decoration: BoxDecoration(
+          color: Colors.lime[500],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 12),
+        child: DropdownButton<String>(
+          value: _selectedUnit,
+          isExpanded: true,
+          items: <String>['kg', 'tonnes', 'seeds'].map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (value) {
+            setState(() {
+              _selectedUnit = value!;
+            });
+          },
+          dropdownColor: Colors.lime[500],
+          underline: SizedBox(),
+        ),);
   }
 }
