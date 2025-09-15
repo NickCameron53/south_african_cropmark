@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:southafrica_seed_guide/Contacts/Representatives.dart';
 import '../../Species_Tool_List.dart';
 import '../../webpage.dart';
 import 'package:flutter/material.dart';
@@ -281,6 +282,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 3:
                     Navigator.push(
                       context,
+                      MaterialPageRoute(builder: (context) => RepresentativesScreen()),
+                    );
+                    break;
+                  case 4:
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(builder: (context) => OrderForm()),
                     );
                     break;
@@ -288,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               items: [
                 BottomNavigationBarItem(
-                  label: 'Seed Guide',
+                  label: 'Guide',
                   icon: Icon(Icons.home),
                 ),
                 BottomNavigationBarItem(
@@ -298,6 +305,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 BottomNavigationBarItem(
                   label: 'Tools',
                   icon: Icon(Icons.calculate),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Contacts',
+                  icon: Icon(Icons.contacts),
                 ),
                 BottomNavigationBarItem(
                   label: 'Order',
