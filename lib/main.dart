@@ -78,7 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
   late final Timer timer;
   final images = [
     'assets/rocky.jpg',
-
    'assets/ultrapic.png',
    'assets/matrixpic.png',
     'assets/frenzypic.png',
