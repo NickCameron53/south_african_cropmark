@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../abouttheguide.dart';
 import '../../../../main.dart';
-import '../../../../webpage.dart';
+import '../../../../WebPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 import '../../orders/orderform.dart';
@@ -413,17 +412,17 @@ class _coolamonState extends State<coolamon> {
                   );
                   break;
                 case 1:
-                  // Navigate to Webpage
+                  // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                   // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
                 case 3:

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:southafrica_seed_guide/brassicas/rape/rifleman.dart';
 import '../../Species_Tool_List.dart';
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../brassicas/rape/pillar.dart';
 import '../../main.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'cultivar_card_brassica.dart';
 
 class rape extends StatefulWidget {
@@ -182,21 +182,21 @@ class _rapeState extends State<rape> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

@@ -23,57 +23,56 @@ class cultivarcardotherlegumes extends StatelessWidget {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               return Column(children: [
-                if (title != null)
-                  Container(
-                      height: 70,
-                      width: 325,
-                      decoration: BoxDecoration(
-                          color: Colors.green.shade800,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20.0),
-                            topRight: Radius.circular(20.0),
-                          )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text(
-                              title,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
+                Container(
+                    height: 70,
+                    width: 325,
+                    decoration: BoxDecoration(
+                        color: Colors.green.shade800,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
+                          topRight: Radius.circular(20.0),
+                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
                           ),
-                          Padding(
-                              padding: EdgeInsets.only(right: 20),
-                              child: ClipOval(
-                                  child: Material(
-                                      color: Colors.white,
-                                      child: InkWell(
-                                          onTap: () {
-                                            // Add your button onPressed logic here
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) => link),
-                                            );
-                                          },
-                                          child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: Center(
-                                                  child: Text(
-                                                    '>',
-                                                    style: TextStyle(
-                                                        color: Colors.green.shade800,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 30),
-                                                  ))))))),
-                        ],
-                      )),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child: ClipOval(
+                                child: Material(
+                                    color: Colors.white,
+                                    child: InkWell(
+                                        onTap: () {
+                                          // Add your button onPressed logic here
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => link),
+                                          );
+                                        },
+                                        child: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: Center(
+                                                child: Text(
+                                                  '>',
+                                                  style: TextStyle(
+                                                      color: Colors.green.shade800,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 30),
+                                                ))))))),
+                      ],
+                    )),
                 Container(
                     width: 325,
                     decoration: BoxDecoration(

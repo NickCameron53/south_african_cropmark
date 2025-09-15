@@ -1,27 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import '../../Species_Tool_List.dart';
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../main.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'fodderbeetall.dart';
+
+class FodderBeetOption {
+  final String image;
+  final String heading;
+  final String description;
+  final Widget link;
+  final bool showCultivarsButton;
+
+  FodderBeetOption({
+    required this.image,
+    required this.heading,
+    required this.description,
+    required this.link,
+    required this.showCultivarsButton,
+  });
+}
 
 class fodderbeet extends StatelessWidget {
   final List<String> images = [];
   final List<String> headings = [];
   final List<String> description = [];
   final List links = [];
-
-  final String country,
-      region,
-      representative,
-      headshot,
-      phonenum,
-      animaltype,
-      summerrain,
-      foragetype,
-      soilacidity;
+  final String country;
+  final String region;
+  final String representative;
+  final String headshot;
+  final String phonenum;
+  final String animaltype;
+  final String summerrain;
+  final String totalrain;
+  final String foragetype;
+  final String soilacidity;
 
   fodderbeet({
     Key? key,
@@ -32,49 +48,113 @@ class fodderbeet extends StatelessWidget {
     required this.phonenum,
     required this.animaltype,
     required this.summerrain,
+    required this.totalrain,
     required this.foragetype,
     required this.soilacidity,
   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    // display content according to the user inputs
-    if (animaltype != "Horses" && soilacidity != "   Acid\n<pH5.5") {
-      // add all of the fodder beet if soil acidity not low and not horses.
-      images.add('assets/oe968pic.png');
-      headings.add('Fodder Beet');
-      description.add(
-        "Fodder Beet (Beta vulgaris) is a cross between mangels and sugar beet, aiming to combine the ease of harvest of mangels (syn. mangold) with the high DM and high sugar levels of sugar beet.",
-      );
-      links.add(fodderbeetall(
-        country: country,
-        region: region,
-        animaltype: animaltype,
+  List<FodderBeetOption> _buildOptions() {
+    final List<FodderBeetOption> options = [];
+
+    // Check conditions first - use more flexible matching
+    bool isSummerRainLow = summerrain.trim().startsWith("Low");
+    bool isTotalRainLow = totalrain.trim().startsWith("Low");
+    bool isSoilAcidic = soilacidity.trim().startsWith("Acid");
+    bool isAnimalTypeHorses = animaltype == "Horses";
+
+    // FIRST: Check if climate conditions are unsuitable
+
+    if (isTotalRainLow && isSummerRainLow && isSoilAcidic) {
+      options.add(FodderBeetOption(
+        image: 'assets/oe968pic.png',
+        heading: 'Fodder Beet',
+        description:
+        "The annual and summer rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
+        link: Container(),
+        showCultivarsButton: false,
       ));
-// else message to exclude horses and acid conditions and inform the user of such.
-    } else if (animaltype == "Horses") {
-      images.add('assets/oe968pic.png');
-      headings.add('Fodder Beet');
-      description.add(
-        "While lower than sugar beet, fodder beet still contains sugar and is generally not recommended. Be cautious with horses prone to laminitis, insulin resistance, or PSSM.",
-      );
-      links.add(fodderbeetall(
-        country: country,
-        region: region,
-        animaltype: animaltype,
+    } else if (isTotalRainLow && isSummerRainLow) {
+      options.add(FodderBeetOption(
+        image: 'assets/oe968pic.png',
+        heading: 'Fodder Beet',
+        description:
+        "The annual and summer rainfall is too low for good Fodder Beet growth.",
+        link: Container(),
+        showCultivarsButton: false,
       ));
-    } else if (soilacidity == "   Acid\n<pH5.5") {
-      images.add('assets/oe968pic.png');
-      headings.add('Fodder Beet');
-      description.add(
-        "Fodder Beet should be grown at a soil ph higher than 5.8 and if lower than this consider applying lime.",
-      );
-      links.add(fodderbeetall(
-        country: country,
-        region: region,
-        animaltype: animaltype,
+    } else if (isSummerRainLow && isSoilAcidic) {
+      options.add(FodderBeetOption(
+        image: 'assets/oe968pic.png',
+        heading: 'Fodder Beet',
+        description:
+        "The summer rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
+        link: Container(),
+        showCultivarsButton: false,
+      ));
+    } else if (isTotalRainLow && isSoilAcidic) {
+      options.add(FodderBeetOption(
+        image: 'assets/oe968pic.png',
+        heading: 'Fodder Beet',
+        description:
+        "The annual rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
+        link: Container(),
+        showCultivarsButton: false,
+      ));
+    } else if (isSummerRainLow) {
+      options.add(FodderBeetOption(
+        image: 'assets/oe968pic.png',
+        heading: 'Fodder Beet',
+        description:
+        "The summer rainfall is too low for good Fodder Beet growth.",
+        link: Container(),
+        showCultivarsButton: false,
+      ));
+    } else if (isSoilAcidic) {
+      options.add(FodderBeetOption(
+        image: 'assets/oe968pic.png',
+        heading: 'Fodder Beet',
+        description:
+        "The soil acidity is too low and should exceed pH 5.6 for good Fodder Beet growth .",
+        link: Container(),
+        showCultivarsButton: false,
       ));
     }
+
+    // Climate conditions are suitable - add fodder beet options
+    else {
+      if (isAnimalTypeHorses) {
+        // Show warning message for horses
+        options.add(FodderBeetOption(
+          image: 'assets/oe968pic.png',
+          heading: 'Fodder Beet',
+          description:
+          "While lower than sugar beet, fodder beet still contains sugar and is generally not recommended. Be cautious with horses prone to laminitis, insulin resistance, or PSSM",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      } else {
+        // Show fodder beet options for all other animals
+        options.add(FodderBeetOption(
+          image: 'assets/oe968pic.png',
+          heading: 'Fodder Beet',
+          description:
+          'Fodder Beet (Beta vulgaris) is a cross between mangels and sugar beet, aiming to combine the ease of harvest of mangels (syn. mangold) with the high DM and high sugar levels of sugar beet.',
+          link: fodderbeetall(
+            country: country,
+            region: region,
+            animaltype: '',
+          ),
+          showCultivarsButton: true,
+        ));
+      }
+    }
+
+    return options;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final options = _buildOptions();
 
     return Scaffold(
       extendBody: true,
@@ -107,8 +187,8 @@ class fodderbeet extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => MyHomePage(
-                              title: '',
-                            )),
+                          title: '',
+                        )),
                   );
                 },
               ),
@@ -134,47 +214,44 @@ class fodderbeet extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(height: 30),
-                if (animaltype != "Horses") ...[
-                  Text(
-                    'We have found ${images.length} solution which matches your requirements.',
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                  child: Text(
+                    'Swipe across to see ${options.length} solutions which match your requirements.',
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                     textAlign: TextAlign.center,
                   ),
-                ],
+                ),
                 SizedBox(height: 10),
                 Container(
-                  height: 500,
+                  height: 460,
                   width: MediaQuery.of(context).size.width,
-                  //  width: 300,
                   child: Swiper(
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 240,
-                            // this is where you can increase the height of the pic
+                            height: 70,
                             width: 300,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                            )),
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                )),
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20.0),
                                 topRight: Radius.circular(20.0),
                               ),
                               child: Image.asset(
-                                images[index],
-                                fit: BoxFit
-                                    .cover, // Use BoxFit.cover to cover the entire area
+                                options[index].image,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           Container(
-                            height: 250,
-                            // increase or decrease the white area
+                            height: 380,
                             width: 300,
                             padding: EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
@@ -186,13 +263,11 @@ class fodderbeet extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                //   SizedBox(height: 10),
-                                Text(headings[index],
+                                Text(options[index].heading,
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.green[700])),
-                                //     SizedBox(height: 10),
                                 Divider(
                                   color: Colors.green,
                                   thickness: 1,
@@ -200,60 +275,57 @@ class fodderbeet extends StatelessWidget {
                                   indent: 20,
                                   endIndent: 20,
                                 ),
-
-                                //   SizedBox(height: 10),
                                 SingleChildScrollView(
                                   child: Container(
-                                    child: Text(description[index],
-                                        style: TextStyle(fontSize: 14)),
-                                  ),
-                                ),
-
-                                if (animaltype != "Horses") ...[
-                                  Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.0, 10.0, 0.0, 18.0),
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        // Add your button onPressed logic here
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  links[index]),
-                                        );
-                                      },
-                                      child: Text('View cultivars'),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.lightGreen,
-                                        minimumSize: Size(100, 50),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              20), // Rounded corners
-                                        ),
-                                      ),
+                                    child: Text(
+                                      options[index].description,
+                                      style: TextStyle(fontSize: 14),
                                     ),
                                   ),
-                                ],
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                      0.0, 30.0, 0.0, 0.0),
+                                  child: options[index].showCultivarsButton
+                                      ? ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          options[index].link,
+                                        ),
+                                      );
+                                    },
+                                    child: Text('View cultivars'),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                      Colors.lightGreen,
+                                      minimumSize: Size(100, 50),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  )
+                                      : SizedBox.shrink(),
+                                ),
                               ],
                             ),
                           ),
                         ],
                       );
                     },
-                    itemCount: images.length,
+                    itemCount: options.length,
                     loop: true,
                     itemWidth: 200,
-                    // Specify the width of each item
-                    itemHeight: 10,
-                    // Specify the height of each item
+                    itemHeight: 60,
                     viewportFraction: 0.9,
                     scale: 0.5,
                     pagination: SwiperPagination(
                       builder: DotSwiperPaginationBuilder(
                         color: Colors.grey,
-                        activeColor:
-                            Colors.green, // Change the color of the active dot
+                        activeColor: Colors.green,
                       ),
                     ),
                   ),
@@ -282,21 +354,21 @@ class fodderbeet extends StatelessWidget {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

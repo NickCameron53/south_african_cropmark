@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../legumes/lucerne/714ql.dart';
 import '../../legumes/lucerne/914ql.dart';
 import '../../legumes/lucerne/galaxiemax.dart';
@@ -10,7 +10,7 @@ import '../../legumes/lucerne/titan5.dart';
 import '../../legumes/lucerne/torlesse.dart';
 import '../../orders/orderform.dart';
 import '../../select%20species/Legume/cultivar_card_lucerne.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../legumes/lucerne/force4.dart';
@@ -296,21 +296,21 @@ class _lucerneState extends State<lucerne> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

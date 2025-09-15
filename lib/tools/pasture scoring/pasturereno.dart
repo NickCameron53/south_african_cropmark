@@ -112,9 +112,9 @@ class _pasturerenoState extends State<pasturereno> {
                 border: TableBorder.symmetric(
                   inside: BorderSide(color: Colors.transparent, width: 1),
                 ),
-                headingRowColor: MaterialStateColor.resolveWith(
+                headingRowColor: WidgetStateColor.resolveWith(
                     (states) => Colors.red.shade700),
-                dataRowColor: MaterialStateColor.resolveWith(
+                dataRowColor: WidgetStateColor.resolveWith(
                     (states) => Colors.lime.shade200),
                 columns: <DataColumn>[
                   DataColumn(

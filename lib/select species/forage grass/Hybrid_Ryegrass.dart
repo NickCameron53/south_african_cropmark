@@ -1,8 +1,8 @@
 import '../../orders/orderform.dart';
 import '../../select%20species/forage%20grass/hybrid%20ryegrass%20safe.dart';
 import 'package:flutter/material.dart';
-import '../../abouttheguide.dart';
-import '../../webpage.dart';
+import '../../AboutTheGuide.dart';
+import '../../WebPage.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
@@ -23,20 +23,23 @@ class GrassOption {
   });
 }
 
-class hybridryegrass extends StatelessWidget {
-  final List<GrassOption> options = [];
+class HybridRyegrass extends StatelessWidget {
+  final List<String> images = [];
+  final List<String> headings = [];
+  final List<String> description = [];
+  final List links = [];
+  final String country;
+  final String region;
+  final String representative;
+  final String headshot;
+  final String phonenum;
+  final String animaltype;
+  final String summerrain;
+  final String totalrain;
+  final String foragetype;
+  final String soilacidity;
 
-  final String country,
-      region,
-      representative,
-      headshot,
-      phonenum,
-      animaltype,
-      summerrain,
-      foragetype,
-      soilacidity;
-
-  hybridryegrass({
+  HybridRyegrass({
     Key? key,
     required this.country,
     required this.region,
@@ -45,65 +48,126 @@ class hybridryegrass extends StatelessWidget {
     required this.phonenum,
     required this.animaltype,
     required this.summerrain,
+    required this.totalrain,
     required this.foragetype,
     required this.soilacidity,
   }) : super(key: key);
 
+  List<GrassOption> _buildOptions() {
+    final List<GrassOption> options = [];
+
+    // Check conditions first - use more flexible matching
+    bool isSummerRainLow = summerrain.trim().startsWith("Low");
+    bool isTotalRainLow = totalrain.trim().startsWith("Low");
+    bool isSoilAcidic = soilacidity.trim().startsWith("Acid");
+
+    bool isAnimalTypeHorses = animaltype == "Horses";
+    bool isAnimalTypeDeer = animaltype == "Deer";
+    bool isAnimalTypeAlpacas = animaltype == "Alpacas";
+    bool isSensitiveAnimal = isAnimalTypeHorses || isAnimalTypeDeer || isAnimalTypeAlpacas;
+
+    // Check if ANY condition is unsuitable for hybrid ryegrass
+    bool isUnsuitableForHybrids = isSummerRainLow || isTotalRainLow || isSoilAcidic;
+
+    // FIRST: Check if any condition is unsuitable
+    if (isUnsuitableForHybrids) {
+      // Add appropriate message based on which condition(s) are problematic
+      // Check for COMBINATIONS first (most specific cases)
+      if (isTotalRainLow && isSummerRainLow && isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "Annual and summer rainfall and soil acidity are too low for reliable growth of Hybrid Ryegrass.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isTotalRainLow && isSummerRainLow) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "Both annual rainfall and summer rainfall are too low for good hybrid ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isTotalRainLow && isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "Both annual rainfall and soil acidity are too low for good hybrid ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+
+      else if (isSummerRainLow && isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "Both summer rainfall and soil acidity are too low for good hybrid ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+
+      else if (isTotalRainLow) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "The total annual rainfall is too low (<500mm) for reliable growth of Hybrid Ryegrass.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isSummerRainLow) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "The summer rainfall is too low for good hybrid ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: "The soil acidity is too low for good hybrid ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+    }
+    // ALL conditions are suitable - add hybrid ryegrass options
+    else {
+      if (isSensitiveAnimal) {
+        // Safe versions for sensitive animals
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: 'A cross between Perennial ryegrass and Italian or Annual ryegrass. Hybrids generally have high annual yields and will persist for 2-3+ years depending on their percentage of perennial ryegrass parentage, climatic conditions, insect pressure and paddock management.',
+          link: HybridRyegrassSafe(country: country, region: region),
+          showCultivarsButton: true,
+        ));
+      } else {
+        // Toxic versions for non-sensitive animals
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Hybrid Ryegrass',
+          description: 'A cross between Perennial ryegrass and Italian or Annual ryegrass. Hybrids generally have high annual yields and will persist for 2-3+ years depending on their percentage of perennial ryegrass parentage, climatic conditions, insect pressure and paddock management.',
+          link: HybridRyegrassSafe(country: country, region: region),
+          showCultivarsButton: true,
+        ));
+      }
+    }
+
+    return options;
+  }
+
   @override
   Widget build(BuildContext context) {
-    options.clear();
-    // Check conditions first
-    bool isSummerRainLow = summerrain == "      Low\n(<150mm)";
-    bool isSoilAcidic = soilacidity == "   Acid\n<pH5.5";
-
-    // display content according to the user inputs
-    if (isSummerRainLow && isSoilAcidic) {
-      options.addAll([
-        GrassOption(
-          // Check for both conditions first
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Hybrid Ryegrass',
-          description:
-              "The summer rainfall and soil acidity levels are too low for good ryegrass growth.",
-          link: Container(),
-          // Add empty container as placeholder
-          showCultivarsButton: false,
-        ),
-      ]); // Hide button for this item
-    } else if (isSummerRainLow) {
-      options.add(
-        GrassOption(
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Hybrid Ryegrass',
-          description:
-              "The summer moisture is too low for good ryegrass growth.",
-          link: Container(),
-          showCultivarsButton: false,
-        ),
-      ); // Hide button for this item
-    } else if (isSoilAcidic) {
-      options.add(
-        GrassOption(
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Hybrid Ryegrass',
-          description: "The soil acidity is too low for good ryegrass growth.",
-          link: Container(),
-          showCultivarsButton: false,
-        ),
-      ); // Hide button for this item
-    } else {
-      // add all of the hybrid ryegrasses if summer rain and soil acidity not low
-      options.add(
-        GrassOption(
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Hybrid Ryegrass',
-          description:
-              "A cross between Perennial ryegrass and Italian or Annual ryegrass. Hybrids generally have high annual yields and will persist for 2-3+ years depending on their percentage of perennial ryegrass parentage, climatic conditions, insect pressure and paddock management.",
-          link: hybridryegrasssafe(country: country, region: region),
-          showCultivarsButton: true,
-        ),
-      ); // Show button for this item
-    }
+    final options = _buildOptions();
 
     return Scaffold(
       extendBody: true,
@@ -111,39 +175,37 @@ class hybridryegrass extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Hybrid Ryegrass',
-                style: TextStyle(color: Colors.white, fontSize: 20.0),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                region,
-                style: TextStyle(color: Colors.white, fontSize: 16.0),
-                textAlign: TextAlign.right,
-              ),
-            ],
-          ),
-          backgroundColor: Colors.green[800],
-          foregroundColor: Colors.white,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MyHomePage(
-                      title: '',
-                    ),
-                  ),
-                );
-              },
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Hybrid Ryegrass',
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  region,
+                  style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  textAlign: TextAlign.right,
+                ),
+              ],
             ),
-          ],
-        ),
+            backgroundColor: Colors.green[800],
+            foregroundColor: Colors.white,
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.home),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyHomePage(
+                          title: '',
+                        )),
+                  );
+                },
+              ),
+            ]),
       ),
       body: ListView(
         shrinkWrap: true,
@@ -187,9 +249,9 @@ class hybridryegrass extends StatelessWidget {
                             width: 300,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                            )),
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                )),
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20.0),
@@ -235,29 +297,30 @@ class hybridryegrass extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  padding:
-                                      EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                                  padding: EdgeInsets.fromLTRB(
+                                      0.0, 30.0, 0.0, 0.0),
                                   child: options[index].showCultivarsButton
                                       ? ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    options[index].link,
-                                              ),
-                                            );
-                                          },
-                                          child: Text('View cultivars'),
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.lightGreen,
-                                            minimumSize: Size(100, 50),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                          ),
-                                        )
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          options[index].link,
+                                        ),
+                                      );
+                                    },
+                                    child: Text('View cultivars'),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                      Colors.lightGreen,
+                                      minimumSize: Size(100, 50),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  )
                                       : SizedBox.shrink(),
                                 ),
                               ],
@@ -304,21 +367,21 @@ class hybridryegrass extends StatelessWidget {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

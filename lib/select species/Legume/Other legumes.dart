@@ -1,6 +1,5 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../legumes/other%20legumes/arrowleafclover.dart';
-import '../../legumes/other%20legumes/balansaclover.dart';
 import '../../legumes/other%20legumes/caucasianclover.dart';
 import '../../legumes/other%20legumes/persianclover.dart';
 import '../../legumes/other%20legumes/strawberryclover.dart';
@@ -8,7 +7,7 @@ import '../../legumes/other%20legumes/taipan.dart';
 import '../../legumes/other%20legumes/viper.dart';
 import '../../orders/orderform.dart';
 import '../../select%20species/Legume/cultivar_card_otherlegumes.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../legumes/other legumes/lotus.dart';
@@ -249,21 +248,21 @@ class _otherlegumesState extends State<otherlegumes> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

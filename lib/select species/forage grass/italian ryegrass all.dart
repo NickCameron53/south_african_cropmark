@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../grasses/italian%20ryegrasses/appeal.dart';
 import '../../grasses/italian%20ryegrasses/feast2.dart';
 import '../../grasses/italian%20ryegrasses/lushar37.dart';
@@ -10,7 +10,7 @@ import '../../grasses/italian%20ryegrasses/supercruise.dart';
 import '../../grasses/italian%20ryegrasses/tabu.dart';
 import '../../grasses/italian%20ryegrasses/vibe.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../grasses/italian ryegrasses/asset.dart';
@@ -19,8 +19,8 @@ import '../../main.dart';
 import 'cultivar_card_grasses.dart';
 import 'grass_maturity_card.dart';
 
-class italianryegrassall extends StatefulWidget {
-  italianryegrassall({
+class ItalianRyegrassAll extends StatefulWidget {
+  ItalianRyegrassAll({
     Key? key,
     required this.country,
     required this.region,
@@ -28,12 +28,12 @@ class italianryegrassall extends StatefulWidget {
   final String country, region;
 
   @override
-  State<italianryegrassall> createState() {
-    return _italianryegrassallState();
+  State<ItalianRyegrassAll> createState() {
+    return _ItalianRyegrassAllState();
   }
 }
 
-class _italianryegrassallState extends State<italianryegrassall> {
+class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -324,21 +324,21 @@ class _italianryegrassallState extends State<italianryegrassall> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

@@ -18,16 +18,16 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
   String checkRegion = 'None';
   String selectedCultivar1 = 'Rampage';
   String selectedCultivar2 = 'Tama';
-  double seedPrice1 = 5.50;
-  double seedPrice2 = 3.50;
+  double seedPrice1 = 55.48;
+  double seedPrice2 = 48.00;
   double seedRate1 = 28;
   double seedRate2 = 28;
-  double seedCost1 = 154;
-  double seedCost2 = 98;
-  double autvalue = 0.42;
-  double winvalue = 0.32;
-  double espvalue = 0.59;
-  double lspvalue = 0.21;
+  double seedCost1 = 1553.44;
+  double seedCost2 = 1344.00;
+  double autvalue = 4.2;
+  double winvalue = 3.2;
+  double espvalue = 5.9;
+  double lspvalue = 2.1;
   double aututil = 90;
   double winutil = 90;
   double esputil = 90;
@@ -128,20 +128,16 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
 
 // LIST FOR EACH REGION ==============
   List<Cultivar> cultivarsSouthAfrica = [
-    Cultivar('Rampage', 1943, 1899, 3007, 4217, 11066, 0.42, 0.32, 0.59, 0.21,
-        5.50, 28),
-    Cultivar('Dash', 1560, 1803, 3013, 3909, 10284, 0.42, 0.32, 0.59, 0.21,
-        5.50, 28),
-    Cultivar('Zoom', 1618, 1868, 2875, 3790, 10151, 0.42, 0.32, 0.59, 0.21,
-        5.50, 28),
-    Cultivar(
-        'Tama', 1405, 1784, 2698, 3327, 9213, 0.42, 0.32, 0.59, 0.21, 3.50, 28),
+    Cultivar('Rampage', 1943, 1899, 3007, 4217, 11066, 4.2, 3.2, 5.9, 2.1, 55.48, 28),
+    Cultivar('Dash', 1560, 1803, 3013, 3909, 10284, 4.2, 3.2, 5.9, 2.1, 55.48, 28),
+    Cultivar('Zoom', 1618, 1868, 2875, 3790, 10151, 4.2, 3.2, 5.9, 2.1, 55.48, 28),
+    Cultivar('Tama', 1405, 1784, 2698, 3327, 9213, 4.2, 3.2, 5.9, 2.1, 48.00, 28),
   ];
 
 
   List<Cultivar> standardsSouthAfrica = [
     Cultivar(
-        'Tama', 1405, 1784, 2698, 3327, 9213, 0.42, 0.32, 0.59, 0.21, 3.50, 28),
+        'Tama', 1405, 1784, 2698, 3327, 9213, 4.2, 3.2, 5.9, 2.1, 48.00, 28),
   ];
 
 
@@ -422,7 +418,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                 padding: EdgeInsets.fromLTRB(30.0, 20.0, 12.0, 2.0),
                 child: RichText(
                   text: TextSpan(
-                    text: "Financial benefit in first year:",
+                    text: "Financial benefit for the year:",
                     style: TextStyle(
                         color: Colors.green[800],
                         fontSize: 18,
@@ -503,9 +499,9 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                                const EdgeInsets.fromLTRB(0.0, 10.0, 0, 10),
                             child: Text(
-                              ' \$ ${priceBenefit.toStringAsFixed(0)}/ha/yr',
+                              ' \R${priceBenefit.toStringAsFixed(0)}/ha/yr',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -516,15 +512,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                 ),
               ),
 
-              Container(
-                padding: EdgeInsets.fromLTRB(10, 0.0, 12.0, 0.0),
-                child: Text(
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                    ),
-                    "Note that as pasture lasts multiple years the net benefit will be much greater"),
-              ),
+
 
               Container(
                 padding: EdgeInsets.fromLTRB(10, 20.0, 12.0, 20.0),
@@ -543,8 +531,8 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                 child: Text(
                   '$selectedCultivar1:',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    color: Colors.green.shade800,
+                    fontSize: 15, fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -602,7 +590,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            ' \$  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedPrice.toStringAsFixed(2)}',
+                            ' \R${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedPrice.toStringAsFixed(2)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -638,7 +626,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                     width: 100,
                     padding: EdgeInsets.fromLTRB(40.0, 0.0, 0, 0),
                     child: Text(
-                      '\$ ${seedCost1.toStringAsFixed(0)}',
+                      '\R${seedCost1.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -658,8 +646,8 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                 child: Text(
                   '$selectedCultivar2:',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    color: Colors.green.shade800,
+                    fontSize: 15, fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -717,7 +705,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            ' \$  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedPrice.toStringAsFixed(2)}',
+                            ' \R${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedPrice.toStringAsFixed(2)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -753,7 +741,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                     width: 100,
                     padding: EdgeInsets.fromLTRB(40.0, 0.0, 0, 0),
                     child: Text(
-                      '\$ ${seedCost2.toStringAsFixed(0)}',
+                      '\R${seedCost2.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -773,7 +761,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                       fontSize: 11,
                     ),
                     "These calculations use the following Seasonal Feed values sourced from Dairy NZ and estimated % pasture utilisation, which are specific for each Region selected."
-                    "\n\nYou can change the values of \$kg DM and % Utilisation."),
+                    "\n\nYou can change the values of \R kg DM and % Utilisation."),
               ),
 
 //============ table of outputs ====================
@@ -832,7 +820,7 @@ class _pricebenefitannualsState extends State<pricebenefitannuals> {
                             padding:
                                 const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
-                              '\$/kg DM',
+                              '\R/kg DM',
                               style:
                                   TextStyle(color: Colors.black, fontSize: 12),
                             ),

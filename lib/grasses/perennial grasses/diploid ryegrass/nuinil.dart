@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../abouttheguide.dart';
+import '../../../../AboutTheGuide.dart';
 import '../../../../main.dart';
-import '../../../../webpage.dart';
+import '../../../../WebPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 
@@ -391,21 +391,21 @@ class _nuinilState extends State<nuinil> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => abouttheguide()),
+                            builder: (context) => AboutTheGuide()),
                       );
                       break;
                     case 1:
-                      // Navigate to Webpage
+                      // Navigate to WebPage
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => webpage()),
+                        MaterialPageRoute(builder: (context) => WebPage()),
                       );
                       break;
                     case 2:
                       // Navigate to Toolkit page
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => toollist()),
+                        MaterialPageRoute(builder: (context) => ToolList()),
                       );
                       break;
 
@@ -431,34 +431,3 @@ class _nuinilState extends State<nuinil> {
   }
 }
 
-Widget _standardendophyteButton(List<String> endophytetype, String title,
-    int selectedIndex1, bool isSelected, void Function() onPressed) {
-  final bool isSelected = selectedIndex1 == endophytetype.indexOf(title);
-  return AnimatedContainer(
-    duration: Duration(milliseconds: 200),
-    curve: Curves.easeIn,
-    child: ElevatedButton(
-      onPressed: onPressed, // Call the passed-in callback function
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 13,
-        ),
-      ),
-      style: ElevatedButton.styleFrom(
-        foregroundColor: isSelected ? Colors.white : Colors.white,
-        backgroundColor: isSelected ? Colors.lime : Colors.white,
-        // Adjust background color based on selection
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40.0),
-        ),
-        minimumSize: Size(60, 60),
-        side: BorderSide(
-          color: Colors.black, // Set the border color to black
-          width: 1.0, // Adjust the border width as needed (optional)
-        ),
-      ),
-    ),
-  );
-}

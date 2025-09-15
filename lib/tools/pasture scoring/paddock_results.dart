@@ -3,7 +3,7 @@ import '../../tools/pasture%20scoring/sendresults.dart';
 import 'package:flutter/material.dart';
 import '../../../main.dart';
 import '../../Species_Tool_List.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 
 class paddockresults extends StatefulWidget {
   final String datetoday;
@@ -35,7 +35,6 @@ class _paddockresultsState extends State<paddockresults> {
   String recommendation = '';
   String product = '';
 
-  final _emailFormKey = GlobalKey<FormState>();
   final TextEditingController emailController = new TextEditingController();
 
   @override
@@ -463,17 +462,17 @@ class _paddockresultsState extends State<paddockresults> {
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
                 case 3:

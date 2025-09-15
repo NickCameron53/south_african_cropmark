@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../abouttheguide.dart';
+import '../../../../AboutTheGuide.dart';
 import '../../../../main.dart';
-import '../../../../webpage.dart';
+import '../../../../WebPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
 
@@ -457,21 +457,21 @@ class _caucasiancloverState extends State<caucasianclover> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => abouttheguide()),
+                            builder: (context) => AboutTheGuide()),
                       );
                       break;
                     case 1:
-                      // Navigate to Webpage
+                      // Navigate to WebPage
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => webpage()),
+                        MaterialPageRoute(builder: (context) => WebPage()),
                       );
                       break;
                     case 2:
                       // Navigate to Toolkit page
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => toollist()),
+                        MaterialPageRoute(builder: (context) => ToolList()),
                       );
                       break;
 

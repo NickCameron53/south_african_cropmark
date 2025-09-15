@@ -1,11 +1,11 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../herbs/plantain/agritonic.dart';
 import '../../herbs/plantain/captaincsp.dart';
 import '../../herbs/plantain/ecotain.dart';
 import '../../herbs/plantain/oracle.dart';
 import '../../herbs/plantain/oasis.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
@@ -215,21 +215,21 @@ class _plantainState extends State<plantain> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

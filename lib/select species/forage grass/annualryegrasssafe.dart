@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../grasses/annual%20ryegrasses/bullet.dart';
 import '../../grasses/annual%20ryegrasses/dash.dart';
 import '../../grasses/annual%20ryegrasses/hogan.dart';
@@ -9,15 +9,15 @@ import '../../grasses/annual%20ryegrasses/tama.dart';
 import '../../grasses/annual%20ryegrasses/winterstar2.dart';
 import '../../grasses/annual%20ryegrasses/zoom.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
 import 'cultivar_card_grasses.dart';
 import 'grass_maturity_card.dart';
 
-class annualryegrasssafe extends StatefulWidget {
-  annualryegrasssafe({
+class AnnualRyegrassSafe extends StatefulWidget {
+  AnnualRyegrassSafe({
     Key? key,
     required this.country,
     required this.region,
@@ -25,12 +25,12 @@ class annualryegrasssafe extends StatefulWidget {
   final String country, region;
 
   @override
-  State<annualryegrasssafe> createState() {
-    return _annualryegrasssafeState();
+  State<AnnualRyegrassSafe> createState() {
+    return _AnnualRyegrassSafeState();
   }
 }
 
-class _annualryegrasssafeState extends State<annualryegrasssafe> {
+class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -295,21 +295,21 @@ class _annualryegrasssafeState extends State<annualryegrasssafe> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

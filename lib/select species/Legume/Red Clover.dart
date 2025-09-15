@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../legumes/red%20clover/aberclaret.dart';
 import '../../legumes/red%20clover/amigain.dart';
 import '../../legumes/red%20clover/morrow.dart';
@@ -9,7 +9,7 @@ import '../../legumes/red%20clover/rossi.dart';
 import '../../legumes/red%20clover/sensation.dart';
 import '../../orders/orderform.dart';
 import '../../select%20species/Legume/cultivar_card_clover.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
@@ -262,21 +262,21 @@ class _redcloverState extends State<redclover> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

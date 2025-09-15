@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../fodderbeet/dynamo.dart';
 import '../../fodderbeet/geronimo.dart';
 import '../../fodderbeet/kokomo.dart';
 import '../../main.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'cultivar_card_beet.dart';
 
 class fodderbeetall extends StatefulWidget {
@@ -226,21 +226,21 @@ class _fodderbeetallState extends State<fodderbeetall> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

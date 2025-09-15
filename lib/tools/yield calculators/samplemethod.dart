@@ -22,7 +22,6 @@ class samplemethod extends StatefulWidget {
 }
 
 class samplemethodState extends State<samplemethod> {
-  @override
   String sample = '';
 
   Widget build(BuildContext context) {

@@ -1,23 +1,22 @@
 import '../../tools_and_calculators.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'abouttheguide.dart';
 import 'main.dart';
 import 'orders/orderform.dart';
 
-class toollist extends StatefulWidget {
-  toollist({
+class ToolList extends StatefulWidget {
+  ToolList({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<toollist> createState() {
-    return _toollistState();
+  State<ToolList> createState() {
+    return _ToolListState();
   }
 }
 
-class _toollistState extends State<toollist> {
+class _ToolListState extends State<ToolList> {
   _makingPhoneCall() async {
     var url = Uri.parse('tel:+27 72 586 7864');
     if (await canLaunchUrl(url)) {
@@ -551,17 +550,17 @@ class _toollistState extends State<toollist> {
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
                 case 3:

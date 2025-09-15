@@ -16,19 +16,19 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
   List<TextFormField> textFormFields = [];
   String selectedRegion = 'South Africa';
   String checkRegion = 'None';
-  String selectedCultivar1 = 'Matrix SE';
-  String selectedCultivar2 = 'Uncertified LP';
-  double seedPrice1 = 11.60;
-  double seedPrice2 = 3.30;
+  String selectedCultivar1 = 'Matrix';
+  String selectedCultivar2 = 'Nui';
+  double seedPrice1 = 187.50;
+  double seedPrice2 = 150.00;
   double seedRate1 = 20;
   double seedRate2 = 20;
-  double seedCost1 = 232;
-  double seedCost2 = 66;
-  double winvalue = 0.32;
-  double espvalue = 0.59;
-  double lspvalue = 0.21;
-  double sumvalue = 0.44;
-  double autvalue = 0.42;
+  double seedCost1 = 3750;
+  double seedCost2 = 3000;
+  double winvalue = 3.2;
+  double espvalue = 5.9;
+  double lspvalue = 2.1;
+  double sumvalue = 4.4;
+  double autvalue = 4.2;
   double winutil = 90;
   double esputil = 90;
   double lsputil = 75;
@@ -48,11 +48,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
   // function to calculate winter benefit
   void calculateWinBenefit() {
     winbenefit = (cultivars[cultivars.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar1)]
-                .winyield -
-            standards[standards.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar2)]
-                .winyield) *
+            (cultivar) => cultivar.name == selectedCultivar1)]
+        .winyield -
+        standards[standards.indexWhere(
+                (cultivar) => cultivar.name == selectedCultivar2)]
+            .winyield) *
         (winvalue) *
         (winutil / 100);
   }
@@ -60,11 +60,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
   // function to calculate early spring benefit
   void calculateEspBenefit() {
     espbenefit = (cultivars[cultivars.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar1)]
-                .espyield -
-            standards[standards.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar2)]
-                .espyield) *
+            (cultivar) => cultivar.name == selectedCultivar1)]
+        .espyield -
+        standards[standards.indexWhere(
+                (cultivar) => cultivar.name == selectedCultivar2)]
+            .espyield) *
         (espvalue) *
         (esputil / 100);
   }
@@ -72,11 +72,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
   // function to calculate late spring benefit
   void calculateLspBenefit() {
     lspbenefit = (cultivars[cultivars.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar1)]
-                .lspyield -
-            standards[standards.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar2)]
-                .lspyield) *
+            (cultivar) => cultivar.name == selectedCultivar1)]
+        .lspyield -
+        standards[standards.indexWhere(
+                (cultivar) => cultivar.name == selectedCultivar2)]
+            .lspyield) *
         (lspvalue) *
         (lsputil / 100);
   }
@@ -84,11 +84,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
   // function to calculate summer benefit
   void calculateSumBenefit() {
     sumbenefit = (cultivars[cultivars.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar1)]
-                .sumyield -
-            standards[standards.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar2)]
-                .sumyield) *
+            (cultivar) => cultivar.name == selectedCultivar1)]
+        .sumyield -
+        standards[standards.indexWhere(
+                (cultivar) => cultivar.name == selectedCultivar2)]
+            .sumyield) *
         (sumvalue) *
         (sumutil / 100);
   }
@@ -96,11 +96,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
   // function to calculate autumn benefit
   void calculateAutBenefit() {
     autbenefit = (cultivars[cultivars.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar1)]
-                .autyield -
-            standards[standards.indexWhere(
-                    (cultivar) => cultivar.name == selectedCultivar2)]
-                .autyield) *
+            (cultivar) => cultivar.name == selectedCultivar1)]
+        .autyield -
+        standards[standards.indexWhere(
+                (cultivar) => cultivar.name == selectedCultivar2)]
+            .autyield) *
         (autvalue) *
         (aututil / 100);
   }
@@ -122,14 +122,15 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
         priceBenefit = 0.0;
       } else {
         updateSeedCost();
-        // split the calculations into separate functions for easier management
-        calculateWinBenefit();
-        calculateEspBenefit();
-        calculateLspBenefit();
-        calculateSumBenefit();
-        calculateAutBenefit();
-        totbenefit =
-            winbenefit + espbenefit + lspbenefit + sumbenefit + autbenefit;
+
+        // Calculate in the correct seasonal order
+        calculateAutBenefit();  // Autumn first
+        calculateWinBenefit();  // Winter second
+        calculateEspBenefit();  // Early Spring third
+        calculateLspBenefit();  // Late Spring fourth
+        calculateSumBenefit();  // Summer fifth
+
+        totbenefit = autbenefit + winbenefit + espbenefit + lspbenefit + sumbenefit;
         priceBenefit = totbenefit - (seedCost1 - seedCost2);
       }
     });
@@ -144,27 +145,15 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
 
 // LIST FOR EACH REGION ==============
   List<Cultivar> cultivarsSouthAfrica = [
-    Cultivar('Sequel SE', 1198, 2025, 3611, 3885, 2882, 13601, 0.32, 0.59, 0.21,
-        0.44, 0.42, 11.60, 20),
-    Cultivar('Matrix SE', 1125, 1995, 3416, 3747, 2762, 13045, 0.32, 0.59, 0.21,
-        0.44, 0.42, 11.60, 20),
-    Cultivar('Ultra AR1', 1132, 1975, 3446, 3884, 2757, 13196, 0.32, 0.59, 0.21,
-        0.44, 0.42, 12.36, 20),
-    Cultivar('Avatar NEA', 1085, 1815, 3209, 3674, 2554, 12337, 0.32, 0.59,
-        0.21, 0.44, 0.42, 13.40, 20),
-    Cultivar('Raider NEA2', 1127, 2054, 3532, 3887, 2823, 13424, 0.32, 0.59,
-        0.21, 0.44, 0.42, 13.50, 20),
-    Cultivar('Nui SE', 956, 1967, 3280, 3307, 2436, 11945, 0.32, 0.59, 0.21,
-        0.44, 0.42, 3.55, 20),
-    Cultivar('Uncertified LP', 890, 1851, 3034, 2898, 1947, 10620, 0.32, 0.59,
-        0.21, 0.44, 0.42, 3.30, 20),
+    Cultivar('Sequel', 2882, 1198, 2025, 3611, 3885, 13601, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Matrix', 2762, 1125, 1995, 3416, 3747, 13045, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Ultra', 2757, 1132, 1975, 3446, 3884, 13194, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Raider', 2823, 1127, 2054, 3532, 3887, 13423, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Nui', 2436, 956, 1967, 3280, 3307, 11946, 4.2, 3.2, 5.9, 2.1, 4.4, 150.0, 20),
   ];
 
   List<Cultivar> standardsSouthAfrica = [
-    Cultivar('Nui SE', 956, 1967, 3280, 3307, 2436, 11945, 0.32, 0.59, 0.21,
-        0.44, 0.42, 3.55, 20),
-    Cultivar('Uncertified LP', 890, 1851, 3034, 2898, 1947, 10620, 0.32, 0.59,
-        0.21, 0.44, 0.42, 3.30, 20),
+    Cultivar('Nui', 2436, 956, 1967, 3280, 3307, 11946, 4.2, 3.2, 5.9, 2.1, 4.4, 150.0, 20),
   ];
 
   @override
@@ -184,9 +173,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
     }
   }
 
-
   _populateCultivarList() {
-    // show correct values of $/kg DM whenever a different region is selected
     if (checkRegion != selectedRegion) {
       checkRegion = selectedRegion;
       late List<double> valueList;
@@ -195,30 +182,33 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
           case 'South Africa':
             cultivars = cultivarsSouthAfrica;
             standards = standardsSouthAfrica;
+            // CORRECTED order to match constructor
             valueList = [
-              cultivars[0].winvalue,
-              cultivars[0].espvalue,
-              cultivars[0].lspvalue,
-              cultivars[0].sumvalue,
-              cultivars[0].autvalue
+              cultivars[0].autvalue,  // Autumn first: 4.2
+              cultivars[0].winvalue,  // Winter second: 3.2
+              cultivars[0].espvalue,  // Early Spring third: 5.9
+              cultivars[0].lspvalue,  // Late Spring fourth: 2.1
+              cultivars[0].sumvalue   // Summer fifth: 4.4
             ];
             break;
-
           default:
             valueList = [0.00, 0.00, 0.00, 0.00, 0.00];
         }
       });
-      controller1.text = valueList[0].toStringAsFixed(2);
-      controller2.text = valueList[1].toStringAsFixed(2);
-      controller3.text = valueList[2].toStringAsFixed(2);
-      controller4.text = valueList[3].toStringAsFixed(2);
-      controller5.text = valueList[4].toStringAsFixed(2);
-      // reset the values to default values when a new region is selected
-      winvalue = valueList[0];
-      espvalue = valueList[1];
-      lspvalue = valueList[2];
-      sumvalue = valueList[3];
-      autvalue = valueList[4];
+
+      // CORRECTED controller assignments
+      controller1.text = valueList[0].toStringAsFixed(2); // Autumn: 4.2
+      controller2.text = valueList[1].toStringAsFixed(2); // Winter: 3.2
+      controller3.text = valueList[2].toStringAsFixed(2); // Early Spring: 5.9
+      controller4.text = valueList[3].toStringAsFixed(2); // Late Spring: 2.1
+      controller5.text = valueList[4].toStringAsFixed(2); // Summer: 4.4
+
+      // CORRECTED value assignments
+      autvalue = valueList[0]; // 4.2
+      winvalue = valueList[1]; // 3.2
+      espvalue = valueList[2]; // 5.9
+      lspvalue = valueList[3]; // 2.1
+      sumvalue = valueList[4]; // 4.4
     }
   }
 
@@ -270,7 +260,6 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                   ),
                 ),
               ),
-
               SizedBox(height: 20),
               Center(
                 child: Container(
@@ -364,11 +353,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             });
                             seedPrice1 = cultivars[cultivars.indexWhere(
                                     (cultivar) =>
-                                        cultivar.name == selectedCultivar1)]
+                                cultivar.name == selectedCultivar1)]
                                 .seedPrice;
                             seedRate1 = cultivars[cultivars.indexWhere(
                                     (cultivar) =>
-                                        cultivar.name == selectedCultivar1)]
+                                cultivar.name == selectedCultivar1)]
                                 .seedRate;
                             _populateCultivarList();
                             updateSeedCost();
@@ -376,14 +365,14 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           },
                           items: cultivars
                               .map((cultivar) => DropdownMenuItem(
-                                  value: cultivar.name,
-                                  child: Text(
-                                    cultivar.name,
-                                    style: TextStyle(
-                                        color: Colors.green.shade800,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
-                                  )))
+                              value: cultivar.name,
+                              child: Text(
+                                cultivar.name,
+                                style: TextStyle(
+                                    color: Colors.green.shade800,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              )))
                               .toList(),
                           icon: Icon(Icons.keyboard_arrow_down_outlined,
                               color: Colors.green.shade800, size: 32.0),
@@ -408,11 +397,11 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             });
                             seedPrice2 = cultivars[cultivars.indexWhere(
                                     (cultivar) =>
-                                        cultivar.name == selectedCultivar2)]
+                                cultivar.name == selectedCultivar2)]
                                 .seedPrice;
                             seedRate2 = cultivars[cultivars.indexWhere(
                                     (cultivar) =>
-                                        cultivar.name == selectedCultivar2)]
+                                cultivar.name == selectedCultivar2)]
                                 .seedRate;
                             _populateCultivarList();
                             updateSeedCost();
@@ -420,14 +409,14 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           },
                           items: standards
                               .map((cultivar) => DropdownMenuItem(
-                                  value: cultivar.name,
-                                  child: Text(
-                                    cultivar.name,
-                                    style: TextStyle(
-                                        color: Colors.green.shade800,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
-                                  )))
+                              value: cultivar.name,
+                              child: Text(
+                                cultivar.name,
+                                style: TextStyle(
+                                    color: Colors.green.shade800,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              )))
                               .toList(),
                           icon: Icon(Icons.keyboard_arrow_down_outlined,
                               color: Colors.green.shade800, size: 32.0),
@@ -477,9 +466,9 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           color: Colors.lime,
                           border: Border(
                               bottom: BorderSide(
-                            color: Colors.black,
-                            width: 0.4,
-                          )),
+                                color: Colors.black,
+                                width: 0.4,
+                              )),
                           borderRadius: BorderRadius.only(
                             //  setting the border radius circular for the top row
                             topLeft: Radius.circular(10),
@@ -489,7 +478,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                             child: Text(
                               'Financial benefit for',
                               style: TextStyle(color: Colors.black),
@@ -497,7 +486,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '',
                               style: TextStyle(color: Colors.white),
@@ -517,7 +506,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                             child: Text(
                               '$selectedCultivar1 over $selectedCultivar2:',
                               style: TextStyle(color: Colors.white),
@@ -525,9 +514,9 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(0.0, 10.0, 0, 10),
                             child: Text(
-                              ' \$ ${priceBenefit.toStringAsFixed(0)}/ha/yr',
+                              ' \R${priceBenefit.toStringAsFixed(0)}/ha/yr',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -547,6 +536,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     ),
                     "Note that as pasture lasts multiple years the net benefit will be much greater"),
               ),
+
               Container(
                 padding: EdgeInsets.fromLTRB(10, 20.0, 12.0, 20.0),
                 child: Text(
@@ -564,8 +554,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                 child: Text(
                   '$selectedCultivar1:',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    color: Colors.green.shade800,
+                    fontSize: 15, fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -623,7 +613,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            ' \$  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedPrice.toStringAsFixed(2)}',
+                        ' \R${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedPrice.toStringAsFixed(2)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -642,7 +632,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedRate.toStringAsFixed(1)}',
+                        '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedRate.toStringAsFixed(1)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -659,7 +649,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     width: 100,
                     padding: EdgeInsets.fromLTRB(40.0, 0.0, 0, 0),
                     child: Text(
-                      '\$ ${seedCost1.toStringAsFixed(0)}',
+                      '\R${seedCost1.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -679,8 +669,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                 child: Text(
                   '$selectedCultivar2:',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    color: Colors.green.shade800,
+                    fontSize: 15, fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -738,7 +728,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            ' \$  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedPrice.toStringAsFixed(2)}',
+                        ' \R${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedPrice.toStringAsFixed(2)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -757,7 +747,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedRate.toStringAsFixed(1)}',
+                        '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedRate.toStringAsFixed(1)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -774,7 +764,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                     width: 100,
                     padding: EdgeInsets.fromLTRB(40.0, 0.0, 0, 0),
                     child: Text(
-                      '\$ ${seedCost2.toStringAsFixed(0)}',
+                      '\R${seedCost2.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -794,7 +784,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                       fontSize: 11,
                     ),
                     "These calculations use the following Seasonal Feed values sourced from Dairy NZ and estimated % pasture utilisation, which are specific for each Region selected."
-                    "\n\nYou can change the values of \$kg DM and % Utilisation."),
+                        "\n\nYou can change the values of \R kg DM and % Utilisation."),
               ),
 
 //============ table of outputs ====================
@@ -825,9 +815,9 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           color: Colors.lime,
                           border: Border(
                               bottom: BorderSide(
-                            color: Colors.green.shade900,
-                            width: 0.4,
-                          )),
+                                color: Colors.green.shade900,
+                                width: 0.4,
+                              )),
                           borderRadius: BorderRadius.only(
                             //  setting the border radius circular for the top row
                             topLeft: Radius.circular(10),
@@ -839,7 +829,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 30.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Season',
                                 style: TextStyle(
@@ -851,38 +841,38 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
-                              '\$/kg DM',
+                              '\R/kg DM',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '\% Utilisation',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                         ],
@@ -909,7 +899,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Winter',
                                 style: TextStyle(
@@ -942,7 +932,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller1,
+                                controller: controller2,
                                 onChanged: (value) {
                                   setState(() {
                                     winvalue = double.parse(value);
@@ -952,8 +942,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -998,8 +988,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1017,7 +1007,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Early Spring',
                                 style: TextStyle(
@@ -1057,7 +1047,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller2,
+                                controller: controller3,
                                 onChanged: (value) {
                                   setState(() {
                                     espvalue = double.parse(value);
@@ -1067,8 +1057,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1113,8 +1103,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1132,7 +1122,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Late Spring',
                                 style: TextStyle(
@@ -1172,7 +1162,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller3,
+                                controller: controller4,
                                 onChanged: (value) {
                                   setState(() {
                                     lspvalue = double.parse(value);
@@ -1182,8 +1172,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1228,8 +1218,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1246,7 +1236,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Summer',
                                 style: TextStyle(
@@ -1286,7 +1276,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller4,
+                                controller: controller5,
                                 onChanged: (value) {
                                   setState(() {
                                     sumvalue = double.parse(value);
@@ -1296,8 +1286,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1342,8 +1332,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1366,7 +1356,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Autumn',
                                 style: TextStyle(
@@ -1406,7 +1396,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller5,
+                                controller: controller1,
                                 onChanged: (value) {
                                   setState(() {
                                     autvalue = double.parse(value);
@@ -1416,8 +1406,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1462,8 +1452,8 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                                   });
                                 },
                                 keyboardType:
-                                    const TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                const TextInputType.numberWithOptions(
+                                    signed: true, decimal: true),
                               ),
                             ),
                           ),
@@ -1516,9 +1506,9 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           color: Colors.lime,
                           border: Border(
                               bottom: BorderSide(
-                            color: Colors.green.shade900,
-                            width: 0.4,
-                          )),
+                                color: Colors.green.shade900,
+                                width: 0.4,
+                              )),
                           borderRadius: BorderRadius.only(
                             //  setting the border radius circular for the top row
                             topLeft: Radius.circular(10),
@@ -1530,7 +1520,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 30.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Season',
                                 style: TextStyle(
@@ -1542,38 +1532,38 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '$selectedCultivar1',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '$selectedCultivar2',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 12),
+                              TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ),
                         ],
@@ -1600,7 +1590,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Winter',
                                 style: TextStyle(
@@ -1614,7 +1604,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].winyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1629,7 +1619,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${standards[standards.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].winyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1653,7 +1643,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Early Spring',
                                 style: TextStyle(
@@ -1667,7 +1657,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].espyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1682,7 +1672,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${standards[standards.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].espyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1706,7 +1696,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Late Spring',
                                 style: TextStyle(
@@ -1720,7 +1710,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].lspyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1735,7 +1725,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${standards[standards.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].lspyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1758,7 +1748,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Summer',
                                 style: TextStyle(
@@ -1772,7 +1762,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].sumyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1787,7 +1777,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${standards[standards.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].sumyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1809,7 +1799,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Autumn',
                                 style: TextStyle(
@@ -1823,7 +1813,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].autyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1838,7 +1828,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${standards[standards.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].autyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1866,7 +1856,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 'Total',
                                 style: TextStyle(
@@ -1880,7 +1870,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].totyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1895,7 +1885,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                             constraints: BoxConstraints(minHeight: 50.0),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                               child: Text(
                                 '${standards[standards.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].totyield.toStringAsFixed(0)} ',
                                 style: TextStyle(
@@ -1924,33 +1914,34 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
 
 class Cultivar {
   final String name;
-  final double winyield;
-  final double espyield;
-  final double lspyield;
-  final double sumyield;
-  final double autyield;
+  final double autyield;  // Autumn
+  final double winyield;  // Winter
+  final double espyield;  // Early Spring
+  final double lspyield;  // Late Spring
+  final double sumyield;  // Summer
   final double totyield;
-  final double winvalue;
-  final double espvalue;
-  final double lspvalue;
-  final double sumvalue;
-  final double autvalue;
+  final double autvalue;  // Autumn value FIRST
+  final double winvalue;  // Winter value SECOND
+  final double espvalue;  // Early Spring value THIRD
+  final double lspvalue;  // Late Spring value FOURTH
+  final double sumvalue;  // Summer value FIFTH
   final double seedPrice;
   final double seedRate;
 
+  // CORRECTED constructor parameter order
   Cultivar(
       this.name,
+      this.autyield,
       this.winyield,
       this.espyield,
       this.lspyield,
       this.sumyield,
-      this.autyield,
       this.totyield,
-      this.winvalue,
-      this.espvalue,
-      this.lspvalue,
-      this.sumvalue,
-      this.autvalue,
+      this.autvalue,  // 4.2
+      this.winvalue,  // 3.2
+      this.espvalue,  // 5.9
+      this.lspvalue,  // 2.1
+      this.sumvalue,  // 4.4
       this.seedPrice,
       this.seedRate);
 }

@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../grasses/perennial grasses/tetraploid ryegrass/4frontnea2.dart';
 import '../../grasses/perennial grasses/tetraploid ryegrass/alignar37.dart';
 import '../../grasses/perennial grasses/tetraploid ryegrass/vastar37.dart';
@@ -7,7 +7,7 @@ import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/basear1.dart';
 import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/haloar1.dart';
 import '../../grasses/perennial%20grasses/tetraploid%20ryegrass/viscountnil.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
@@ -15,8 +15,8 @@ import '../../main.dart';
 import 'cultivar_card_grasses.dart';
 import 'grass_maturity_card.dart';
 
-class tetraploidryegrasssafe extends StatefulWidget {
-  tetraploidryegrasssafe({
+class TetraploidRyegrassSafe extends StatefulWidget {
+  TetraploidRyegrassSafe({
     Key? key,
     required this.country,
     required this.region,
@@ -24,12 +24,12 @@ class tetraploidryegrasssafe extends StatefulWidget {
   final String country, region;
 
   @override
-  State<tetraploidryegrasssafe> createState() {
-    return _tetraploidryegrasssafeState();
+  State<TetraploidRyegrassSafe> createState() {
+    return _TetraploidRyegrassSafeState();
   }
 }
 
-class _tetraploidryegrasssafeState extends State<tetraploidryegrasssafe> {
+class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -276,21 +276,21 @@ class _tetraploidryegrasssafeState extends State<tetraploidryegrasssafe> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

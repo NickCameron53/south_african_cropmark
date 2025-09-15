@@ -1,3 +1,5 @@
+import 'package:southafrica_seed_guide/tools/price%20benefit%20calculators/pricebenefithybrids.dart';
+
 import '../../tools/crop%20calculators/cerealcalculator.dart';
 import '../../tools/crop%20calculators/chicoryareacalculator.dart';
 import '../../tools/crop%20calculators/sow rate calculator.dart';
@@ -9,7 +11,7 @@ import '../../tools/price%20benefit%20calculators/pricebenefititalians.dart';
 import '../../tools/price%20benefit%20calculators/pricebenefitperennials.dart';
 import '../../tools/yield%20calculators/samplemethod.dart';
 import '../../tools/yield%20calculators/yieldcalculator.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import '../../main.dart';
@@ -101,6 +103,12 @@ class toolsandcalculators extends StatelessWidget {
         description.add(
             'Evaluate the financial benefit\n of using an improved cultivar.');
         links.add(pricebenefitperennials());
+
+        images.add('assets/cocksfootpic.png');
+        headings.add('Price Benefit Tool\nHybrid ryegrass');
+        description.add(
+            'Evaluate the financial benefit\n of using an improved cultivar.');
+        links.add((pricebenefithybrids()));
 
         images.add('assets/cocksfootpic.png');
         headings.add('Price Benefit Tool\nItalian ryegrass');
@@ -613,17 +621,17 @@ class toolsandcalculators extends StatelessWidget {
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
                 case 3:

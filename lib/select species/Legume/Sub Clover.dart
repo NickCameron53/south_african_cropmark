@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../legumes/sub%20clover/antas.dart';
 import '../../legumes/sub%20clover/bindoon.dart';
 import '../../legumes/sub%20clover/coolamon.dart';
@@ -9,7 +9,7 @@ import '../../legumes/sub%20clover/rouse.dart';
 import '../../legumes/sub%20clover/woogenellup.dart';
 import '../../orders/orderform.dart';
 import '../../select%20species/Legume/cultivar_card_subclover.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
@@ -262,21 +262,21 @@ class _subcloverState extends State<subclover> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

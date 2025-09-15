@@ -723,9 +723,9 @@ class _scoringState extends State<scoring> {
                         horizontalInside:
                             BorderSide(color: Colors.white, width: 1),
                       ),
-                      headingRowColor: MaterialStateColor.resolveWith(
+                      headingRowColor: WidgetStateColor.resolveWith(
                           (states) => Colors.red.shade700),
-                      dataRowColor: MaterialStateColor.resolveWith(
+                      dataRowColor: WidgetStateColor.resolveWith(
                           (states) => Colors.lime.shade200),
                       dataRowMinHeight: 30,
                       columns: <DataColumn>[

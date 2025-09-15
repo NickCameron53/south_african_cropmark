@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../grasses/perennial%20grasses/cocksfoot/aurus.dart';
 import '../../grasses/perennial%20grasses/cocksfoot/greenly2.dart';
 import '../../grasses/perennial%20grasses/cocksfoot/kainui.dart';
@@ -7,15 +7,15 @@ import '../../grasses/perennial%20grasses/cocksfoot/safin.dart';
 import '../../grasses/perennial%20grasses/cocksfoot/savvy.dart';
 import '../../grasses/perennial%20grasses/cocksfoot/vision.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
 
 import 'cultivar_card_cocksfoot.dart';
 
-class cocksfoot extends StatefulWidget {
-  cocksfoot({
+class Cocksfoot extends StatefulWidget {
+  Cocksfoot({
     Key? key,
     required this.country,
     required this.region,
@@ -23,12 +23,12 @@ class cocksfoot extends StatefulWidget {
   final String country, region;
 
   @override
-  State<cocksfoot> createState() {
-    return _cocksfootState();
+  State<Cocksfoot> createState() {
+    return _CocksfootState();
   }
 }
 
-class _cocksfootState extends State<cocksfoot> {
+class _CocksfootState extends State<Cocksfoot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -262,21 +262,21 @@ class _cocksfootState extends State<cocksfoot> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

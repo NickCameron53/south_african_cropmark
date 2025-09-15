@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../main.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'AboutTheGuide.dart';
 import 'Species_Tool_List.dart';
 import 'orders/orderform.dart';
 
@@ -61,7 +61,7 @@ _youtube() async {
   }
 }
 
-class webpage extends StatelessWidget {
+class WebPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -232,23 +232,28 @@ class webpage extends StatelessWidget {
             onTap: (index) {
               switch (index) {
                 case 0:
-                  String homePageTitle = 'Home'; // Or derive title dynamically
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MyHomePage(title: homePageTitle),
-                    ),
+                        builder: (context) => AboutTheGuide()),
                   );
                   break;
-
                 case 1:
-                  // Navigate to Toolkit page
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
+                // Navigate to Toolkit page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ToolList()),
+                  );
+                  break;
+
+                case 3:
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => OrderForm()),
@@ -258,8 +263,12 @@ class webpage extends StatelessWidget {
             },
             items: [
               BottomNavigationBarItem(
-                label: 'Home',
+                label: 'Seed Guide',
                 icon: Icon(Icons.home),
+              ),
+              BottomNavigationBarItem(
+                label: 'Web Hub',
+                icon: Icon(Icons.search),
               ),
               BottomNavigationBarItem(
                 label: 'Tools',

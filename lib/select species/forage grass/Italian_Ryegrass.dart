@@ -1,7 +1,7 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../orders/orderform.dart';
 import '../../select%20species/forage%20grass/italian%20ryegrass%20all.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import '../../Species_Tool_List.dart';
@@ -23,20 +23,23 @@ class GrassOption {
   });
 }
 
-class italianryegrass extends StatelessWidget {
-  final List<GrassOption> options = [];
+class ItalianRyegrass extends StatelessWidget {
+  final List<String> images = [];
+  final List<String> headings = [];
+  final List<String> description = [];
+  final List links = [];
+  final String country;
+  final String region;
+  final String representative;
+  final String headshot;
+  final String phonenum;
+  final String animaltype;
+  final String summerrain;
+  final String totalrain;
+  final String foragetype;
+  final String soilacidity;
 
-  final String country,
-      region,
-      representative,
-      headshot,
-      phonenum,
-      animaltype,
-      summerrain,
-      foragetype,
-      soilacidity;
-
-  italianryegrass({
+  ItalianRyegrass({
     Key? key,
     required this.country,
     required this.region,
@@ -45,66 +48,133 @@ class italianryegrass extends StatelessWidget {
     required this.phonenum,
     required this.animaltype,
     required this.summerrain,
+    required this.totalrain,
     required this.foragetype,
     required this.soilacidity,
   }) : super(key: key);
 
+  List<GrassOption> _buildOptions() {
+    final List<GrassOption> options = [];
+
+    // Check conditions first - use more flexible matching
+    bool isSummerRainLow = summerrain.trim().startsWith("Low");
+    bool isTotalRainLow = totalrain.trim().startsWith("Low");
+    bool isSoilAcidic = soilacidity.trim().startsWith("Acid");
+
+    bool isAnimalTypeHorses = animaltype == "Horses";
+    bool isAnimalTypeDeer = animaltype == "Deer";
+    bool isAnimalTypeAlpacas = animaltype == "Alpacas";
+    bool isSensitiveAnimal =
+        isAnimalTypeHorses || isAnimalTypeDeer || isAnimalTypeAlpacas;
+
+    // Check if ANY condition is unsuitable for hybrid ryegrass
+    bool isUnsuitableForItalians =
+        isSummerRainLow || isTotalRainLow || isSoilAcidic;
+
+    // FIRST: Check if any condition is unsuitable
+    if (isUnsuitableForItalians) {
+      // Add appropriate message based on which condition(s) are problematic
+      if (isTotalRainLow && isSummerRainLow && isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "Annual and summer rainfall and soil acidity are too low for reliable growth of Italian Ryegrass.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isTotalRainLow && isSummerRainLow) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "Both annual rainfall and summer rainfall are too low for good Italian Ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isTotalRainLow && isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "Both annual rainfall and soil acidity are too low for good Italian Ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isSummerRainLow && isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "Both summer rainfall and soil acidity are too low for good Italian Ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isTotalRainLow) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "The annual rainfall is too low for good Italian Ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+      else if (isSummerRainLow) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "The summer rainfall is too low for good Italian Ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      } else if (isSoilAcidic) {
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          "The soil acidity is too low for good Italian Ryegrass growth.",
+          link: Container(),
+          showCultivarsButton: false,
+        ));
+      }
+    }
+    // ALL conditions are suitable - add Italian Ryegrass options
+    else {
+      if (isSensitiveAnimal) {
+        // Safe versions for sensitive animals
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass (Safe)',
+          description:
+          'Italian ryegrasses are usually erect shorter term grasses producing very high winter and early spring yield of high quality.\n\nItalian ryegrasses require a winter period to form seed heads.',
+          link: ItalianRyegrassAll(country: country, region: region),
+          showCultivarsButton: true,
+        ));
+      } else {
+        // Toxic versions for non-sensitive animals
+        options.add(GrassOption(
+          image: 'assets/italianryegrasspic.png',
+          heading: 'Italian Ryegrass',
+          description:
+          'Italian ryegrasses are usually erect shorter term grasses producing very high winter and early spring yield of high quality.\n\nItalian ryegrasses require a winter period to form seed heads.',
+          link: ItalianRyegrassAll(country: country, region: region),
+          showCultivarsButton: true,
+        ));
+      }
+    }
+
+    return options;
+  }
+
   @override
   Widget build(BuildContext context) {
-    options.clear();
-    // Check conditions first
-    bool isSummerRainLow = summerrain == "      Low\n(<150mm)";
-    bool isSoilAcidic = soilacidity == "   Acid\n<pH5.5";
-
-    // display content according to the user inputs
-    if (isSummerRainLow && isSoilAcidic) {
-      options.addAll([
-        GrassOption(
-          // Check for both conditions first
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Hybrid Ryegrass',
-          description:
-              "The summer rainfall and soil acidity levels are too low for good ryegrass growth.",
-          link: Container(),
-          // Add empty container as placeholder
-          showCultivarsButton: false,
-        ),
-      ]); // Hide button for this item
-    } else if (isSummerRainLow) {
-      options.add(
-        GrassOption(
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Italian ryegrass',
-          description:
-              "The summer moisture is too low for good ryegrass growth.",
-          link: Container(),
-          showCultivarsButton: false,
-        ),
-      ); // Hide button for this item
-    } else if (isSoilAcidic) {
-      options.add(
-        GrassOption(
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Italian ryegrass',
-          description: "The soil acidity is too low for good ryegrass growth.",
-          link: Container(),
-          showCultivarsButton: false,
-        ),
-      ); // Hide button for this item
-    } else {
-      // add all of the hybrid ryegrasses if summer rain and soil acidity not low
-      options.add(
-        GrassOption(
-          image: 'assets/italianryegrasspic.png',
-          heading: 'Italian ryegrass',
-          description:
-              "Italian ryegrasses are usually erect shorter term grasses producing very high winter and early spring yield of high quality."
-              "\n\nItalian ryegrasses require a winter period to form seed heads.",
-          link: italianryegrassall(country: country, region: region),
-          showCultivarsButton: true,
-        ),
-      ); // Show button for this item
-    }
+    final options = _buildOptions();
 
     return Scaffold(
       extendBody: true,
@@ -137,8 +207,8 @@ class italianryegrass extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => MyHomePage(
-                              title: '',
-                            )),
+                          title: '',
+                        )),
                   );
                 },
               ),
@@ -186,9 +256,9 @@ class italianryegrass extends StatelessWidget {
                             width: 300,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                            )),
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                )),
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20.0),
@@ -234,29 +304,30 @@ class italianryegrass extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  padding:
-                                      EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                                  padding: EdgeInsets.fromLTRB(
+                                      0.0, 30.0, 0.0, 0.0),
                                   child: options[index].showCultivarsButton
                                       ? ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    options[index].link,
-                                              ),
-                                            );
-                                          },
-                                          child: Text('View cultivars'),
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.lightGreen,
-                                            minimumSize: Size(100, 50),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                          ),
-                                        )
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          options[index].link,
+                                        ),
+                                      );
+                                    },
+                                    child: Text('View cultivars'),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                      Colors.lightGreen,
+                                      minimumSize: Size(100, 50),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  )
                                       : SizedBox.shrink(),
                                 ),
                               ],
@@ -303,21 +374,21 @@ class italianryegrass extends StatelessWidget {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

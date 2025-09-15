@@ -1,4 +1,4 @@
-import '../../abouttheguide.dart';
+import '../../AboutTheGuide.dart';
 import '../../grasses/perennial grasses/diploid ryegrass/arraynea2.dart';
 import '../../grasses/perennial grasses/diploid ryegrass/maxsynnea4.dart';
 import '../../grasses/perennial grasses/diploid ryegrass/midwayar37.dart';
@@ -27,7 +27,7 @@ import '../../grasses/perennial%20grasses/diploid%20ryegrass/trojannil.dart';
 import '../../grasses/perennial%20grasses/diploid%20ryegrass/tysonnil.dart';
 import '../../grasses/perennial%20grasses/diploid%20ryegrass/ultranil.dart';
 import '../../orders/orderform.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../Species_Tool_List.dart';
 import '../../main.dart';
@@ -35,8 +35,8 @@ import '../../main.dart';
 import 'cultivar_card_grasses.dart';
 import 'grass_maturity_card.dart';
 
-class diploidryegrasssafe extends StatefulWidget {
-  diploidryegrasssafe({
+class DiploidRyegrassSafe extends StatefulWidget {
+  DiploidRyegrassSafe({
     Key? key,
     required this.country,
     required this.region,
@@ -44,12 +44,12 @@ class diploidryegrasssafe extends StatefulWidget {
   final String country, region;
 
   @override
-  State<diploidryegrasssafe> createState() {
-    return _diploidryegrasssafeState();
+  State<DiploidRyegrassSafe> createState() {
+    return _DiploidRyegrassSafeState();
   }
 }
 
-class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
+class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,7 +161,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Stampede',
-                                  link: stampedecm142(
+                                  link: StampedeScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -176,7 +176,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Sequel',
-                                  link: sequelstandard(
+                                  link: SequelScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -192,7 +192,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Matrix',
-                                  link: matrixnil(
+                                  link: MatrixScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -206,7 +206,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Ultra',
-                                  link: ultranil(
+                                  link: UltraScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -221,7 +221,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Array',
-                                  link: arraynea2(
+                                  link: ArrayScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -237,7 +237,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Expo',
-                                  link: expoar1(
+                                  link: ExpoScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -253,7 +253,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Three\u2076\u2070 AR1',
-                                  link: three60ar1(
+                                  link: Three60Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -266,7 +266,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'One50',
-                                  link: one50nil(
+                                  link: One50Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -281,7 +281,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Abermagic',
-                                  link: abermagicnil(
+                                  link: AbermagicScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -295,7 +295,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Abergreen',
-                                  link: abergreennil(
+                                  link: AbergreenScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -308,7 +308,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Rohan',
-                                  link: rohannil(
+                                  link: RohanScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -321,7 +321,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Trojan',
-                                  link: trojannil(
+                                  link: TrojanScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -335,7 +335,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Legion',
-                                  link: legionar1(
+                                  link: LegionScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -348,7 +348,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Prospect',
-                                  link: prospectar1(
+                                  link: ProspectScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -361,7 +361,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Platform',
-                                  link: platformar1(
+                                  link: PlatformScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -373,7 +373,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Maxsyn',
-                                  link: maxsynnea4(
+                                  link: MaxsynScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -389,7 +389,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Hustle\u2122',
-                                  link: hustlear1(
+                                  link: HustleScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -402,7 +402,7 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Governor',
-                                  link: governornil(
+                                  link: GovernorScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -561,21 +561,21 @@ class _diploidryegrasssafeState extends State<diploidryegrasssafe> {
                 case 0:
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
                   );
                   break;
                 case 1:
-                // Navigate to Webpage
+                // Navigate to WebPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => webpage()),
+                    MaterialPageRoute(builder: (context) => WebPage()),
                   );
                   break;
                 case 2:
                 // Navigate to Toolkit page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toollist()),
+                    MaterialPageRoute(builder: (context) => ToolList()),
                   );
                   break;
 

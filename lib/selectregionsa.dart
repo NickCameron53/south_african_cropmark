@@ -1,6 +1,6 @@
 import 'package:southafrica_seed_guide/orders/orderform.dart';
-import 'package:southafrica_seed_guide/seedtype.dart';
-import '../../webpage.dart';
+import 'package:southafrica_seed_guide/select_requirements.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'Species_Tool_List.dart';
@@ -247,17 +247,17 @@ class _selectregionsaState extends State<selectregionsa> {
                     );
                     break;
                   case 1:
-                    // Navigate to Webpage
+                    // Navigate to WebPage
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => webpage()),
+                      MaterialPageRoute(builder: (context) => WebPage()),
                     );
                     break;
                   case 2:
                     // Navigate to Toolkit page
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => toollist()),
+                      MaterialPageRoute(builder: (context) => ToolList()),
                     );
                     break;
 

@@ -16,19 +16,19 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
   List<TextFormField> textFormFields = [];
   String selectedRegion = 'South Africa';
   String checkRegion = 'None';
-  String selectedCultivar1 = 'Frenzy';
-  String selectedCultivar2 = 'Moata';
-  double seedPrice1 = 10.75;
-  double seedPrice2 = 3.55;
-  double seedRate1 = 28;
-  double seedRate2 = 28;
-  double seedCost1 = 301;
-  double seedCost2 = 99.4;
-  double winvalue = 0.32;
-  double espvalue = 0.59;
-  double lspvalue = 0.21;
-  double sumvalue = 0.44;
-  double autvalue = 0.42;
+  String selectedCultivar1 = 'Appeal';
+  String selectedCultivar2 = 'Concord II';
+  double seedPrice1 = 170.0;
+  double seedPrice2 = 175.0;
+  double seedRate1 = 20;
+  double seedRate2 = 20;
+  double seedCost1 = 3400;
+  double seedCost2 = 3500;
+  double winvalue = 3.2;
+  double espvalue = 5.9;
+  double lspvalue = 2.1;
+  double sumvalue = 4.4;
+  double autvalue = 4.2;
   double winutil = 90;
   double esputil = 90;
   double lsputil = 75;
@@ -122,14 +122,15 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
         priceBenefit = 0.0;
       } else {
         updateSeedCost();
-        // split the calculations into separate functions for easier management
-        calculateWinBenefit();
-        calculateEspBenefit();
-        calculateLspBenefit();
-        calculateSumBenefit();
-        calculateAutBenefit();
-        totbenefit =
-            winbenefit + espbenefit + lspbenefit + sumbenefit + autbenefit;
+
+        // Calculate in the correct seasonal order
+        calculateAutBenefit();  // Autumn first
+        calculateWinBenefit();  // Winter second
+        calculateEspBenefit();  // Early Spring third
+        calculateLspBenefit();  // Late Spring fourth
+        calculateSumBenefit();  // Summer fifth
+
+        totbenefit = autbenefit + winbenefit + espbenefit + lspbenefit + sumbenefit;
         priceBenefit = totbenefit - (seedCost1 - seedCost2);
       }
     });
@@ -144,17 +145,13 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
 
 // LIST FOR EACH REGION ==============
   List<Cultivar> cultivarsSouthAfrica = [
-    Cultivar('Frenzy', 1801, 1930, 2986, 4568, 5001, 16286, 0.32, 0.59, 0.21,
-        0.44, 0.42, 10.75, 28),
-    Cultivar('Vibe', 1702, 1849, 2780, 4096, 3721, 14147, 0.32, 0.59, 0.21,
-        0.44, 0.42, 7.65, 20),
-    Cultivar('Moata', 1420, 1644, 2783, 3640, 2406, 11894, 0.32, 0.59, 0.21,
-        0.44, 0.42, 3.55, 28),
+    Cultivar('Appeal', 1995, 1683, 3261, 4111, 1823, 12873, 4.2, 3.2, 5.9, 2.1, 4.4, 170.0, 20),
+    Cultivar('Vibe', 2037, 1645, 3212, 4113, 1948, 12954, 4.2, 3.2, 5.9, 2.1, 4.4, 170.0, 20),
+    Cultivar('Concord II', 1611, 1654, 3294, 3911, 1820, 12290, 4.2, 3.2, 5.9, 2.1, 4.4, 175.0, 20),
   ];
 
   List<Cultivar> standardsSouthAfrica = [
-    Cultivar('Moata', 1420, 1644, 2783, 3640, 2406, 11894, 0.32, 0.59, 0.21,
-        0.44, 0.42, 3.55, 28),
+    Cultivar('Concord II', 1611, 1654, 3294, 3911, 1820, 12290, 4.2, 3.2, 5.9, 2.1, 4.4, 175.0, 20),
   ];
 
   @override
@@ -175,7 +172,6 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
   }
 
   _populateCultivarList() {
-    // show correct values of $/kg DM whenever a different region is selected
     if (checkRegion != selectedRegion) {
       checkRegion = selectedRegion;
       late List<double> valueList;
@@ -184,30 +180,33 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
           case 'South Africa':
             cultivars = cultivarsSouthAfrica;
             standards = standardsSouthAfrica;
+            // CORRECTED order to match constructor
             valueList = [
-              cultivars[0].winvalue,
-              cultivars[0].espvalue,
-              cultivars[0].lspvalue,
-              cultivars[0].sumvalue,
-              cultivars[0].autvalue
+              cultivars[0].autvalue,  // Autumn first: 4.2
+              cultivars[0].winvalue,  // Winter second: 3.2
+              cultivars[0].espvalue,  // Early Spring third: 5.9
+              cultivars[0].lspvalue,  // Late Spring fourth: 2.1
+              cultivars[0].sumvalue   // Summer fifth: 4.4
             ];
             break;
-
           default:
             valueList = [0.00, 0.00, 0.00, 0.00, 0.00];
         }
       });
-      controller1.text = valueList[0].toStringAsFixed(2);
-      controller2.text = valueList[1].toStringAsFixed(2);
-      controller3.text = valueList[2].toStringAsFixed(2);
-      controller4.text = valueList[3].toStringAsFixed(2);
-      controller5.text = valueList[4].toStringAsFixed(2);
-      // reset the values to default values when a new region is selected
-      winvalue = valueList[0];
-      espvalue = valueList[1];
-      lspvalue = valueList[2];
-      sumvalue = valueList[3];
-      autvalue = valueList[4];
+
+      // CORRECTED controller assignments
+      controller1.text = valueList[0].toStringAsFixed(2); // Autumn: 4.2
+      controller2.text = valueList[1].toStringAsFixed(2); // Winter: 3.2
+      controller3.text = valueList[2].toStringAsFixed(2); // Early Spring: 5.9
+      controller4.text = valueList[3].toStringAsFixed(2); // Late Spring: 2.1
+      controller5.text = valueList[4].toStringAsFixed(2); // Summer: 4.4
+
+      // CORRECTED value assignments
+      autvalue = valueList[0]; // 4.2
+      winvalue = valueList[1]; // 3.2
+      espvalue = valueList[2]; // 5.9
+      lspvalue = valueList[3]; // 2.1
+      sumvalue = valueList[4]; // 4.4
     }
   }
 
@@ -465,9 +464,9 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                           color: Colors.lime,
                           border: Border(
                               bottom: BorderSide(
-                            color: Colors.black,
-                            width: 0.4,
-                          )),
+                                color: Colors.black,
+                                width: 0.4,
+                              )),
                           borderRadius: BorderRadius.only(
                             //  setting the border radius circular for the top row
                             topLeft: Radius.circular(10),
@@ -477,7 +476,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                             child: Text(
                               'Financial benefit for',
                               style: TextStyle(color: Colors.black),
@@ -485,7 +484,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
                               '',
                               style: TextStyle(color: Colors.white),
@@ -505,7 +504,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(20.0, 10.0, 0, 10),
                             child: Text(
                               '$selectedCultivar1 over $selectedCultivar2:',
                               style: TextStyle(color: Colors.white),
@@ -513,9 +512,9 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
+                            const EdgeInsets.fromLTRB(0.0, 10.0, 0, 10),
                             child: Text(
-                              ' \$ ${priceBenefit.toStringAsFixed(0)}/ha/yr',
+                              ' \R${priceBenefit.toStringAsFixed(0)}/ha/yr',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -526,15 +525,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                 ),
               ),
 
-              Container(
-                padding: EdgeInsets.fromLTRB(10, 0.0, 12.0, 0.0),
-                child: Text(
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                    ),
-                    "Note that as pasture lasts multiple years the net benefit will be much greater"),
-              ),
+
 
               Container(
                 padding: EdgeInsets.fromLTRB(10, 20.0, 12.0, 20.0),
@@ -553,8 +544,8 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                 child: Text(
                   '$selectedCultivar1:',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    color: Colors.green.shade800,
+                    fontSize: 15, fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -612,7 +603,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            ' \$  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedPrice.toStringAsFixed(2)}',
+                        ' \R${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedPrice.toStringAsFixed(2)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -631,7 +622,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedRate.toStringAsFixed(1)}',
+                        '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar1)].seedRate.toStringAsFixed(1)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -648,7 +639,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                     width: 100,
                     padding: EdgeInsets.fromLTRB(40.0, 0.0, 0, 0),
                     child: Text(
-                      '\$ ${seedCost1.toStringAsFixed(0)}',
+                      '\R${seedCost1.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -668,8 +659,8 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                 child: Text(
                   '$selectedCultivar2:',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
+                    color: Colors.green.shade800,
+                    fontSize: 15, fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -727,7 +718,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            ' \$  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedPrice.toStringAsFixed(2)}',
+                        ' \R${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedPrice.toStringAsFixed(2)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -746,7 +737,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText:
-                            '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedRate.toStringAsFixed(1)}',
+                        '  ${cultivars[cultivars.indexWhere((cultivar) => cultivar.name == selectedCultivar2)].seedRate.toStringAsFixed(1)}',
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -763,7 +754,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                     width: 100,
                     padding: EdgeInsets.fromLTRB(40.0, 0.0, 0, 0),
                     child: Text(
-                      '\$ ${seedCost2.toStringAsFixed(0)}',
+                      '\R${seedCost2.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
@@ -783,7 +774,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                       fontSize: 11,
                     ),
                     "These calculations use the following Seasonal Feed values sourced from Dairy NZ and estimated % pasture utilisation, which are specific for each Region selected."
-                    "\n\nYou can change the values of \$kg DM and % Utilisation."),
+                        "\n\nYou can change the values of \R kg DM and % Utilisation."),
               ),
 
 //============ table of outputs ====================
@@ -842,7 +833,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                             padding:
                                 const EdgeInsets.fromLTRB(10.0, 10.0, 0, 10),
                             child: Text(
-                              '\$/kg DM',
+                              '\R/kg DM',
                               style:
                                   TextStyle(color: Colors.black, fontSize: 12),
                             ),
@@ -931,7 +922,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller1,
+                                controller: controller2,
                                 onChanged: (value) {
                                   setState(() {
                                     winvalue = double.parse(value);
@@ -1046,7 +1037,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller2,
+                                controller: controller3,
                                 onChanged: (value) {
                                   setState(() {
                                     espvalue = double.parse(value);
@@ -1161,7 +1152,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller3,
+                                controller: controller4,
                                 onChanged: (value) {
                                   setState(() {
                                     lspvalue = double.parse(value);
@@ -1275,7 +1266,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller4,
+                                controller: controller5,
                                 onChanged: (value) {
                                   setState(() {
                                     sumvalue = double.parse(value);
@@ -1395,7 +1386,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                controller: controller5,
+                                controller: controller1,
                                 onChanged: (value) {
                                   setState(() {
                                     autvalue = double.parse(value);
@@ -1913,33 +1904,34 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
 
 class Cultivar {
   final String name;
-  final double winyield;
-  final double espyield;
-  final double lspyield;
-  final double sumyield;
-  final double autyield;
+  final double autyield;  // Autumn
+  final double winyield;  // Winter
+  final double espyield;  // Early Spring
+  final double lspyield;  // Late Spring
+  final double sumyield;  // Summer
   final double totyield;
-  final double winvalue;
-  final double espvalue;
-  final double lspvalue;
-  final double sumvalue;
-  final double autvalue;
+  final double autvalue;  // Autumn value FIRST
+  final double winvalue;  // Winter value SECOND
+  final double espvalue;  // Early Spring value THIRD
+  final double lspvalue;  // Late Spring value FOURTH
+  final double sumvalue;  // Summer value FIFTH
   final double seedPrice;
   final double seedRate;
 
+  // CORRECTED constructor parameter order
   Cultivar(
       this.name,
+      this.autyield,
       this.winyield,
       this.espyield,
       this.lspyield,
       this.sumyield,
-      this.autyield,
       this.totyield,
-      this.winvalue,
-      this.espvalue,
-      this.lspvalue,
-      this.sumvalue,
-      this.autvalue,
+      this.autvalue,  // 4.2
+      this.winvalue,  // 3.2
+      this.espvalue,  // 5.9
+      this.lspvalue,  // 2.1
+      this.sumvalue,  // 4.4
       this.seedPrice,
       this.seedRate);
 }

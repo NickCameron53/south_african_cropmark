@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:southafrica_seed_guide/Contacts/Representatives.dart';
 import '../../Species_Tool_List.dart';
-import '../../webpage.dart';
+import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import '../../drawer.dart';
 import '../../fluttermap.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
-import 'abouttheguide.dart';
+import 'AboutTheGuide.dart';
 import 'orders/orderform.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -261,24 +262,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Navigate to About the Guide page
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => abouttheguide()),
+                      MaterialPageRoute(builder: (context) => AboutTheGuide()),
                     );
                     break;
                   case 1:
-                    // Navigate to Webpage
+                    // Navigate to WebPage
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => webpage()),
+                      MaterialPageRoute(builder: (context) => WebPage()),
                     );
                     break;
                   case 2:
                     // Navigate to Toolkit page
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => toollist()),
+                      MaterialPageRoute(builder: (context) => ToolList()),
                     );
                     break;
                   case 3:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RepresentativesScreen()),
+                    );
+                    break;
+                  case 4:
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => OrderForm()),
@@ -288,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               items: [
                 BottomNavigationBarItem(
-                  label: 'Seed Guide',
+                  label: 'Guide',
                   icon: Icon(Icons.home),
                 ),
                 BottomNavigationBarItem(
@@ -298,6 +305,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 BottomNavigationBarItem(
                   label: 'Tools',
                   icon: Icon(Icons.calculate),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Contacts',
+                  icon: Icon(Icons.contacts),
                 ),
                 BottomNavigationBarItem(
                   label: 'Order',
