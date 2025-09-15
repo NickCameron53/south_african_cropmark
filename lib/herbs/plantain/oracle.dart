@@ -302,7 +302,7 @@ class _oracleState extends State<oracle> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/oracle-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/oracle-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

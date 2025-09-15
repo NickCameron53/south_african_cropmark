@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void launchURL(url) async {
+  if (await launchUrl(Uri.parse(url))) {
+    print("Successfully launched URL: $url"); // Optional success message
+  } else {
+    // Handle case where url can't be launched (e.g., show a message)
+    print("Could not launch $url");
+  }
+}
 
 void main() {
   runApp(MyApp());
@@ -217,7 +227,8 @@ class _OrderFormState extends State<OrderForm> {
     String productsList = '';
     for (int i = 0; i < products.length; i++) {
       var product = products[i];
-      productsList += 'Product ${i + 1}: ${product.product} - ${product.quantity} ${product.unit}\n';
+      productsList +=
+          'Product ${i + 1}: ${product.product} - ${product.quantity} ${product.unit}\n';
     }
 
     var inputMessage = 'Date: $_date\n\n'
@@ -232,7 +243,7 @@ class _OrderFormState extends State<OrderForm> {
       body: inputMessage,
       subject: 'Order Form: $_firstname $_secondname',
       recipients: ['bradleywadevincent@gmail.com'],
-      cc: ['rocky@agrims.co.za','reynolds.tyrone123@gmail.com'],
+      cc: ['rocky@agrims.co.za', 'reynolds.tyrone123@gmail.com'],
     );
 
     send(email);
@@ -247,6 +258,7 @@ class _OrderFormState extends State<OrderForm> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        toolbarHeight: 70,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -255,12 +267,12 @@ class _OrderFormState extends State<OrderForm> {
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             Text(
-              "Characters marked * are required",
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              "Characters marked * are required.",
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
             Text(
-              "Submit using the Email Order button\n\n",
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              "Submit using the Email Order button.\n\n",
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
           ],
         ),
@@ -283,7 +295,7 @@ class _OrderFormState extends State<OrderForm> {
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(30, 20, 30, 200),
+            padding: EdgeInsets.fromLTRB(30, 20, 30, 80),
             child: Column(
               children: [
                 // Logo
@@ -365,7 +377,7 @@ class _OrderFormState extends State<OrderForm> {
 
                 // Email button
                 Container(
-                  margin: EdgeInsets.fromLTRB(40, 60, 40, 200),
+                  margin: EdgeInsets.fromLTRB(40, 60, 40, 80),
                   child: ElevatedButton.icon(
                     icon: Icon(Icons.email),
                     label: Text("Email Order"),
@@ -374,9 +386,57 @@ class _OrderFormState extends State<OrderForm> {
                       backgroundColor: Colors.lightGreen,
                       foregroundColor: Colors.black,
                       padding:
-                      EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     ),
                   ),
+                ),
+
+                Stack(
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 520,
+                        padding: EdgeInsets.fromLTRB(0.0, 10.0, 10, 0),
+                        child: Image.asset(
+                          'assets/email pic.png',
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 50,
+                      bottom: 0,
+                      left: 180,
+                      right: 0,
+                      child: Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            launchURL(
+                                'https://www.cropmarkseeds.com/forage-seeds/appeal/');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            // Semi-transparent black
+                            foregroundColor: Colors.transparent,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 132, vertical: 36),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(
+                                  color: Colors.transparent, width: 1),
+                            ),
+                            elevation: 6,
+                          ),
+                          child: const Text(
+                            '',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -459,10 +519,10 @@ class _OrderFormState extends State<OrderForm> {
   Widget _buildTextField(
       TextEditingController controller, String hint, bool required,
       {bool showPersonIcon = false,
-        bool showEmailIcon = false,
-        bool showPhoneIcon = false,
-        bool showAddressIcon = false,
-        TextInputType keyboardType = TextInputType.text}) {
+      bool showEmailIcon = false,
+      bool showPhoneIcon = false,
+      bool showAddressIcon = false,
+      TextInputType keyboardType = TextInputType.text}) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
@@ -560,27 +620,28 @@ class _OrderFormState extends State<OrderForm> {
 
   Widget _buildUnitDropdown() {
     return Container(
-        decoration: BoxDecoration(
-          color: Colors.lime[500],
-          borderRadius: BorderRadius.circular(10),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 12),
-        child: DropdownButton<String>(
-          value: _selectedUnit,
-          isExpanded: true,
-          items: <String>['kg', 'tonnes', 'seeds'].map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (value) {
-            setState(() {
-              _selectedUnit = value!;
-            });
-          },
-          dropdownColor: Colors.lime[500],
-          underline: SizedBox(),
-        ),);
+      decoration: BoxDecoration(
+        color: Colors.lime[500],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 12),
+      child: DropdownButton<String>(
+        value: _selectedUnit,
+        isExpanded: true,
+        items: <String>['kg', 'tonnes', 'seeds'].map((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+        onChanged: (value) {
+          setState(() {
+            _selectedUnit = value!;
+          });
+        },
+        dropdownColor: Colors.lime[500],
+        underline: SizedBox(),
+      ),
+    );
   }
 }

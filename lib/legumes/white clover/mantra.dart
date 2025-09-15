@@ -313,7 +313,7 @@ class _mantraState extends State<mantra> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Mantra-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Mantra-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -321,7 +321,7 @@ class _mantraState extends State<mantra> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Brochure')
+                                        Text('Tech Sheets')
                                       ],
                                     ),
                                   ),

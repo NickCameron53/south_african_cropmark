@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'Species_Tool_List.dart';
 import '../main.dart';
 import 'orders/orderform.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class abouttheguide extends StatefulWidget {
   abouttheguide({
@@ -17,7 +18,14 @@ class abouttheguide extends StatefulWidget {
 }
 
 class _abouttheguideState extends State<abouttheguide> {
-
+  _makingPhoneCall() async {
+    var url = Uri.parse('tel:+27 84 209 1990');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
 //some state variable should be here
   @override
@@ -30,16 +38,38 @@ class _abouttheguideState extends State<abouttheguide> {
           title: Column(
             children: [
               Text(
-                'Cropmark Forage Seed Guide',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
+                'South African Seed Guide',
+                style: TextStyle(color: Colors.white, fontSize: 15.0),
                 textAlign: TextAlign.center,
               ),
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Align to right
+                children: [
+                  Text(
+                    'Call: ',
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  ),
+                  Text(
+                    'Tyrone Reynolds',
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  ),
+                ],
+              ),
+              Text(
+                'for any assistance in using this App.',
+                style: TextStyle(color: Colors.white, fontSize: 12.0),
+                textAlign: TextAlign.right,
+              ),
             ],
           ),
           backgroundColor: Colors.green[800],
           foregroundColor: Colors.white,
-          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.call),
+              onPressed: (_makingPhoneCall),
+            ),
+          ]),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -67,7 +97,6 @@ class _abouttheguideState extends State<abouttheguide> {
                   ),
                 ),
               ),
-
               Container(
                 padding: EdgeInsets.fromLTRB(0.0, 30.0, 12.0, 10.0),
                 child: RichText(
@@ -94,16 +123,15 @@ class _abouttheguideState extends State<abouttheguide> {
                   ),
                 ),
               ),
-
               Container(
                 padding: EdgeInsets.fromLTRB(50.0, 50.0, 50.0, 150.0),
                 child: Align(
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
-                        Colors.lightGreen, // Change the color here
+                            Colors.lightGreen, // Change the color here
                       ),
-                      child: Text('Guide for South Africa'),
+                      child: Text('Proceed'),
                       onPressed: () {
                         Navigator.push(
                           context,

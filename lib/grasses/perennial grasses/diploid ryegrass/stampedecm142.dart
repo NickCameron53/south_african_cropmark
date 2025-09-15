@@ -129,7 +129,7 @@ class _stampedecm142State extends State<stampedecm142> {
                               ElevatedButton(
                                 onPressed: () {
                                   launchURL(
-                                      '    '); // put url for stampede here
+                                      'https://www.cropmarkseeds.com/au/forage-seeds/stampede/'); // put url for stampede here
                                 },
                                 child: Text('Learn More'),
                                 style: ElevatedButton.styleFrom(

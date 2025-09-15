@@ -389,7 +389,7 @@ class _marcoState extends State<marco> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Marco_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Marco-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -397,7 +397,7 @@ class _marcoState extends State<marco> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Brochure')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

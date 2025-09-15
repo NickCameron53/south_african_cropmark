@@ -129,7 +129,7 @@ class _ultranilState extends State<ultranil> {
                               ElevatedButton(
                                 onPressed: () {
                                   launchURL(
-                                      'https://www.cropmarkseeds.com/Forage-Products-from-Cropmark-Seeds/Ultra-Enhanced-Ryegrass');
+                                      'https://www.cropmarkseeds.com/forage-seeds/ultra/');
                                 },
                                 child: Text('Learn More'),
                                 style: ElevatedButton.styleFrom(
@@ -315,7 +315,7 @@ class _ultranilState extends State<ultranil> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Ultra-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Ultra-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

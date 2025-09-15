@@ -23,8 +23,6 @@ class rootcropyieldcalculator extends StatefulWidget {
 
 class rootcropyieldcalculatorState extends State<rootcropyieldcalculator> {
   final paddock = new TextEditingController()..text = '';
-  final bulbdm = new TextEditingController()..text = '';
-  final leafdm = new TextEditingController()..text = '12';
   final rowwth = new TextEditingController()..text = '0.5';
   final rowlgth = new TextEditingController()..text = '4.0';
   final TextEditingController emailController = new TextEditingController();
@@ -74,10 +72,12 @@ class rootcropyieldcalculatorState extends State<rootcropyieldcalculator> {
     }
 
     if (cultivar == 'Geronimo') {
-      bulbdm.text = '16';
+      _bulbDmController.text = '16'; // Use the correct controller
+      _leafDmController.text = '12'; // Also set leaf DM for consistency
     }
     if (cultivar == 'Saddleback') {
-      bulbdm.text = '10';
+      _bulbDmController.text = '10'; // Use the correct controller
+      _leafDmController.text = '10'; // Set leaf DM to 11% for Saddleback
     }
     addSample();
   }
@@ -187,7 +187,7 @@ class rootcropyieldcalculatorState extends State<rootcropyieldcalculator> {
           builder: (BuildContext context, BoxConstraints viewportConstraints) {
             return SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 0.0, 0, 0),
+                padding: EdgeInsets.fromLTRB(10.0, 0.0, 0, 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

@@ -120,7 +120,7 @@ class _chicoryareacalculatorState extends State<chicoryareacalculator> {
         key: _emailFormKey,
         child: ListView(
           shrinkWrap: false,
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 40.0),
           children: <Widget>[
             const SizedBox(height: 10),
             Container(
@@ -618,14 +618,35 @@ class _chicoryareacalculatorState extends State<chicoryareacalculator> {
             ),
             //===================================
             Container(
-              padding: EdgeInsets.fromLTRB(10, 0.0, 12.0, 10.0),
+              padding: EdgeInsets.fromLTRB(30.0, 40, 0, 0),
               child: Text(
-                  '\n\nYou can send these results by email by filling in a valid email address and then clicking the Email button.'),
+                'Email address to send the result: ',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
+              margin: EdgeInsets.fromLTRB(30, 0, 40, 15),
               child: TextFormField(
-                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    labelText: "example@example.com",
+                    labelStyle: TextStyle(color: Colors.grey),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 2.0,
+                        ))),
+                style: TextStyle(color: Colors.black),
                 controller: emailController,
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -637,39 +658,39 @@ class _chicoryareacalculatorState extends State<chicoryareacalculator> {
                   }
                   return null;
                 },
-                decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    fillColor: Colors.grey,
-                    filled: true,
-                    labelText: "Enter an email address to send results *",
-                    labelStyle: TextStyle(color: Colors.black),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2.0,
-                    ))),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(70, 30, 100, 20),
+              height: 40,
+              margin: EdgeInsets.fromLTRB(60, 10, 60, 20),
               child: ElevatedButton.icon(
-                  icon: Icon(Icons.email_sharp),
-                  label: Text(
-                    "Email",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                icon: Icon(Icons.email_sharp, color: Colors.black),
+                // Set icon color to black
+                label: Text(
+                  "Email",
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black), // Set text color to black
+                ),
+                onPressed: () {
+                  if (_emailFormKey.currentState!.validate()) {
+                    sendMessage();
+                  }
+                  sendMessage();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lime,
+                  // Set background color to lime
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                    BorderRadius.circular(30.0), // Set rounded corners
                   ),
-                  onPressed: () {
-                    if (_emailFormKey.currentState!.validate()) {
-                      sendMessage();
-                    }
-                  }),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),

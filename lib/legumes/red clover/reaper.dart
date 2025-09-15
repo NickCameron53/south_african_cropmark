@@ -373,7 +373,7 @@ class _reaperState extends State<reaper> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Reaper-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Reaper-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

@@ -294,7 +294,7 @@ class _zoomState extends State<zoom> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Zoom-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Zoom-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -302,7 +302,7 @@ class _zoomState extends State<zoom> {
                                       children: [
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
-                                        Text('Trial Data')
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

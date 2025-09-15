@@ -294,7 +294,7 @@ class _vibeState extends State<vibe> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/forage-seeds/vibe');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Vibe-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

@@ -4,6 +4,7 @@ import '../../../../main.dart';
 import '../../../../webpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Species_Tool_List.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 void launchURL(url) async {
   if (await launchUrl(Uri.parse(url))) {
@@ -340,6 +341,8 @@ class _saddlebackState extends State<saddleback> {
                         ),
 
                         SizedBox(height: 30),
+
+
                         Divider(
                           color: Colors.green,
                           thickness: 1,
@@ -348,6 +351,18 @@ class _saddlebackState extends State<saddleback> {
                           endIndent: 1,
                         ),
                         SizedBox(height: 10),
+                        SizedBox(
+                          width: double.infinity,
+                          child: Text('Downloads',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green[700])),
+                        ),
+                        SizedBox(height: 20),
+
+
 
                         Container(
                           width: double.infinity,
@@ -355,6 +370,43 @@ class _saddlebackState extends State<saddleback> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(height: 10),
+
+                                ElevatedButton(
+                                  onPressed: () {
+                                    launchURL(
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Saddleback-tech-sheet.pdf');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    child: Row(
+                                      children: [
+                                        Icon(MdiIcons.fromString(
+                                            'file-outline')),
+                                        Text('Tech Sheet')
+                                      ],
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.lightGreen,
+                                    minimumSize: Size(100, 50),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          30), // Rounded corners
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Divider(
+                                  color: Colors.green,
+                                  thickness: 1,
+                                  height: 20,
+                                  indent: 1,
+                                  endIndent: 1,
+                                ),
+
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 SizedBox(
                                   width: double.infinity,
                                   child: Text('Sowing information',

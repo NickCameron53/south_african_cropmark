@@ -31,6 +31,7 @@ class _toollistState extends State<toollist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
           toolbarHeight: 70,
@@ -68,7 +69,10 @@ class _toollistState extends State<toollist> {
             ],
           ),
         ),
-        child: Center(
+
+
+
+        child: Padding(padding: const EdgeInsets.only(bottom: 100.0),
           child: ListView(
             shrinkWrap: false,
             padding: EdgeInsets.all(5),
@@ -411,6 +415,58 @@ class _toollistState extends State<toollist> {
                 indent: 5,
                 endIndent: 5,
               ),
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 2.0),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Swede",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Colors.transparent,
+                      ),
+                      onPressed: () {
+                        // Navigate to the 'toolsandcalculators' screen with the specified plant type
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => toolsandcalculators(
+                              planttype: "Swede",
+                            ),
+                          ),
+                        );
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: Colors.white,
+                        size: 32,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Divider(
+                color: Colors.green,
+                thickness: 1,
+                height: 20,
+                indent: 5,
+                endIndent: 5,
+              ),
 
               Row(
                 children: [
@@ -464,26 +520,29 @@ class _toollistState extends State<toollist> {
                 indent: 5,
                 endIndent: 5,
               ),
+              SizedBox(height: 20,)
             ],
           ),
         ),
       ),
       bottomNavigationBar: Container(
-        color: Colors.green.shade700, // Dark green background
-        child: Container(
-          margin: EdgeInsets.only(top: 6.0), // This replaces the border
-          color: Colors.black, // Navigation bar background
-          child: BottomNavigationBar(
+        decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(width: 6.0, color: Colors.green.shade700),
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+          child: new BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.transparent, // Make the bar itself transparent
-            elevation: 0, // Remove shadow
+            backgroundColor: Colors.black,
             showUnselectedLabels: true,
             selectedItemColor: Colors.green.shade700,
             unselectedItemColor: Colors.green.shade700,
             onTap: (index) {
               switch (index) {
                 case 0:
-                  String homePageTitle = 'Home';
+                  String homePageTitle = 'Home'; // Or derive title dynamically
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -492,12 +551,14 @@ class _toollistState extends State<toollist> {
                   );
                   break;
                 case 1:
+                // Navigate to Webpage
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => webpage()),
                   );
                   break;
                 case 2:
+                // Navigate to Toolkit page
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => toollist()),

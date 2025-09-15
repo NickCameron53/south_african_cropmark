@@ -387,7 +387,7 @@ class _pillarState extends State<pillar> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Pillar-tech-sheet_1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Pillar-tech-sheet_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,

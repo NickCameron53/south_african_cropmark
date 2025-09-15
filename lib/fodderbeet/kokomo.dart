@@ -398,7 +398,7 @@ class _kokomoState extends State<kokomo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Kokomo_B_1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Kokomo_B_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -424,7 +424,7 @@ class _kokomoState extends State<kokomo> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
-                                    launchURL('https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Kokomo-tech-sheet.pdf');
+                                    launchURL('https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Kokomo-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,

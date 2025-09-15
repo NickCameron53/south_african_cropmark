@@ -293,7 +293,7 @@ class _kainuiState extends State<kainui> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Kainui_TS.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Kainui_TS.pdf');
                                   },
                                   child: Container(
                                     width: 100,

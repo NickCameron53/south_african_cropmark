@@ -133,20 +133,13 @@ class _selectregionsaState extends State<selectregionsa> {
                   mainAxisAlignment: MainAxisAlignment.center, // Align to right
                   children: [
                     Text(
-                      'Call: ',
+                      'Call: $representative for assistance.\nScroll down to see all regions',
                       style: TextStyle(color: Colors.white, fontSize: 12.0),
                     ),
-                    Text(
-                      representative,
-                      style: TextStyle(color: Colors.white, fontSize: 12.0),
-                    ),
+
                   ],
-                ),
-                Text(
-                  'for any assistance in using this App.',
-                  style: TextStyle(color: Colors.white, fontSize: 12.0),
-                  textAlign: TextAlign.right,
-                ),
+                )
+
 
               ],
             ),

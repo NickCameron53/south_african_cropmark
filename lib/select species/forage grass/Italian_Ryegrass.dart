@@ -285,69 +285,68 @@ class italianryegrass extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Colors.green.shade800, // Add the background color here
+        decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(width: 6.0, color: Colors.green.shade700),
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
         child: ClipRRect(
           borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: Container(
-            // This container is now just for the border
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(width: 6.0, color: Colors.green.shade700),
+          child: new BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.black,
+            showUnselectedLabels: true,
+            selectedItemColor: Colors.green.shade700,
+            unselectedItemColor: Colors.green.shade700,
+            onTap: (index) {
+              switch (index) {
+                case 0:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => abouttheguide()),
+                  );
+                  break;
+                case 1:
+                // Navigate to Webpage
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => webpage()),
+                  );
+                  break;
+                case 2:
+                // Navigate to Toolkit page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => toollist()),
+                  );
+                  break;
+
+                case 3:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OrderForm()),
+                  );
+                  break;
+              }
+            },
+            items: [
+              BottomNavigationBarItem(
+                label: 'Seed Guide',
+                icon: Icon(Icons.home),
               ),
-            ),
-            child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.black,
-              showUnselectedLabels: true,
-              selectedItemColor: Colors.green.shade700,
-              unselectedItemColor: Colors.green.shade700,
-              onTap: (index) {
-                switch (index) {
-                  case 0:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => abouttheguide()),
-                    );
-                    break;
-                  case 1:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => webpage()),
-                    );
-                    break;
-                  case 2:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => toollist()),
-                    );
-                    break;
-                  case 3:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => OrderForm()),
-                    );
-                    break;
-                }
-              },
-              items: [
-                BottomNavigationBarItem(
-                  label: 'Seed Guide',
-                  icon: Icon(Icons.home),
-                ),
-                BottomNavigationBarItem(
-                  label: 'Web Hub',
-                  icon: Icon(Icons.search),
-                ),
-                BottomNavigationBarItem(
-                  label: 'Tools',
-                  icon: Icon(Icons.calculate),
-                ),
-                BottomNavigationBarItem(
-                  label: 'Order',
-                  icon: Icon(Icons.shopping_cart),
-                ),
-              ],
-            ),
+              BottomNavigationBarItem(
+                label: 'Web Hub',
+                icon: Icon(Icons.search),
+              ),
+              BottomNavigationBarItem(
+                label: 'Tools',
+                icon: Icon(Icons.calculate),
+              ),
+              BottomNavigationBarItem(
+                label: 'Order',
+                icon: Icon(Icons.shopping_cart),
+              ),
+            ],
           ),
         ),
       ),

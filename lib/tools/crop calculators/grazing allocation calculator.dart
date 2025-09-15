@@ -110,8 +110,7 @@ class _cropcalculatorState extends State<cropcalculator> {
       body: Form(
         key: _emailFormKey,
         child: ListView(
-          shrinkWrap: false,
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 40.0),
           children: <Widget>[
             Container(
               padding: EdgeInsets.fromLTRB(20.0, 20.0, 12.0, 2.0),

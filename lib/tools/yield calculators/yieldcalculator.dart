@@ -62,14 +62,19 @@ class _yieldcalculatorState extends State<yieldcalculator> {
     super.initState();
     if (widget.species == 'Kale') {
       cultivar = 'Kea';
+      _plantDmController.text = '14'; // Default for Kale
     } else if (widget.species == 'Turnip') {
       cultivar = 'Marco';
+      _plantDmController.text = '14'; // Default for Turnip
     } else if (widget.species == 'Forage Rape') {
       cultivar = 'Rifleman';
+      _plantDmController.text = '14'; // Default for Forage Rape
     } else if (widget.species == 'Fodder Beet') {
       cultivar = 'Geronimo';
+      _plantDmController.text = '14'; // Default for Fodder Beet
     } else if (widget.species == 'Swede') {
       cultivar = 'Saddleback';
+      _plantDmController.text = '10'; // Set to 10% for Swede
     }
     addSample();
   }
@@ -139,12 +144,14 @@ class _yieldcalculatorState extends State<yieldcalculator> {
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints viewportConstraints) {
             return SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 0.0, 0, 40),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 10, 0),
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 10, 40),
                     child: Text(
                         "\nCut and weigh the forage using a quadrat square to mark out the selected sample area.",
                         style: TextStyle(
@@ -642,7 +649,7 @@ class _yieldcalculatorState extends State<yieldcalculator> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          padding: EdgeInsets.fromLTRB(10.0, 20.0, 0, 2.0),
+                          padding: EdgeInsets.fromLTRB(5.0, 20.0, 0, 2.0),
                           child: FloatingActionButton(
                             onPressed: addSample,
                             backgroundColor: Colors.green[800],
@@ -658,7 +665,7 @@ class _yieldcalculatorState extends State<yieldcalculator> {
                         ),
                         Container(
                           width: 200,
-                          padding: EdgeInsets.fromLTRB(35.0, 0.0, 0, 0),
+                          padding: EdgeInsets.fromLTRB(25.0, 0.0, 0, 0),
                           child: Text(
                             'Add or remove samples',
                             style: TextStyle(
@@ -668,7 +675,7 @@ class _yieldcalculatorState extends State<yieldcalculator> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(10.0, 20.0, 10, 2.0),
+                          padding: EdgeInsets.fromLTRB(0.0, 20.0, 0, 2.0),
                           child: FloatingActionButton(
                             onPressed: removeLastSample,
                             backgroundColor: Colors.green[800],
@@ -948,6 +955,7 @@ class _yieldcalculatorState extends State<yieldcalculator> {
                   SizedBox(height: 20),
                 ],
               ),
+                ),
             );
           },
         ),

@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'Species_Tool_List.dart';
 import 'abouttheguide.dart';
-import 'main.dart';
 import 'orders/orderform.dart';
 import 'select species/brassica/Brassicas.dart';
 import 'select species/forage herbs/Herbs.dart';
@@ -303,6 +302,7 @@ class _SeedTypeState extends State<SeedType> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 70,
@@ -327,7 +327,7 @@ class _SeedTypeState extends State<SeedType> {
               ],
             ),
             const Text(
-              'for any assistance in using this App.',
+              'for assistance in your region.',
               style: TextStyle(color: Colors.white, fontSize: 12.0),
               textAlign: TextAlign.right,
             ),
@@ -455,105 +455,70 @@ class _SeedTypeState extends State<SeedType> {
 
   Widget _buildBottomNavigationBar() {
     return Container(
-      color: Colors.green.shade800, // Add the background color here
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(width: 6.0, color: Colors.green.shade700),
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-        child: Container(
-          // This container is now just for the border
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.black,
+          showUnselectedLabels: true,
+          selectedItemColor: Colors.green.shade700,
+          unselectedItemColor: Colors.green.shade700,
+          onTap: (index) {
+            switch (index) {
+              case 0:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => abouttheguide()),
+                );
+                break;
+              case 1:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => webpage()),
+                );
+                break;
+              case 2:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => toollist()),
+                );
+                break;
+              case 3:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OrderForm()),
+                );
+                break;
+            }
+          },
+          items: [
+            BottomNavigationBarItem(
+              label: 'Seed Guide',
+              icon: Icon(Icons.home),
             ),
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
-                  );
-                  break;
-                case 1:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => webpage()),
-                  );
-                  break;
-                case 2:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => toollist()),
-                  );
-                  break;
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
-            ],
-          ),
+            BottomNavigationBarItem(
+              label: 'Web Hub',
+              icon: Icon(Icons.search),
+            ),
+            BottomNavigationBarItem(
+              label: 'Tools',
+              icon: Icon(Icons.calculate),
+            ),
+            BottomNavigationBarItem(
+              label: 'Order',
+              icon: Icon(Icons.shopping_cart),
+            ),
+          ],
         ),
       ),
     );
-  }
-
-  void _onBottomNavigationTap(int index) {
-    switch (index) {
-      case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MyHomePage(title: 'Home'),
-          ),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => webpage()),
-        );
-        break;
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => toollist()),
-        );
-        break;
-      case 3:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => OrderForm()),
-        );
-        break;
-    }
-  }
-}
+  }}
 
 class SelectionData {
   final String country;

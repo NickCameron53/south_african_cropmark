@@ -17,19 +17,21 @@ import 'Species_Tool_List.dart';
 import 'orders/orderform.dart';
 
 class toolsandcalculators extends StatelessWidget {
-  final List<String> images = [];
-  final List<String> headings = [];
-  final List<String> description = [];
-  final List links = [];
+  final String planttype;
+
 
   toolsandcalculators({
     Key? key,
     required this.planttype,
   }) : super(key: key);
-  final String planttype;
+
 
   @override
   Widget build(BuildContext context) {
+    final List<String> images = [];
+    final List<String> headings = [];
+    final List<String> description = [];
+    final List links = [];
     // display content according to the user inputs
     {
       if (planttype == "Pasture") {
@@ -331,6 +333,43 @@ class toolsandcalculators extends StatelessWidget {
           )),
         );
       }
+      if (planttype == "Swede") {
+
+        images.add('assets/saddlebackpic.png');
+        headings.add('Swede crop\nplanning calculator');
+        description
+            .add('Calculate the area to sow to meet your feed requirements.');
+        links.add((cropareacalculator(
+          region: '',
+          species: 'Swede',
+          sownum: '5',
+          expyld: '15000',
+          dailyallocation: '8',
+        )));
+
+        images.add('assets/saddlebackpic.png');
+        headings.add('Swede paddock\nyield calculator');
+        description
+            .add('Calculate the DM Yield to assist in grazing allocation.');
+        links.add((samplemethod(
+          region: '',
+          species: 'Swede',
+        )));
+
+        images.add('assets/saddlebackpic.png');
+        headings.add('Swede grazing\nallocation calculator');
+        description.add(
+            'A feed budget providing daily break fencing area based on your inputs.');
+        links.add(
+          (cropcalculator(
+            region: '',
+            species: 'Swede',
+            sownum: '5',
+            expyld: '15000',
+            exputil: '90',
+          )),
+        );
+      }
 
 
 
@@ -565,8 +604,7 @@ class toolsandcalculators extends StatelessWidget {
             onTap: (index) {
               switch (index) {
                 case 0:
-                  String homePageTitle =
-                      'Home'; // Or derive title dynamically
+                  String homePageTitle = 'Home'; // Or derive title dynamically
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -588,7 +626,6 @@ class toolsandcalculators extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => toollist()),
                   );
                   break;
-
                 case 3:
                   Navigator.push(
                     context,

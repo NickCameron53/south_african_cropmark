@@ -466,7 +466,7 @@ class _dynamoState extends State<dynamo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Dynamo-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Dynamo_B_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -475,6 +475,33 @@ class _dynamoState extends State<dynamo> {
                                         Icon(MdiIcons.fromString(
                                             'file-outline')),
                                         Text('Brochure')
+                                      ],
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.lightGreen,
+                                    minimumSize: Size(100, 50),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          30), // Rounded corners
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    launchURL(
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Dynamo-tech-sheet.pdf');
+                                  },
+                                  child: Container(
+                                    width: 100,
+                                    child: Row(
+                                      children: [
+                                        Icon(MdiIcons.fromString(
+                                            'file-outline')),
+                                        Text('Tech Sheet')
                                       ],
                                     ),
                                   ),

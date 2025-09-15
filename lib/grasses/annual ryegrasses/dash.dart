@@ -127,7 +127,7 @@ class _dashState extends State<dash> {
                               ElevatedButton(
                                 onPressed: () {
                                   launchURL(
-                                      'https://www.cropmarkseeds.com/Forage-Products-from-Cropmark-Seeds/Dash-Annual-Ryegrass');
+                                      'https://www.cropmarkseeds.com/forage-seeds/dash/');
                                 },
                                 child: Text('Learn More'),
                                 style: ElevatedButton.styleFrom(
@@ -291,7 +291,7 @@ class _dashState extends State<dash> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2024/06/Dash_TS-1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Dash_TS.pdf');
                                   },
                                   child: Container(
                                     width: 100,

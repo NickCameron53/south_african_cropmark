@@ -9,12 +9,20 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'abouttheguide.dart';
 import 'orders/orderform.dart';
-
+import 'package:upgrader/upgrader.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+_makingPhoneCall() async {
+  var url = Uri.parse('tel:+27 84 209 1990');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 Future<void> emailfeedback() async {
   // Create a new Email object.
@@ -51,7 +59,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MyHomePage(title: 'Cropmark Forage Seed Guide'),
+      home: const MyHomePage(title: 'Forage Seed Guide'),
     );
   }
 }
@@ -69,9 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _index = 0;
   late final Timer timer;
   final images = [
-    'assets/rocky reynolds.png',
-    'assets/ultrapic.png',
-    'assets/matrixpic.png',
+    'assets/rocky.jpg',
+
+   'assets/ultrapic.png',
+   'assets/matrixpic.png',
     'assets/frenzypic.png',
     'assets/appealpic.png',
     'assets/rampagepic.png',
@@ -89,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'assets/riflemanpic2.png',
     'assets/pillarpic.png',
     'assets/saddlebackpic2.png',
-     ];
+  ];
 
   @override
   void initState() {
@@ -115,153 +124,188 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 40,
-            width: 40,
-            child: FloatingActionButton(
-              heroTag: 't1',
-              backgroundColor: Colors.green[800],
-              foregroundColor: Colors.white,
-              child: Icon(Icons.email),
-              onPressed: () async {
-                // Email the feedback.
-                await emailfeedback();
-
-              },
-            ),
-          ),
-          const Text('   Got a suggestion? \n   Drop us a line!  ',
-              style: TextStyle(color: Colors.white)),
-        ],
-      ),
-      backgroundColor: Colors.white,
-      drawer: MyDrawer(
-        onGoogleTap: toGoogleMap,
-      ),
-      appBar: AppBar(
-        title: Column(
+    return UpgradeAlert(
+     /* upgrader: Upgrader(
+        dialogStyle: UpgradeDialogStyle.cupertino,
+        shouldPopScope: () => true,
+      ),*/
+      child: Scaffold(
+        extendBody: true,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'Cropmark Forage Seed Guide',
-              style: TextStyle(color: Colors.white, fontSize: 18.0),
-              textAlign: TextAlign.center,
+            SizedBox(
+              height: 40,
+              width: 40,
+              child: FloatingActionButton(
+                heroTag: 't1',
+                backgroundColor: Colors.green[800],
+                foregroundColor: Colors.white,
+                child: Icon(Icons.email),
+                onPressed: () async {
+                  // Email the feedback.
+                  await emailfeedback();
+                },
+              ),
             ),
+            const Text('   Got a suggestion? \n   Drop us a line!  ',
+                style: TextStyle(color: Colors.white)),
           ],
         ),
-        iconTheme: IconThemeData(
-          color: Colors.white,
+        backgroundColor: Colors.white,
+        drawer: MyDrawer(
+          onGoogleTap: toGoogleMap,
         ),
-        backgroundColor: Colors.green[800],
-      ),
-      // body:  UpgradeAlert(
-      //    upgrader: Upgrader(dialogStyle: UpgradeDialogStyle.cupertino, shouldPopScope: () => true),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.black,
-              Colors.green,
-              Colors.black,
+
+
+
+        appBar: AppBar(
+          toolbarHeight: 75,
+          title: Column(
+            children: [
+              Text(
+                'South African Seed Guide',
+                style: TextStyle(color: Colors.white, fontSize: 18.0),
+                textAlign: TextAlign.center,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Align to right
+                children: [
+                  Text(
+                    'Call: ',
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  ),
+                  Text(
+                    'Tyrone Reynolds',
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  ),
+                ],
+              ),
+              Text(
+                'for any assistance in using this App.',
+                style: TextStyle(color: Colors.white, fontSize: 12.0),
+                textAlign: TextAlign.right,
+              ),
+
             ],
           ),
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.green[800],
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.call),
+                onPressed: (_makingPhoneCall),
+              ),
+            ]
         ),
-        child: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.fromLTRB(80.0, 80.0, 40.0, 3.0),
-              child: SizedBox(
-                width: 200,
-                height: 60,
-                child: Image.asset(
-                  'assets/cropmarklogo.png',
+
+
+
+
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.black,
+                Colors.green,
+                Colors.black,
+              ],
+            ),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(80.0, 80.0, 40.0, 3.0),
+                child: SizedBox(
+                  width: 200,
+                  height: 60,
+                  child: Image.asset(
+                    'assets/cropmarklogo.png',
+                  ),
                 ),
               ),
-            ),
-            Center(
-                child: AnimatedSwitcher(
-              duration: Duration(milliseconds: 200),
-              child: Image.asset(
-                images[_index % images.length],
-                key: UniqueKey(),
-              ),
-            )),
-          ],
-        ),
-      ),
-      // bottomNavigationBar: new Theme(
-      //   data: Theme.of(context).copyWith(canvasColor: Colors.black),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: new BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  // Navigate to About the Guide page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => abouttheguide()),
-                  );
-                  break;
-                case 1:
-                  // Navigate to Webpage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => webpage()),
-                  );
-                  break;
-                case 2:
-                  // Navigate to Toolkit page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => toollist()),
-                  );
-                  break;
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
+              Center(
+                  child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 200),
+                child: Image.asset(
+                  images[_index % images.length],
+                  key: UniqueKey(),
+                ),
+              )),
             ],
+          ),
+        ),
+        // bottomNavigationBar: new Theme(
+        //   data: Theme.of(context).copyWith(canvasColor: Colors.black),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(width: 6.0, color: Colors.green.shade700),
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+            child: new BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.black,
+              showUnselectedLabels: true,
+              selectedItemColor: Colors.green.shade700,
+              unselectedItemColor: Colors.green.shade700,
+              onTap: (index) {
+                switch (index) {
+                  case 0:
+                    // Navigate to About the Guide page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => abouttheguide()),
+                    );
+                    break;
+                  case 1:
+                    // Navigate to Webpage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => webpage()),
+                    );
+                    break;
+                  case 2:
+                    // Navigate to Toolkit page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => toollist()),
+                    );
+                    break;
+                  case 3:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => OrderForm()),
+                    );
+                    break;
+                }
+              },
+              items: [
+                BottomNavigationBarItem(
+                  label: 'Seed Guide',
+                  icon: Icon(Icons.home),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Web Hub',
+                  icon: Icon(Icons.search),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Tools',
+                  icon: Icon(Icons.calculate),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Order',
+                  icon: Icon(Icons.shopping_cart),
+                ),
+              ],
+            ),
           ),
         ),
       ),

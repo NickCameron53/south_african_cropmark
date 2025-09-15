@@ -387,7 +387,7 @@ class _riflemanState extends State<rifleman> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Rifleman-Rape_1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Rifleman-Rape_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,

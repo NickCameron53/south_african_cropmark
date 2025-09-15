@@ -27,6 +27,7 @@ class samplemethodState extends State<samplemethod> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
@@ -62,21 +63,21 @@ class samplemethodState extends State<samplemethod> {
       body: Center(
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.fromLTRB(10.0, 0.0, 12.0, 2.0),
+          padding: EdgeInsets.fromLTRB(10.0, 0.0, 12.0, 200.0),
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(20.0, 30.0, 12.0, 2.0),
+              padding: EdgeInsets.fromLTRB(0.0, 30.0, 12.0, 2.0),
               child: RichText(
                 text: TextSpan(
                   text: "Choose a sampling method",
                   style: TextStyle(
                       color: Colors.green[800],
-                      fontSize: 24,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Divider(
               color: Colors.green,
               thickness: 1,
@@ -86,7 +87,7 @@ class samplemethodState extends State<samplemethod> {
             ),
             SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.fromLTRB(20.0, 0.0, 12.0, 20.0),
+              padding: EdgeInsets.fromLTRB(20.0, 0.0, 12.0, 10.0),
               child: RichText(
                 text: TextSpan(
                   text: "Method 1:",
@@ -111,7 +112,7 @@ class samplemethodState extends State<samplemethod> {
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(80.0, 30.0, 80.0, 3.0),
+              padding: EdgeInsets.fromLTRB(80.0, 10.0, 80.0, 3.0),
               child: Align(
                 child: ElevatedButton(
                   child: Text('Start'),
@@ -137,8 +138,16 @@ class samplemethodState extends State<samplemethod> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
+            Divider(
+              color: Colors.green,
+              thickness: 1,
+              height: 20,
+              indent: 5,
+              endIndent: 5,
+            ),
             Container(
-              padding: EdgeInsets.fromLTRB(20.0, 40.0, 12.0, 20.0),
+              padding: EdgeInsets.fromLTRB(20.0, 10.0, 12.0, 0.0),
               child: RichText(
                 text: TextSpan(
                   text: "Method 2:",
@@ -204,9 +213,19 @@ class samplemethodState extends State<samplemethod> {
                 ),
               ),
             ),
-            if (widget.species != 'Fodder Beet') ...[
+            SizedBox(height: 10),
+            Divider(
+              color: Colors.green,
+              thickness: 1,
+              height: 20,
+              indent: 5,
+              endIndent: 5,
+            ),
+
+
+            if (widget.species != 'Fodder Beet' ) ...[
               Container(
-                padding: EdgeInsets.fromLTRB(0.0, 40.0, 12.0, 2.0),
+                padding: EdgeInsets.fromLTRB(20.0, 10.0, 12.0, 0.0),
                 child: RichText(
                   text: TextSpan(
                     text: "Method 3:",
@@ -231,7 +250,7 @@ class samplemethodState extends State<samplemethod> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(80.0, 30.0, 80.0, 3.0),
+                padding: EdgeInsets.fromLTRB(80.0, 10.0, 80.0, 3.0),
                 child: Align(
                   child: ElevatedButton(
                     child: Text('Start'),
@@ -256,6 +275,14 @@ class samplemethodState extends State<samplemethod> {
                   ),
                 ),
               ),
+            SizedBox(height: 10),
+            Divider(
+              color: Colors.green,
+              thickness: 1,
+              height: 20,
+              indent: 5,
+              endIndent: 5,
+            ),
             ],
           ],
         ),

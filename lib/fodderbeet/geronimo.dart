@@ -467,7 +467,7 @@ class _geronimoState extends State<geronimo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Geronimo_B_1.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Geronimo_B_1.pdf');
                                   },
                                   child: Container(
                                     width: 100,
@@ -494,7 +494,7 @@ class _geronimoState extends State<geronimo> {
                                 ElevatedButton(
                                   onPressed: () {
                                     launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/08/Geronimo-tech-sheet.pdf');
+                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Geronimo-tech-sheet.pdf');
                                   },
                                   child: Container(
                                     width: 100,
