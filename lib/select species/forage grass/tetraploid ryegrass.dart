@@ -150,7 +150,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Vast',
-                                  link: vastar37(
+                                  link: VastScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -164,7 +164,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Align',
-                                  link: alignar37(
+                                  link: AlignScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -177,7 +177,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Halo',
-                                  link: haloar1(
+                                  link: HaloScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -192,7 +192,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Abergain',
-                                  link: abergainnil(
+                                  link: AbergainScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -206,7 +206,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Base',
-                                  link: basear1(
+                                  link: BaseScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -220,7 +220,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Viscount',
-                                  link: viscountnil(
+                                  link: ViscountScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -235,7 +235,7 @@ class _TetraploidRyegrassSafeState extends State<TetraploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: '4Front',
-                                  link: fourfrontnea2(
+                                  link: FourFrontScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

@@ -1,3 +1,5 @@
+import 'package:southafrica_seed_guide/select%20species/forage%20grass/meadow%20fescue.dart';
+
 import '../../AboutTheGuide.dart';
 import '../../orders/orderform.dart';
 import '../../WebPage.dart';
@@ -96,6 +98,14 @@ class PerennialGrass extends StatelessWidget {
             description:
                 'Tetraploids have larger seeds than diploids and require a higher sowing rate of 25 to 35 kg/ha alone or 15 to 20 kg/ha in a mixture. They also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650mm p.a.) to perform well.',
             link: TetraploidRyegrassSafe(country: country, region: region),
+            showCultivarsButton: true,
+          ),
+          GrassOption(
+            image: 'assets/barrierpic.png',
+            heading: 'Festulolium perennial grass',
+            description:
+            'Highly palatable to livestock and will not cause grass staggers or heat stress. Being more palatable they also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650 mm p.a.) to perform well.',
+            link: meadowfescue(country: country, region: region),
             showCultivarsButton: true,
           ),
         ]);
