@@ -6,7 +6,7 @@ import 'package:southafrica_seed_guide/orders/orderform.dart';
 
 class GlobalWidgets {
   // Constants
-  static const Color titleColor = Colors.green;
+  static const Color titleColor = Color(0xFF2E7D32);
   static const Color primaryGreen = Color(0xFF2E7D32);
   static const Color lightGreen = Color(0xFF81C784);
   static const Color lightGreenButton = Color(0xFF4CAF50);

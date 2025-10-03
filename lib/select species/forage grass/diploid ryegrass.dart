@@ -415,7 +415,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Excess',
-                                  link: excessar1(
+                                  link: ExcessScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -428,7 +428,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Reason',
-                                  link: reasonar1(
+                                  link: ReasonScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -441,7 +441,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Midway',
-                                  link: midwayar37(
+                                  link: MidwayScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -454,7 +454,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Samson',
-                                  link: samsonnil(
+                                  link: SamsonScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -468,7 +468,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Request',
-                                  link: requestar1(
+                                  link: RequestScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -481,7 +481,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Rely',
-                                  link: relyar1(
+                                  link: RelyScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -495,7 +495,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Moxie\u2122',
-                                  link: moxienil(
+                                  link: MoxieScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -508,7 +508,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Nui',
-                                  link: nuinil(
+                                  link: NuiScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -521,7 +521,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Tyson',
-                                  link: tysonnil(
+                                  link: TysonScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
