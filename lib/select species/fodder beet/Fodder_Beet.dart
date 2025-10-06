@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
-import '../../Species_Tool_List.dart';
-import '../../AboutTheGuide.dart';
 import '../../main.dart';
-import '../../orders/orderform.dart';
-import '../../WebPage.dart';
 import 'fodderbeetall.dart';
+import '../../global_widgets.dart';
 
 class FodderBeetOption {
   final String image;
@@ -69,7 +66,7 @@ class fodderbeet extends StatelessWidget {
         image: 'assets/oe968pic.png',
         heading: 'Fodder Beet',
         description:
-        "The annual and summer rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
+            "The annual and summer rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
         link: Container(),
         showCultivarsButton: false,
       ));
@@ -78,7 +75,7 @@ class fodderbeet extends StatelessWidget {
         image: 'assets/oe968pic.png',
         heading: 'Fodder Beet',
         description:
-        "The annual and summer rainfall is too low for good Fodder Beet growth.",
+            "The annual and summer rainfall is too low for good Fodder Beet growth.",
         link: Container(),
         showCultivarsButton: false,
       ));
@@ -87,7 +84,7 @@ class fodderbeet extends StatelessWidget {
         image: 'assets/oe968pic.png',
         heading: 'Fodder Beet',
         description:
-        "The summer rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
+            "The summer rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
         link: Container(),
         showCultivarsButton: false,
       ));
@@ -96,7 +93,7 @@ class fodderbeet extends StatelessWidget {
         image: 'assets/oe968pic.png',
         heading: 'Fodder Beet',
         description:
-        "The annual rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
+            "The annual rainfall and soil acidity (which should exceed pH 5.6) are too low for good Fodder Beet growth.",
         link: Container(),
         showCultivarsButton: false,
       ));
@@ -105,7 +102,7 @@ class fodderbeet extends StatelessWidget {
         image: 'assets/oe968pic.png',
         heading: 'Fodder Beet',
         description:
-        "The summer rainfall is too low for good Fodder Beet growth.",
+            "The summer rainfall is too low for good Fodder Beet growth.",
         link: Container(),
         showCultivarsButton: false,
       ));
@@ -114,7 +111,7 @@ class fodderbeet extends StatelessWidget {
         image: 'assets/oe968pic.png',
         heading: 'Fodder Beet',
         description:
-        "The soil acidity is too low and should exceed pH 5.6 for good Fodder Beet growth .",
+            "The soil acidity is too low and should exceed pH 5.6 for good Fodder Beet growth .",
         link: Container(),
         showCultivarsButton: false,
       ));
@@ -128,7 +125,7 @@ class fodderbeet extends StatelessWidget {
           image: 'assets/oe968pic.png',
           heading: 'Fodder Beet',
           description:
-          "While lower than sugar beet, fodder beet still contains sugar and is generally not recommended. Be cautious with horses prone to laminitis, insulin resistance, or PSSM",
+              "While lower than sugar beet, fodder beet still contains sugar and is generally not recommended. Be cautious with horses prone to laminitis, insulin resistance, or PSSM",
           link: Container(),
           showCultivarsButton: false,
         ));
@@ -138,7 +135,7 @@ class fodderbeet extends StatelessWidget {
           image: 'assets/oe968pic.png',
           heading: 'Fodder Beet',
           description:
-          'Fodder Beet (Beta vulgaris) is a cross between mangels and sugar beet, aiming to combine the ease of harvest of mangels (syn. mangold) with the high DM and high sugar levels of sugar beet.',
+              'Fodder Beet (Beta vulgaris) is a cross between mangels and sugar beet, aiming to combine the ease of harvest of mangels (syn. mangold) with the high DM and high sugar levels of sugar beet.',
           link: fodderbeetall(
             country: country,
             region: region,
@@ -187,8 +184,8 @@ class fodderbeet extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => MyHomePage(
-                          title: '',
-                        )),
+                              title: '',
+                            )),
                   );
                 },
               ),
@@ -236,9 +233,9 @@ class fodderbeet extends StatelessWidget {
                             width: 300,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                )),
+                              topLeft: Radius.circular(20.0),
+                              topRight: Radius.circular(20.0),
+                            )),
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20.0),
@@ -284,30 +281,29 @@ class fodderbeet extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  padding: EdgeInsets.fromLTRB(
-                                      0.0, 30.0, 0.0, 0.0),
+                                  padding:
+                                      EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
                                   child: options[index].showCultivarsButton
                                       ? ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                          options[index].link,
-                                        ),
-                                      );
-                                    },
-                                    child: Text('View cultivars'),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                      Colors.lightGreen,
-                                      minimumSize: Size(100, 50),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(20),
-                                      ),
-                                    ),
-                                  )
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    options[index].link,
+                                              ),
+                                            );
+                                          },
+                                          child: Text('View cultivars'),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.lightGreen,
+                                            minimumSize: Size(100, 50),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        )
                                       : SizedBox.shrink(),
                                 ),
                               ],
@@ -335,72 +331,7 @@ class fodderbeet extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: new BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
-                  );
-                  break;
-                case 1:
-                // Navigate to WebPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WebPage()),
-                  );
-                  break;
-                case 2:
-                // Navigate to Toolkit page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ToolList()),
-                  );
-                  break;
-
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
     );
   }
 }

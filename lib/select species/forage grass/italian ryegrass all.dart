@@ -1,4 +1,4 @@
-import '../../AboutTheGuide.dart';
+import '../../global_widgets.dart';
 import '../../grasses/italian%20ryegrasses/appeal.dart';
 import '../../grasses/italian%20ryegrasses/feast2.dart';
 import '../../grasses/italian%20ryegrasses/lushar37.dart';
@@ -9,10 +9,7 @@ import '../../grasses/italian%20ryegrasses/indulgence.dart';
 import '../../grasses/italian%20ryegrasses/supercruise.dart';
 import '../../grasses/italian%20ryegrasses/tabu.dart';
 import '../../grasses/italian%20ryegrasses/vibe.dart';
-import '../../orders/orderform.dart';
-import '../../WebPage.dart';
 import 'package:flutter/material.dart';
-import '../../Species_Tool_List.dart';
 import '../../grasses/italian ryegrasses/asset.dart';
 import '../../main.dart';
 
@@ -154,7 +151,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Vibe',
-                                  link: vibe(
+                                  link: VibeScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -167,7 +164,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Appeal',
-                                  link: appeal(
+                                  link: AppealScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -305,72 +302,8 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: new BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
-                  );
-                  break;
-                case 1:
-                // Navigate to WebPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WebPage()),
-                  );
-                  break;
-                case 2:
-                // Navigate to Toolkit page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ToolList()),
-                  );
-                  break;
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
 
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

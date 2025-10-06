@@ -7,10 +7,10 @@ class cultivarcardcocksfoot extends StatelessWidget {
     required this.link,
     required this.description,
     required this.date,
-        required this.type,
+    required this.type,
   });
 
-  final String title, description, date,  type;
+  final String title, description, date, type;
   final Widget link;
 
   @override
@@ -64,12 +64,12 @@ class cultivarcardcocksfoot extends StatelessWidget {
                                             height: 50,
                                             child: Center(
                                                 child: Text(
-                                                  '>',
-                                                  style: TextStyle(
-                                                      color: Colors.green.shade800,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 30),
-                                                ))))))),
+                                              '>',
+                                              style: TextStyle(
+                                                  color: Colors.green.shade800,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30),
+                                            ))))))),
                       ],
                     )),
                 Container(
@@ -87,7 +87,7 @@ class cultivarcardcocksfoot extends StatelessWidget {
                       margin: EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Text(description, style: TextStyle(fontSize: 12)),
+                          Text(description, style: TextStyle(fontSize: 14)),
                           SizedBox(height: 5),
                           Divider(
                             color: Colors.green.shade800,
@@ -96,42 +96,55 @@ class cultivarcardcocksfoot extends StatelessWidget {
                             indent: 5,
                             endIndent: 5,
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.all(5.0),
-                                  child: Column(
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
                                     children: [
-                                      Text('Heading date:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(date,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13)),
-                                    ],
-                                  )),
-
-                              Container(
-                                  margin: EdgeInsets.all(5.0),
-                                  child: Column(
+                                      TextSpan(
+                                        text: "Heading Date: ",
+                                      ),
+                                      TextSpan(
+                                        text: date,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
                                     children: [
-                                      Text('Type:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(type,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13)),
-                                    ],
-                                  )),
-                            ],
-                          )
+                                      TextSpan(
+                                        text: "Type: ",
+                                      ),
+                                      TextSpan(
+                                        text: type,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
                         ],
                       ),
                     )),
               ]);
 
             default:
-            // Show a loading indicator while waiting
+              // Show a loading indicator while waiting
               return Center(child: CircularProgressIndicator());
           }
         });

@@ -187,7 +187,7 @@ class _KeaScreenState extends State<KeaScreen> {
                   GlobalWidgets.buildDownloadButton(
                     text: 'Tech Sheet',
                     onPressed: () => _launchURL(
-                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Kea-Kale-tech-sheet.pdf'),
+                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/10/Kea-Kale-tech-sheet.pdf'),
                     icon: MdiIcons.fileOutline,
                   ),
 

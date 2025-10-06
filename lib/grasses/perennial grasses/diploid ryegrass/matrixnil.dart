@@ -168,9 +168,7 @@ class _MatrixScreenState extends State<MatrixScreen> {
                   ),
                   const SizedBox(height: 10),
                   GlobalWidgets.buildAnimalIcons(
-                    suitableAnimals,
-                    iconSize: 70,
-                  ),
+                      ['Dairy', 'Beef', 'Sheep', 'Deer', 'Horse','Goat','Alpaca',]),
 
                   GlobalWidgets.buildDivider(),
 

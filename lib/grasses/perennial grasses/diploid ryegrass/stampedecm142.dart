@@ -171,8 +171,8 @@ class _StampedeScreenState extends State<StampedeScreen> {
                     'Suitable for:',
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 10),
-                  GlobalWidgets.buildAnimalIcons(suitableAnimals),
+                  GlobalWidgets.buildAnimalIcons(
+                      ['Dairy', 'Beef', 'Sheep', 'Deer', 'Horse','Goat','Alpaca',]),
 
                   GlobalWidgets.buildDivider(),
 

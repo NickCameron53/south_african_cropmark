@@ -87,7 +87,7 @@ class cultivarcardbrassica extends StatelessWidget {
                       margin: EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Text(description, style: TextStyle(fontSize: 12)),
+                          Text(description, style: TextStyle(fontSize: 14)),
                           SizedBox(height: 5),
                           Divider(
                             color: Colors.green.shade800,
@@ -96,36 +96,53 @@ class cultivarcardbrassica extends StatelessWidget {
                             indent: 5,
                             endIndent: 5,
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 30.0, 2.0),
-                                  child: Column(
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
                                     children: [
-                                      Text('Days to Maturity:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(
-                                        daystomaturity,
+                                      TextSpan(
+                                        text: "Days to Maturity: ",
+                                      ),
+                                      TextSpan(
+                                        text: daystomaturity,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13),),
-                                    ],
-                                  )),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
 
-                              Container(
-                                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 2.0),
-                                  child: Column(
+
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
                                     children: [
-                                      Text('General use:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(grazing,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13)),
-                                    ],
-                                  )),
-                            ],
-                          )
+                                      TextSpan(
+                                        text: "General use: ",
+                                      ),
+                                      TextSpan(
+                                        text: grazing,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
+
+
+
                         ],
                       ),
                     )),

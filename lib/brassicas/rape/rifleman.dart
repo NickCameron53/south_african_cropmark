@@ -1,594 +1,215 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../../../../AboutTheGuide.dart';
-import '../../../../main.dart';
-import '../../../../WebPage.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../Species_Tool_List.dart';
+import '../../../../main.dart';
+import '../../global_widgets.dart';
 
-void launchURL(url) async {
-  if (await launchUrl(Uri.parse(url))) {
-    print("Successfully launched URL: $url"); // Optional success message
-  } else {
-    print("Could not launch $url");
-  }
-}
-
-class rifleman extends StatefulWidget {
-  rifleman({
+class RiflemanScreen extends StatefulWidget {
+  const RiflemanScreen({
     Key? key,
     required this.country,
     required this.region,
   }) : super(key: key);
-  final String country, region;
+
+  final String country;
+  final String region;
 
   @override
-  State<rifleman> createState() {
-    return _riflemanState();
-  }
+  State<RiflemanScreen> createState() => _RiflemanScreenState();
 }
 
-class _riflemanState extends State<rifleman> {
+class _RiflemanScreenState extends State<RiflemanScreen> {
+  Future<void> _launchURL(String url) async {
+    try {
+      if (await launchUrl(Uri.parse(url))) {
+        debugPrint("Successfully launched URL: $url");
+      } else {
+        _showSnackBar('Could not launch URL');
+      }
+    } catch (e) {
+      _showSnackBar('Error launching URL: $e');
+    }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+
+  void _navigateToHome() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MyHomePage(title: '')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBody: true,
-        backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70),
-          child: AppBar(
-              title: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Rifleman',
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Forage Rape',
-                    style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              backgroundColor: Colors.green[800],
-              foregroundColor: Colors.white,
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.home),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MyHomePage(
-                                title: '',
-                              )),
-                    );
-                  },
-                ),
-              ]),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Rifleman Forage Rape',
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context)
-                    .size
-                    .width, // Takes full width of the screen
-                height: 300,
-                child: Image.asset(
-                  'assets/riflemanpic.png',
-                  fit:
-                      BoxFit.cover, // Use BoxFit.cover to cover the entire area
-                ),
-              ),
-              Container(
-                child: Column(children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(20.0, 0.0, 3.0, 5.0),
-                    margin: EdgeInsets.only(top: 50),
-                    width: 350,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Rifleman',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            'Bred in New Zealand, Rifleman is a dual purpose rape that is exceptionally leafy with a high regrowth ability for multiple grazings. Rifleman is mid maturity rape and is ready for grazing on average 70 to 90 days post sowing, depending on environmental conditions which will dictate exact maturity time till grazing. Post grazing, regrowth is leafy with new leaves developing from low on the main stem delivering high quality feed for stock performance during Summer and Autumn. Expect two to three Summer and Autumn grazings depending on management and seasonal conditions. Rifleman yields well from a late Spring/early Autumn sowing and can also be used as a single graze option providing quality forage throughout the Winter.',
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.black)),
-                        SizedBox(height: 10),
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            "\u25BA Suitable for sowing in summer for late summer, autumn feed with re-growth potential and autumn sown for winter grazing.",
-                            style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 20),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  launchURL(
-                                      'https://www.cropmarkseeds.com/forage-seeds/rifleman/');
-                                },
-                                child: Text('Learn More'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.lightGreen,
-                                  minimumSize: Size(100, 50),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        30), // Rounded corners
-                                  ),
-                                ),
-                              ),
-                            ]),
-                        SizedBox(height: 10),
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Where it fits',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            'A fast-growing brassica that thrives in cooler temperatures. This makes it a valuable source of nutritious feed for livestock during winter when pastures are dormant or less productive.',
-                            style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 10),
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Agronomic information',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Days from sowing to grazing: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: " 70 to 90.",
-                                    ),
-                                  ])),
-                        ),
-
-                        SizedBox(height: 10),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Grazing type: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: "multiple (up to 3 grazings).",
-                                    ),
-                                  ])),
-                        ),
-
-                        SizedBox(height: 10),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Recommended for: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 24,
-                                            color: Colors.green[700])),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Dairy.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Beef.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                            Image(
-                              image: AssetImage('assets/Sheep.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image(
-                              image: AssetImage('assets/Deer.ico'),
-                              height: 80,
-                              width: 80,
-                            ),
-                          ],
-                        ),
-
-                        SizedBox(height: 10),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Disease control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Disease Tolerance: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'very good',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Insect pest control',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Aphid tolerance: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'moderate to good.',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Downloads',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
-                        Container(
-                          width: double.infinity,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    launchURL(
-                                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Rifleman-Rape_1.pdf');
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    child: Row(
-                                      children: [
-                                        Icon(MdiIcons.fromString(
-                                            'file-outline')),
-                                        Text('Tech Sheet')
-                                      ],
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightGreen,
-                                    minimumSize: Size(100, 50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          30), // Rounded corners
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: Text('Sowing information',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.green[700])),
-                                ),
-                                SizedBox(height: 20),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing rate alone: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: "4 kg/ha.",
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing rate mixture: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: "1 - 2 kg/ha.",
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing depth: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: '5 - 15 mm',
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing season: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: 'Spring or Autumn',
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
-                              ]),
-                        ),
-                        //end sizebox to push content above bottomnavigationbar
-                        SizedBox(height: 100),
-                      ],
-                    ),
-                  )
-                ]),
-              )
-            ],
+        backgroundColor: GlobalWidgets.primaryGreen,
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: _navigateToHome,
+            tooltip: 'Home',
           ),
-        ),
-        bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 6.0, color: Colors.green.shade700),
+        ],
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            // Header Image
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 300,
+              child: Image.asset(
+                'assets/riflemanpic.png',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: Colors.grey.shade200,
+                  // Using shade instead of opacity
+                  child: const Icon(Icons.image, size: 60, color: Colors.grey),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-              child: new BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                backgroundColor: Colors.black,
-                showUnselectedLabels: true,
-                selectedItemColor: Colors.green.shade700,
-                unselectedItemColor: Colors.green.shade700,
-                onTap: (index) {
-                  switch (index) {
-                    case 0:
-                      // Navigate to About the Guide page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AboutTheGuide()),
-                      );
-                      break;
-                    case 1:
-                      // Navigate to WebPage
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => WebPage()),
-                      );
-                      break;
-                    case 2:
-                      // Navigate to Toolkit page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ToolList()),
-                      );
-                      break;
+              ),
+            ),
 
-                    // ...
-                  }
-                },
-                items: [
-                  BottomNavigationBarItem(
-                    label: 'Seed Guide',
-                    icon: Icon(Icons.home),
+            // Content
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GlobalWidgets.buildSectionTitle('Rifleman'),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Bred in New Zealand, Rifleman is a dual purpose rape that is exceptionally leafy with a high regrowth ability for multiple grazings.',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
-                  BottomNavigationBarItem(
-                    label: 'Web Hub',
-                    icon: Icon(Icons.search),
+                  const SizedBox(height: 10),
+
+                  GlobalWidgets.buildDivider(),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GlobalWidgets.buildBulletPoint(
+                          'Bred in New Zealand, Rifleman is a dual purpose rape that is exceptionally leafy with a high regrowth ability for multiple grazings.'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Rifleman is mid maturity rape and is ready for grazing on average 70 to 90 days post sowing, depending on environmental conditions which will dictate exact maturity time till grazing.'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Post grazing, regrowth is leafy with new leaves developing from low on the main stem delivering high quality feed for stock performance during Summer and Autumn.'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Expect two to three Summer and Autumn grazings depending on management and seasonal conditions.'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Rifleman yields well from a late Spring/early Autumn sowing and can also be used as a single graze option providing quality forage throughout the Winter.'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Suitable for sowing in summer for late summer, autumn feed with re-growth potential and autumn sown for winter grazing.'),
+                    ],
                   ),
-                  BottomNavigationBarItem(
-                    label: 'Tools',
-                    icon: Icon(Icons.calculate),
+
+                  const SizedBox(height: 20),
+                  GlobalWidgets.buildActionButton(
+                    text: 'Learn More',
+                    onPressed: () => _launchURL(
+                        'https://www.cropmarkseeds.com/forage-seeds/rifleman/'),
                   ),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Where it fits'),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'A fast-growing brassica that thrives in cooler temperatures. This makes it a valuable source of nutritious feed for livestock during winter when pastures are dormant or less productive.',
+                    style: TextStyle(fontSize: 15),
+                  ),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Agronomic information'),
+                  const SizedBox(height: 20),
+                  GlobalWidgets.buildInfoRow(
+                      'Days from sowing to grazing', '70 to 90'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow(
+                      'Grazing type', 'multiple (up to 3 grazings)'),
+                  const SizedBox(height: 10),
+
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Animal safety'),
+                  const SizedBox(height: 10),
+
+                  const Text(
+                    'Suitable for:',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildAnimalIcons(
+                      ['Dairy', 'Beef', 'Sheep', 'Deer']),
+                  GlobalWidgets.buildDivider(),
+
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildSectionTitle('Disease control'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow(
+                      'Disease Tolerance', 'very good'),
+                  const SizedBox(height: 10),
+
+                  GlobalWidgets.buildDivider(),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildSectionTitle('Insect pest control'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow('Aphids', 'Moderate to good tolerance'),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Downloads'),
+                  const SizedBox(height: 20),
+                  GlobalWidgets.buildDownloadButton(
+                    text: 'Tech Sheet',
+                    onPressed: () => _launchURL(
+                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/10/Rifleman-Rape_1.pdf'),
+                    icon: MdiIcons.fileOutline,
+                  ),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Sowing information'),
+                  const SizedBox(height: 20),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing rate alone', '4 kg/ha'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow('Sowing rate mixture', '1 - 2 kg/ha'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow('Sowing depth', '5 - 15 mm'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing season', 'Spring or Autumn'),
+
+                  // Bottom spacing
+                  const SizedBox(height: 80),
                 ],
               ),
-            )));
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
+    );
   }
 }

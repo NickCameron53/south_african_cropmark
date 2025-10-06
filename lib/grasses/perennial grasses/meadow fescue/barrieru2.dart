@@ -20,7 +20,7 @@ class BarrierScreen extends StatefulWidget {
 
 class _BarrierScreenState extends State<BarrierScreen> {
   // Animal list for this specific crop
-  final List<String> suitableAnimals = ['Dairy', 'Beef', 'Sheep'];
+  final List<String> suitableAnimals = ['Dairy', 'Beef', 'Sheep','Deer','Goat','Horse',];
 
   Future<void> _launchURL(String url) async {
     try {

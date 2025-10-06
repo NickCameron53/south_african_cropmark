@@ -145,12 +145,13 @@ class _pricebenefithybridsState extends State<pricebenefithybrids> {
 
 // LIST FOR EACH REGION ==============
   List<Cultivar> cultivarsSouthAfrica = [
-    Cultivar('Frenzy', 1191, 1665, 3766, 4196, 1564, 12383, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
-    Cultivar('Shogun', 1226, 1584, 3786, 3766, 1310, 11672, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
+    Cultivar('Frenzy', 4115, 1437, 2767, 5581, 7389, 21289, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
+    Cultivar('Splice', 3488, 1131, 2523, 4956, 6179, 18277, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
+    Cultivar('Shogun', 3261, 1239, 2561, 4618, 5710, 17389, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
   ];
 
   List<Cultivar> standardsSouthAfrica = [
-    Cultivar('Shogun', 1226, 1584, 3786, 3766, 1310, 11672, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
+    Cultivar('Shogun', 3261, 1239, 2561, 4618, 5710, 17389, 4.2, 3.2, 5.9, 2.1, 4.4, 140.0, 20),
   ];
 
   @override

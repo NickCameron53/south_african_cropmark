@@ -1,15 +1,11 @@
 import 'package:southafrica_seed_guide/select%20species/forage%20grass/meadow%20fescue.dart';
-
-import '../../AboutTheGuide.dart';
-import '../../orders/orderform.dart';
-import '../../WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
-import '../../Species_Tool_List.dart';
 import '../../main.dart';
 import 'cocksfoot.dart';
 import 'diploid ryegrass.dart';
 import 'tetraploid ryegrass.dart';
+import '/../global_widgets.dart';
 
 class GrassOption {
   final String image;
@@ -126,6 +122,14 @@ class PerennialGrass extends StatelessWidget {
             description:
                 'Tetraploids have larger seeds than diploids and require a higher sowing rate of 25 to 35 kg/ha alone or 15 to 20 kg/ha in a mixture. They also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650mm p.a.) to perform well.',
             link: TetraploidRyegrassSafe(country: country, region: region),
+            showCultivarsButton: true,
+          ),
+          GrassOption(
+            image: 'assets/barrierpic.png',
+            heading: 'Festulolium perennial grass',
+            description:
+            'Highly palatable to livestock and will not cause grass staggers or heat stress. Being more palatable they also require more careful grazing management to prevent overgrazing, and may also require higher fertility and adequate moisture (minimum 650 mm p.a.) to perform well.',
+            link: meadowfescue(country: country, region: region),
             showCultivarsButton: true,
           ),
         ]);
@@ -362,73 +366,7 @@ class PerennialGrass extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 6.0, color: Colors.green.shade700),
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-              child: new BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                backgroundColor: Colors.black,
-                showUnselectedLabels: true,
-                selectedItemColor: Colors.green.shade700,
-                unselectedItemColor: Colors.green.shade700,
-                onTap: (index) {
-                  switch (index) {
-                    case 0:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AboutTheGuide()),
-                      );
-                      break;
-                    case 1:
-                      // Navigate to WebPage
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => WebPage()),
-                      );
-                      break;
-                    case 2:
-                      // Navigate to Toolkit page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ToolList()),
-                      );
-                      break;
-
-                    case 3:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => OrderForm()),
-                      );
-                      break;
-                  }
-                },
-                items: [
-                  BottomNavigationBarItem(
-                    label: 'Seed Guide',
-                    icon: Icon(Icons.home),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Web Hub',
-                    icon: Icon(Icons.search),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Tools',
-                    icon: Icon(Icons.calculate),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Order',
-                    icon: Icon(Icons.shopping_cart),
-                  ),
-                ],
-              ),
-            ),
-        ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
     );
   }
 }

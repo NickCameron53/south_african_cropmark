@@ -87,7 +87,7 @@ class cultivarcardlucerne extends StatelessWidget {
                       margin: EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Text(description, style: TextStyle(fontSize: 12)),
+                          Text(description, style: TextStyle(fontSize: 14)),
                           SizedBox(height: 5),
                           Divider(
                             color: Colors.green.shade800,
@@ -96,22 +96,27 @@ class cultivarcardlucerne extends StatelessWidget {
                             indent: 5,
                             endIndent: 5,
                           ),
-                          Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(20.0, 0.0, 30.0, 2.0),
-                              child: Row(
-                                children: [
-                                  Text('Dormancy Rating:       ',
-                                      style: TextStyle(fontSize: 12)),
-                                  Text(
-                                    dormancy,
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
+                                      fontSize: 14,
+                                      color: Colors.black,
                                     ),
-                                  ),
-                                ],
-                              ))
+                                    children: [
+                                      TextSpan(
+                                        text: "Dormancy Rating: ",
+                                      ),
+                                      TextSpan(
+                                        text: dormancy,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
                         ],
                       ),
                     )),

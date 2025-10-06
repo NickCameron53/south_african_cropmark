@@ -7,7 +7,6 @@ class cultivarcardherbs extends StatelessWidget {
     required this.link,
     required this.description,
     required this.persistence,
-
   });
 
   final String title, description, persistence;
@@ -64,12 +63,12 @@ class cultivarcardherbs extends StatelessWidget {
                                             height: 50,
                                             child: Center(
                                                 child: Text(
-                                                  '>',
-                                                  style: TextStyle(
-                                                      color: Colors.green.shade800,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 30),
-                                                ))))))),
+                                              '>',
+                                              style: TextStyle(
+                                                  color: Colors.green.shade800,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30),
+                                            ))))))),
                       ],
                     )),
                 Container(
@@ -87,7 +86,7 @@ class cultivarcardherbs extends StatelessWidget {
                       margin: EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Text(description, style: TextStyle(fontSize: 12)),
+                          Text(description, style: TextStyle(fontSize: 14)),
                           SizedBox(height: 5),
                           Divider(
                             color: Colors.green.shade800,
@@ -96,32 +95,34 @@ class cultivarcardherbs extends StatelessWidget {
                             indent: 5,
                             endIndent: 5,
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 30.0, 2.0),
-                                  child: Column(
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
                                     children: [
-                                      Text('Persistence:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(
-                                        persistence,
+                                      TextSpan(
+                                        text: "Persistence: ",
+                                      ),
+                                      TextSpan(
+                                        text: persistence,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13),),
-                                    ],
-                                  )),
-
-
-                            ],
-                          )
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
                         ],
                       ),
                     )),
               ]);
 
             default:
-            // Show a loading indicator while waiting
+              // Show a loading indicator while waiting
               return Center(child: CircularProgressIndicator());
           }
         });

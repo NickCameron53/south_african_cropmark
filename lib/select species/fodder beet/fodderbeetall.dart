@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../Species_Tool_List.dart';
-import '../../AboutTheGuide.dart';
 import '../../fodderbeet/dynamo.dart';
 import '../../fodderbeet/geronimo.dart';
 import '../../fodderbeet/kokomo.dart';
 import '../../main.dart';
-import '../../orders/orderform.dart';
-import '../../WebPage.dart';
 import 'cultivar_card_beet.dart';
+import '../../global_widgets.dart';
 
 class fodderbeetall extends StatefulWidget {
   fodderbeetall({
@@ -139,15 +136,17 @@ class _fodderbeetallState extends State<fodderbeetall> {
                             Container(
                               child: cultivarcardbeet(
                                   title: 'Dynamo',
-                                  link: dynamo(
+                                  link: DynamoScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
                                       'Dynamo has a soft fleshed bulb sitting well above the ground making it suitable for grazing in situ with sheep, cattle or deer and especially younger stock.',
-                                  drymatter: '12-15%',
-                                  seed: 'monogerm',
-                                  grazing: 'grazing'),
+                                  maturity: '200+',
+                                  bulb: '+/-60%',
+                                  seed: 'Low Dry Matter',  // 'seed' refers to dry matter type
+                                  grazing: 'grazing',
+                                drymatter: '12-15%'),
                             ),
                             SizedBox(height: 40),
                             Divider(
@@ -171,29 +170,33 @@ class _fodderbeetallState extends State<fodderbeetall> {
                             Container(
                               child: cultivarcardbeet(
                                   title: 'Geronimo',
-                                  link: geronimo(
+                                  link: GeronimoScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
                                       ' A new high yielding monogerm cultivar with an orange bulb that sits approx 45% above the ground. Strong foliar growth, with improved bolting resistance, good resistance to mildew, ramularia and rhizomania.',
-                                  drymatter: '15-17%',
-                                  seed: 'monogerm',
-                                  grazing: 'grazing, lifting'),
+                                  maturity: '200+',
+                                  bulb: '+/-45%',
+                                  seed: 'Medium Dry Matter',
+                                  grazing: 'grazing, lifting',
+                                drymatter: '17-19%'),
                             ),
                             SizedBox(height: 30),
                             Container(
                               child: cultivarcardbeet(
                                   title: 'Kokomo',
-                                  link: kokomo(
+                                  link: KokomoScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
                                       'Has a large red tankard bulb cultivar that sits +/- 50% above the ground.',
-                                  drymatter: '14-16%',
-                                  seed: 'monogerm',
-                                  grazing: 'grazing'),
+                                  maturity: '200+',
+                                  bulb: '+/-50%',
+                                  seed: 'Medium Dry Matter',
+                                  grazing: 'grazing',
+                                drymatter: '14-16%'),
                             ),
                             SizedBox(height: 30),
                           ],
@@ -207,72 +210,7 @@ class _fodderbeetallState extends State<fodderbeetall> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: new BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
-                  );
-                  break;
-                case 1:
-                // Navigate to WebPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WebPage()),
-                  );
-                  break;
-                case 2:
-                // Navigate to Toolkit page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ToolList()),
-                  );
-                  break;
-
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
     );
   }
 }

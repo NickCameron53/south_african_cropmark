@@ -154,12 +154,12 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Frenzy',
-                                  link: frenzylow(
+                                  link: FrenzyScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      ' Frenzy is a new very high yielding tetraploid hybrid (short rotation) ryegrass. Frenzy has unrivalled establishment speed compared to other cultivars trialled. It has improved year-round yields with very strong autumn-winter growth. Its very fast establishment makes it ideally suited for stitching into old or run-out pastures as well as short term (2-3 years) specialist pastures. Frenzy has excellent livestock performance potential and has excellent resistance to stem and crown rust.',
+                                      'Has unrivalled establishment speed compared to other cultivars trialled.',
                                   date: 'Late +16',
                                   ploidy: 'tetraploid'),
                             ),
@@ -167,12 +167,12 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Splice',
-                                  link: splicear1(
+                                  link: SpliceScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      ' An improved heat tolerant, highly winter productive festulolium hybrid grass. Splice to be used as a medium term (2 - 4 year) pasture, or for over-sowing into run-out or damaged pastures to extend their life.',
+                                      ' An improved heat tolerant, highly winter productive festulolium hybrid grass.',
                                   date: 'Late +19',
                                   ploidy: 'tetraploid'),
                             ),
@@ -180,7 +180,7 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Palliser',
-                                  link: palliserar37(
+                                  link: PalliserScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -193,25 +193,25 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Mohaka',
-                                  link: mohakaar1(
+                                  link: MohakaScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      ' A cultivar bred for improved early growth and cool season activity. Mohaka is a broad leaved, well tillered hybrid suited to 2-4 year pastures.',
+                                      ' A cultivar bred for improved early growth and cool season activity.',
                                   date: 'Late +20',
-                                  ploidy: 'diploid'),
+                                  ploidy: 'tetraploid'),
                             ),
                             SizedBox(height: 40),
                             Container(
                               child: cultivarcard(
                                   title: 'Maverick GII',
-                                  link: maverickg2(
+                                  link: MaverickgoldScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      ' A late heading short rotation ryegrass with good winter and spring yields, improved summer production and summer forage quality, low aftermath heading.',
+                                      'Has good winter and spring yields, improved summer production and summer forage quality, low aftermath heading.',
                                   date: 'Late +17',
                                   ploidy: 'diploid'),
                             ),
@@ -219,7 +219,7 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands \nSupreme Plus',
-                                  link: supremepluslow(
+                                  link: SupremeplusScreenScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -232,7 +232,7 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Shogun',
-                                  link: shogunlow(
+                                  link: ShogunScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -245,7 +245,7 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Forge',
-                                  link: forgenea(
+                                  link: ForgeScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -258,7 +258,7 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Delish',
-                                  link: delishlow(
+                                  link: DelishScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -271,7 +271,7 @@ class _HybridRyegrassSafeState extends State<HybridRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Ohau',
-                                  link: ohaulow(
+                                  link: OhauScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

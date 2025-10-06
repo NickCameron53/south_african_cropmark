@@ -145,15 +145,15 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
 
 // LIST FOR EACH REGION ==============
   List<Cultivar> cultivarsSouthAfrica = [
-    Cultivar('Sequel', 2882, 1198, 2025, 3611, 3885, 13601, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
-    Cultivar('Matrix', 2762, 1125, 1995, 3416, 3747, 13045, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
-    Cultivar('Ultra', 2757, 1132, 1975, 3446, 3884, 13194, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
-    Cultivar('Raider', 2823, 1127, 2054, 3532, 3887, 13423, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
-    Cultivar('Nui', 2436, 956, 1967, 3280, 3307, 11946, 4.2, 3.2, 5.9, 2.1, 4.4, 150.0, 20),
+    Cultivar('Sequel', 2725, 1213, 2075, 3587, 3744, 13344, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Matrix', 2612, 1139, 1971, 3342, 3622, 12685, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Ultra', 2633, 1104, 1942, 3339, 3722, 12740, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Stampede', 2889, 1216, 2062, 3506, 4048, 13721, 4.2, 3.2, 5.9, 2.1, 4.4, 187.50, 20),
+    Cultivar('Nui', 2344, 990, 2035, 3320, 3263, 11952, 4.2, 3.2, 5.9, 2.1, 4.4, 150.0, 20),
   ];
 
   List<Cultivar> standardsSouthAfrica = [
-    Cultivar('Nui', 2436, 956, 1967, 3280, 3307, 11946, 4.2, 3.2, 5.9, 2.1, 4.4, 150.0, 20),
+    Cultivar('Nui', 2344, 990, 2035, 3320, 3263, 11952, 4.2, 3.2, 5.9, 2.1, 4.4, 150.0, 20),
   ];
 
   @override
@@ -1474,7 +1474,7 @@ class _pricebenefitperennialsState extends State<pricebenefitperennials> {
                       color: Colors.black,
                       fontSize: 11,
                     ),
-                    "Yield data in Kg DM/ha comes from New Zealand and is used to illustrate what might happen in South Africa when using an improved cultivar."),
+                    "Yield data in Kg DM/ha comes from New Zealand...(NZPBRA pools for 2025)- and is used to illustrate what might happen in South Africa when using an improved cultivar."),
               ),
 
               // =========  yield data table =========================================

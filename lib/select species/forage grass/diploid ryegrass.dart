@@ -1,4 +1,4 @@
-import '../../AboutTheGuide.dart';
+import '../../global_widgets.dart';
 import '../../grasses/perennial grasses/diploid ryegrass/arraynea2.dart';
 import '../../grasses/perennial grasses/diploid ryegrass/maxsynnea4.dart';
 import '../../grasses/perennial grasses/diploid ryegrass/midwayar37.dart';
@@ -26,10 +26,7 @@ import '../../grasses/perennial%20grasses/diploid%20ryegrass/three60ar1.dart';
 import '../../grasses/perennial%20grasses/diploid%20ryegrass/trojannil.dart';
 import '../../grasses/perennial%20grasses/diploid%20ryegrass/tysonnil.dart';
 import '../../grasses/perennial%20grasses/diploid%20ryegrass/ultranil.dart';
-import '../../orders/orderform.dart';
-import '../../WebPage.dart';
 import 'package:flutter/material.dart';
-import '../../Species_Tool_List.dart';
 import '../../main.dart';
 
 import 'cultivar_card_grasses.dart';
@@ -542,72 +539,7 @@ class _DiploidRyegrassSafeState extends State<DiploidRyegrassSafe> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: new BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
-                  );
-                  break;
-                case 1:
-                // Navigate to WebPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WebPage()),
-                  );
-                  break;
-                case 2:
-                // Navigate to Toolkit page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ToolList()),
-                  );
-                  break;
-
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
     );
   }
 }

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:southafrica_seed_guide/brassicas/swede/saddleback.dart';
-import '../../Species_Tool_List.dart';
-import '../../AboutTheGuide.dart';
 import '../../main.dart';
-import '../../orders/orderform.dart';
-import '../../WebPage.dart';
 import 'cultivar_card_swede.dart';
+import '../../global_widgets.dart';
 
 class swede extends StatefulWidget {
   swede({
@@ -127,7 +124,7 @@ class _swedeState extends State<swede> {
                             Container(
                               child: cultivarcardswede(
                                   title: 'Saddleback',
-                                  link: saddleback(
+                                  link: SaddlebackScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -148,72 +145,7 @@ class _swedeState extends State<swede> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 6.0, color: Colors.green.shade700),
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-          child: new BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.green.shade700,
-            unselectedItemColor: Colors.green.shade700,
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AboutTheGuide()),
-                  );
-                  break;
-                case 1:
-                // Navigate to WebPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WebPage()),
-                  );
-                  break;
-                case 2:
-                // Navigate to Toolkit page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ToolList()),
-                  );
-                  break;
-
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderForm()),
-                  );
-                  break;
-              }
-            },
-            items: [
-              BottomNavigationBarItem(
-                label: 'Seed Guide',
-                icon: Icon(Icons.home),
-              ),
-              BottomNavigationBarItem(
-                label: 'Web Hub',
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                label: 'Tools',
-                icon: Icon(Icons.calculate),
-              ),
-              BottomNavigationBarItem(
-                label: 'Order',
-                icon: Icon(Icons.shopping_cart),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
     );
   }
 }

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:southafrica_seed_guide/WebPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../main.dart';
-import '../../../Species_Tool_List.dart';
-import '../../AboutTheGuide.dart';
 import '../../global_widgets.dart';
 
 class ColeorScreen extends StatefulWidget {
@@ -78,15 +75,20 @@ class _ColeorScreenState extends State<ColeorScreen> {
           children: [
             // Header Image
             Container(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               height: 300,
               child: Image.asset(
                 'assets/coleorpic.png',
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) =>
                     Container(
-                      color: Colors.grey.shade200, // Using shade instead of opacity
-                      child: const Icon(Icons.image, size: 60, color: Colors.grey),
+                      color: Colors.grey.shade200,
+                      // Using shade instead of opacity
+                      child: const Icon(
+                          Icons.image, size: 60, color: Colors.grey),
                     ),
               ),
             ),
@@ -110,18 +112,22 @@ class _ColeorScreenState extends State<ColeorScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      GlobalWidgets.buildBulletPoint('Produces feed high in digestibility and Metabolisable Energy'),
-                      GlobalWidgets.buildBulletPoint('Exhibits low levels of SMCO and nitrates'),
-                      GlobalWidgets.buildBulletPoint('Has very good winter hardiness and snow loading ability'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Produces feed high in digestibility and Metabolisable Energy'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Exhibits low levels of SMCO and nitrates'),
+                      GlobalWidgets.buildBulletPoint(
+                          'Has very good winter hardiness and snow loading ability'),
                     ],
                   ),
 
                   const SizedBox(height: 20),
                   GlobalWidgets.buildActionButton(
                     text: 'Learn More',
-                    onPressed: () => _launchURL(
-                        'https://www.cropmarkseeds.com/Forage-Products-from-Cropmark-Seeds/Coleor-kale'
-                    ),
+                    onPressed: () =>
+                        _launchURL(
+                            'https://www.cropmarkseeds.com/Forage-Products-from-Cropmark-Seeds/Coleor-kale'
+                        ),
                   ),
 
                   GlobalWidgets.buildDivider(),
@@ -138,7 +144,8 @@ class _ColeorScreenState extends State<ColeorScreen> {
 
                   GlobalWidgets.buildSectionTitle('Agronomic information'),
                   const SizedBox(height: 20),
-                  GlobalWidgets.buildInfoRow('Days from sowing to grazing', '150 to 220'),
+                  GlobalWidgets.buildInfoRow(
+                      'Days from sowing to grazing', '150 to 220'),
                   const SizedBox(height: 10),
                   GlobalWidgets.buildInfoRow('Stem type', 'Short to medium'),
                   const SizedBox(height: 10),
@@ -161,12 +168,14 @@ class _ColeorScreenState extends State<ColeorScreen> {
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
-                GlobalWidgets.buildAnimalIcons(['Dairy', 'Beef', 'Sheep', 'Deer']),
+                  GlobalWidgets.buildAnimalIcons(
+                      ['Dairy', 'Beef', 'Sheep', 'Deer']),
                   GlobalWidgets.buildDivider(),
                   const SizedBox(height: 10),
                   GlobalWidgets.buildSectionTitle('Disease control'),
                   const SizedBox(height: 10),
-                  GlobalWidgets.buildInfoRow('Club Root Tolerance', 'Very good'),
+                  GlobalWidgets.buildInfoRow(
+                      'Club Root Tolerance', 'Very good'),
                   const SizedBox(height: 10),
                   GlobalWidgets.buildInfoRow('Dry Rot Resistance', 'Very good'),
                   GlobalWidgets.buildDivider(),
@@ -181,9 +190,10 @@ class _ColeorScreenState extends State<ColeorScreen> {
                   const SizedBox(height: 20),
                   GlobalWidgets.buildDownloadButton(
                     text: 'Tech Sheet',
-                    onPressed: () => _launchURL(
-                        'https://www.cropmarkseeds.com/wp-content/uploads/2025/09/Coleor-tech-sheet_1.pdf'
-                    ),
+                    onPressed: () =>
+                        _launchURL(
+                            'https://www.cropmarkseeds.com/wp-content/uploads/2025/10/Coleor-tech-sheet_1.pdf'
+                        ),
                     icon: MdiIcons.fileOutline,
                   ),
 
@@ -191,13 +201,15 @@ class _ColeorScreenState extends State<ColeorScreen> {
 
                   GlobalWidgets.buildSectionTitle('Sowing information'),
                   const SizedBox(height: 20),
-                  GlobalWidgets.buildInfoRow('Sowing rate alone', '4 - 5 kg/ha'),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing rate alone', '4 - 5 kg/ha'),
                   const SizedBox(height: 10),
                   GlobalWidgets.buildInfoRow('Sowing rate mixture', '2 kg/ha'),
                   const SizedBox(height: 10),
                   GlobalWidgets.buildInfoRow('Sowing depth', '10-20 mm'),
                   const SizedBox(height: 10),
-                  GlobalWidgets.buildInfoRow('Sowing season', 'November - December'),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing season', 'November - December'),
 
                   // Bottom spacing
                   const SizedBox(height: 80),
@@ -207,66 +219,7 @@ class _ColeorScreenState extends State<ColeorScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
     );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(width: 6.0, color: Colors.green.shade700),
-        ),
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.black,
-          selectedItemColor: Colors.green.shade700,
-          unselectedItemColor: Colors.green.shade700, // Removed withOpacity
-          showUnselectedLabels: true,
-          onTap: _onBottomNavTap,
-          items: const [
-            BottomNavigationBarItem(
-              label: 'Seed Guide',
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: 'Web Hub',
-              icon: Icon(Icons.search),
-            ),
-            BottomNavigationBarItem(
-              label: 'Tools',
-              icon: Icon(Icons.calculate),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _onBottomNavTap(int index) {
-    switch (index) {
-      case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>  AboutTheGuide()),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>  WebPage()),
-        );
-        break;
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>  ToolList()),
-        );
-        break;
-    }
   }
 }

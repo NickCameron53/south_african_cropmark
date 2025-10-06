@@ -79,8 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
   late final Timer timer;
   final images = [
     'assets/rocky.jpg',
-   'assets/ultrapic.png',
-   'assets/matrixpic.png',
+    'assets/ultrapic.png',
+    'assets/matrixpic.png',
     'assets/frenzypic.png',
     'assets/appealpic.png',
     'assets/rampagepic.png',
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return UpgradeAlert(
-     /* upgrader: Upgrader(
+      /* upgrader: Upgrader(
         dialogStyle: UpgradeDialogStyle.cupertino,
         shouldPopScope: () => true,
       ),*/
@@ -158,52 +158,45 @@ class _MyHomePageState extends State<MyHomePage> {
           onGoogleTap: toGoogleMap,
         ),
 
-
-
         appBar: AppBar(
-          toolbarHeight: 75,
-          title: Column(
-            children: [
-              Text(
-                'South African Seed Guide',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-                textAlign: TextAlign.center,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Align to right
-                children: [
-                  Text(
-                    'Call: ',
-                    style: TextStyle(color: Colors.white, fontSize: 12.0),
-                  ),
-                  Text(
-                    'Tyrone Reynolds',
-                    style: TextStyle(color: Colors.white, fontSize: 12.0),
-                  ),
-                ],
-              ),
-              Text(
-                'for any assistance in using this App.',
-                style: TextStyle(color: Colors.white, fontSize: 12.0),
-                textAlign: TextAlign.right,
-              ),
-
-            ],
-          ),
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-          backgroundColor: Colors.green[800],
+            toolbarHeight: 75,
+            title: Column(
+              children: [
+                Text(
+                  'South African Seed Guide',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  textAlign: TextAlign.center,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center, // Align to right
+                  children: [
+                    Text(
+                      'Call: ',
+                      style: TextStyle(color: Colors.white, fontSize: 12.0),
+                    ),
+                    Text(
+                      'Tyrone Reynolds',
+                      style: TextStyle(color: Colors.white, fontSize: 12.0),
+                    ),
+                  ],
+                ),
+                Text(
+                  'for any assistance in using this App.',
+                  style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  textAlign: TextAlign.right,
+                ),
+              ],
+            ),
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.green[800],
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.call),
                 onPressed: (_makingPhoneCall),
               ),
-            ]
-        ),
-
-
-
+            ]),
 
         body: Container(
           decoration: BoxDecoration(
@@ -282,7 +275,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 3:
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RepresentativesScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => RepresentativesScreen()),
                     );
                     break;
                   case 4:

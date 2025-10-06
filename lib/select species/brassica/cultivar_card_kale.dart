@@ -87,7 +87,7 @@ class cultivarcardkale extends StatelessWidget {
                       margin: EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Text(description, style: TextStyle(fontSize: 12)),
+                          Text(description, style: TextStyle(fontSize: 14)),
                           SizedBox(height: 5),
                           Divider(
                             color: Colors.green.shade800,
@@ -96,38 +96,51 @@ class cultivarcardkale extends StatelessWidget {
                             indent: 5,
                             endIndent: 5,
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                  margin:
-                                      EdgeInsets.fromLTRB(5.0, 0.0, 15.0, 2.0),
-                                  child: Column(
+
+
+                          SizedBox(height: 10),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
                                     children: [
-                                      Text('Days to Maturity:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(
-                                        daystomaturity,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13),
+                                      TextSpan(
+                                        text: "Stem Type: ",
                                       ),
-                                    ],
-                                  )),
-                              Container(
-                                  margin:
-                                      EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 2.0),
-                                  child: Column(
-                                    children: [
-                                      Text('Stem Type:',
-                                          style: TextStyle(fontSize: 12)),
-                                      Text(stemtype,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13)),
-                                    ],
-                                  )),
-                            ],
+                                      TextSpan(
+                                        text: stemtype,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
                           ),
+                          SizedBox(height: 10),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: "Days to Maturity: ",
+                                      ),
+                                      TextSpan(
+                                        text: daystomaturity,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ])),
+                          ),
+                          SizedBox(height: 10),
                         ],
                       ),
                     )),

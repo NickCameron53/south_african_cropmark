@@ -196,7 +196,7 @@ class GlobalWidgets {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? lightGreenButton,
+        backgroundColor: Colors.lightGreen,
         foregroundColor: textColor ?? Colors.white,
         minimumSize: const Size(100, 50),
         shape: RoundedRectangleBorder(
@@ -217,7 +217,7 @@ class GlobalWidgets {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: lightGreenButton,
+        backgroundColor: Colors.lightGreen,
         foregroundColor: Colors.white,
         minimumSize: const Size(140, 50),
         shape: RoundedRectangleBorder(

@@ -1464,7 +1464,7 @@ class _pricebenefititaliansState extends State<pricebenefititalians> {
                       color: Colors.black,
                       fontSize: 11,
                     ),
-                    "Yield data in Kg DM/ha comes from New Zealand and is used to illustrate what might happen in South Africa when using an improved cultivar."),
+                    "Yield data in Kg DM/ha comes from pooled Australian trials and is used to illustrate what might happen in South Africa when using an improved cultivar."),
               ),
 
               // =========  yield data table =========================================
