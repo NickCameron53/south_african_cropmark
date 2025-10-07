@@ -149,7 +149,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Dash',
-                                  link: dash(
+                                  link: DashScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -162,7 +162,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Rampage',
-                                  link: rampage(
+                                  link: RampageScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -175,7 +175,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Bullet\u2122',
-                                  link: bullet(
+                                  link: BulletScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -188,7 +188,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Zoom',
-                                  link: zoom(
+                                  link: ZoomScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -201,7 +201,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Hogan',
-                                  link: hogan(
+                                  link: HoganScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -214,7 +214,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Jivet',
-                                  link: jivet(
+                                  link: JivetScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -227,7 +227,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Winter Star II',
-                                  link: winterstar2(
+                                  link: WinterStar2Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -240,7 +240,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Tama',
-                                  link: tama(
+                                  link: TamaScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -253,7 +253,7 @@ class _AnnualRyegrassSafeState extends State<AnnualRyegrassSafe> {
                             Container(
                               child: cultivarcard(
                                   title: 'Sultan\u2122',
-                                  link: sultan(
+                                  link: SultanScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

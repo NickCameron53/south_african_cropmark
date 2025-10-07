@@ -1,5 +1,4 @@
 import '../../global_widgets.dart';
-import '../../legumes/red%20clover/aberclaret.dart';
 import '../../legumes/red%20clover/amigain.dart';
 import '../../legumes/red%20clover/morrow.dart';
 import '../../legumes/red%20clover/rajah.dart';
@@ -128,7 +127,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Reaper',
-                                  link: reaper(
+                                  link: ReaperScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -151,19 +150,7 @@ class _redcloverState extends State<redclover> {
                                   persistence: '3-4 years'),
                             ),
                             SizedBox(height: 40),
-                            Container(
-                              child: cultivarcardclover(
-                                  title: 'Aberclaret',
-                                  link: aberclaret(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'Bred for increased persistence. Semi-upright growth habit.',
-                                  leafsize: 'Large',
-                                  persistence: '3-4 years'),
-                            ),
-                            SizedBox(height: 40),
+
                             Container(
                               child: cultivarcardclover(
                                   title: 'Morrow',

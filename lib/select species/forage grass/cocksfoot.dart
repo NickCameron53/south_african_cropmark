@@ -141,7 +141,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Kainui',
-                                  link: kainui(
+                                  link: KainuiScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -154,7 +154,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Vision',
-                                  link: vision(
+                                  link: VisionScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -167,7 +167,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Redefine',
-                                  link: redefine(
+                                  link: RedefineScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -180,7 +180,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Aurus',
-                                  link: aurus(
+                                  link: AurusScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -193,7 +193,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Greenly II',
-                                  link: greenly2(
+                                  link: Greenly2Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -206,7 +206,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Grasslands Savvy',
-                                  link: savvy(
+                                  link: SavvyScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -219,7 +219,7 @@ class _CocksfootState extends State<Cocksfoot> {
                             Container(
                               child: cultivarcardcocksfoot(
                                   title: 'Safin',
-                                  link: safin(
+                                  link: SafinScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

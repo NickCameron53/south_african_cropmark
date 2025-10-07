@@ -140,7 +140,7 @@ class _chicoryState extends State<chicory> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Chico',
-                                  link: chico(
+                                  link: ChicoScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -152,7 +152,7 @@ class _chicoryState extends State<chicory> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Grasslands Choice',
-                                  link: choice(
+                                  link: ChoiceScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -164,7 +164,7 @@ class _chicoryState extends State<chicory> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Grasslands Puna II',
-                                  link: puna2(
+                                  link: Puna2Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -176,7 +176,7 @@ class _chicoryState extends State<chicory> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Punter\u2122',
-                                  link: punter(
+                                  link: PunterScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -188,7 +188,7 @@ class _chicoryState extends State<chicory> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Sika',
-                                  link: sika(
+                                  link: SikaScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -200,7 +200,7 @@ class _chicoryState extends State<chicory> {
                             Container(
                               child: cultivarcardherbs(
                                   title: '501',
-                                  link: five01(
+                                  link: Five01Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

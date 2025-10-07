@@ -126,7 +126,7 @@ class _plantainState extends State<plantain> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Oracle',
-                                  link: oracle(
+                                  link: OracleScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -138,7 +138,7 @@ class _plantainState extends State<plantain> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Agritonic',
-                                  link: agritonic(
+                                  link: AgritonicScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -150,7 +150,7 @@ class _plantainState extends State<plantain> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Captain CSP',
-                                  link: captaincsp(
+                                  link: CaptaincspScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -162,7 +162,7 @@ class _plantainState extends State<plantain> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Ecotain',
-                                  link: ecotain(
+                                  link: EcotainScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -174,7 +174,7 @@ class _plantainState extends State<plantain> {
                             Container(
                               child: cultivarcardherbs(
                                   title: 'Oasis',
-                                  link: oasis(
+                                  link: OasisScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

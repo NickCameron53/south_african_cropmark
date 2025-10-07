@@ -1,16 +1,9 @@
+import 'package:southafrica_seed_guide/legumes/lucerne/sw6330.dart';
+
 import '../../global_widgets.dart';
-import '../../legumes/lucerne/714ql.dart';
-import '../../legumes/lucerne/914ql.dart';
-import '../../legumes/lucerne/galaxiemax.dart';
-import '../../legumes/lucerne/kaituna.dart';
-import '../../legumes/lucerne/pioneer54v09.dart';
-import '../../legumes/lucerne/staminagt5.dart';
-import '../../legumes/lucerne/takahe.dart';
-import '../../legumes/lucerne/titan5.dart';
-import '../../legumes/lucerne/torlesse.dart';
+import '../../legumes/lucerne/q31.dart';
 import '../../select%20species/Legume/cultivar_card_lucerne.dart';
 import 'package:flutter/material.dart';
-import '../../legumes/lucerne/force4.dart';
 import '../../main.dart';
 
 class lucerne extends StatefulWidget {
@@ -135,133 +128,31 @@ class _lucerneState extends State<lucerne> {
                             SizedBox(height: 40),
                             Container(
                               child: cultivarcardlucerne(
-                                title: 'Galaxie Max',
-                                link: galaxiemax(
+                                title: 'Q31',
+                                link: Q31Screen(
                                   country: widget.country,
                                   region: widget.region,
                                 ),
                                 description:
-                                    'Galaxie Max is a ready-to-use mixture of two elite lucerne varieties (50% Galaxie and 50% Timbale) both with a dormancy rating of 4.',
-                                dormancy: '4',
+                                    'Q31 has strong spring and summer seasonal production with excellent leaf retention and large leaf size.',
+                                dormancy: '3',
                               ),
                             ),
+
                             SizedBox(height: 30),
                             Container(
                               child: cultivarcardlucerne(
-                                title: 'Pioneer 54V09',
-                                link: pioneer54v09(
+                                title: 'SW6330',
+                                link: SW6330Screen(
                                   country: widget.country,
                                   region: widget.region,
                                 ),
                                 description:
-                                    'Offers an excellent disease resistant package.',
-                                dormancy: '4',
+                                'SW6330 lucerne has strong spring to autumn dry matter production.',
+                                dormancy: '6',
                               ),
                             ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: 'Force 4\u2122',
-                                link: force4(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    'Excellent cold and drought tolerance. Shows good early season growth and good persistence.',
-                                dormancy: '4',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: 'Grasslands Torlesse',
-                                link: torlesse(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    'A highly persistent winter dormant NZ bred variety.',
-                                dormancy: '4',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: 'Takahē™',
-                                link: takahe(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    'Bred for superior shoot density, and grows excellent quality forage with improved leaf:stem ratios.',
-                                dormancy: '4',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: 'Grasslands Kaituna',
-                                link: kaituna(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    'Fine stemmed. Highly persistent. A general purpose variety.',
-                                dormancy: '5',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: 'Stamina® GT5',
-                                link: staminagt5(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    'Bred for increased persistence, enabling it to tolerate set stocking and close grazing.',
-                                dormancy: '5',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: 'Titan 5',
-                                link: titan5(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    ' A semi-winter dormant and resilient cultivar combining a 50:50 cross between "Medicago sativa" lucerne (purple flower) and "Medicago falcata" (yellow flower) lucerne.',
-                                dormancy: '5',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: '714QL',
-                                link: sf714ql(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    ' A semi-winter active soft stemmed variety suitable for cutting or grazing.',
-                                dormancy: '7',
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            Container(
-                              child: cultivarcardlucerne(
-                                title: '914QL',
-                                link: sf914ql(
-                                  country: widget.country,
-                                  region: widget.region,
-                                ),
-                                description:
-                                    ' A highly winter active type with improved persistence.',
-                                dormancy: '7',
-                              ),
-                            ),
+
                             SizedBox(height: 30),
                           ],
                         ),
@@ -275,7 +166,6 @@ class _lucerneState extends State<lucerne> {
         ],
       ),
       bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
-
     );
   }
 }

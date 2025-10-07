@@ -1,432 +1,167 @@
 import 'package:flutter/material.dart';
-import '../../../../AboutTheGuide.dart';
 import '../../../../main.dart';
-import '../../../../WebPage.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../../Species_Tool_List.dart';
+import '../../global_widgets.dart';
 
-void launchURL(url) async {
-  if (await launchUrl(Uri.parse(url))) {
-    print("Successfully launched URL: $url"); // Optional success message
-  } else {
-    // Handle case where url can't be launched (e.g., show a message)
-    print("Could not launch $url");
-  }
-}
-
-class choice extends StatefulWidget {
-  choice({
+class ChoiceScreen extends StatefulWidget {
+  const ChoiceScreen({
     Key? key,
     required this.country,
     required this.region,
   }) : super(key: key);
-  final String country, region;
+
+  final String country;
+  final String region;
 
   @override
-  State<choice> createState() {
-    return _choiceState();
-  }
+  State<ChoiceScreen> createState() => _ChoiceScreenState();
 }
 
-class _choiceState extends State<choice> {
+class _ChoiceScreenState extends State<ChoiceScreen> {
+
+
+  void _navigateToHome() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MyHomePage(title: '')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBody: true,
-        backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70),
-          child: AppBar(
-              title: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Grasslands Choice',
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Chicory',
-                    style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              backgroundColor: Colors.green[800],
-              foregroundColor: Colors.white,
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.home),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MyHomePage(
-                                title: '',
-                              )),
-                    );
-                  },
-                ),
-              ]),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Grasslands Choice Chicory',
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context)
-                    .size
-                    .width, // Takes full width of the screen
-                height: 100,
-                child: Image.asset(
-                  'assets/chicorypic.png',
-                  fit:
-                      BoxFit.cover, // Use BoxFit.cover to cover the entire area
-                ),
-              ),
-              Container(
-                child: Column(children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(20.0, 0.0, 3.0, 5.0),
-                    margin: EdgeInsets.only(top: 50),
-                    width: 350,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Grasslands Choice',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            'An erect winter active cultivar bred for improved cool season growth, disease tolerance and recovery after grazing.',
-                            style:
-                                TextStyle(fontSize: 18, color: Colors.black)),
-                        SizedBox(height: 10),
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            "\u25BA An erect winter active cultivar bred for improved cool season growth, disease tolerance and recovery after grazing. ",
-                            style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 20),
-
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Where it fits',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 10),
-                        Text('A valuable addition to most pasture seed mixes.',
-                            style: TextStyle(fontSize: 15)),
-                        SizedBox(height: 10),
-                        Divider(
-                          color: Colors.green,
-                          thickness: 1,
-                          height: 20,
-                          indent: 1,
-                          endIndent: 1,
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text('Agronomic information',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[700])),
-                        ),
-                        SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Leaf Size: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'Large',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Winter Activity: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'Medium',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Persistence: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: '2 to 3 years',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: 'Growth Peaks: ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    TextSpan(
-                                      text: 'Spring to Autumn',
-                                    ),
-                                  ])),
-                        ),
-                        SizedBox(height: 10),
-
-                        Container(
-                          width: double.infinity,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                SizedBox(height: 20),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: Text('Sowing information',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.green[700])),
-                                ),
-                                SizedBox(height: 20),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing rate: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: '8 - 10 kg/ha',
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Pasture mix: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: '1 - 2 kg/ha',
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing depth: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: '10 mm',
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: RichText(
-                                      textAlign: TextAlign.left,
-                                      text: TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                          children: [
-                                            TextSpan(
-                                                text: 'Sowing season: ',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                              text: 'Autumn or Spring',
-                                            ),
-                                          ])),
-                                ),
-                                SizedBox(height: 10),
-                                Divider(
-                                  color: Colors.green,
-                                  thickness: 1,
-                                  height: 20,
-                                  indent: 1,
-                                  endIndent: 1,
-                                ),
-                              ]),
-                        ),
-                        //end sizebox to push content above bottomnavigationbar
-                        SizedBox(height: 100),
-                      ],
-                    ),
-                  )
-                ]),
-              )
-            ],
+        backgroundColor: GlobalWidgets.primaryGreen,
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: _navigateToHome,
+            tooltip: 'Home',
           ),
-        ),
-        bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 6.0, color: Colors.green.shade700),
+        ],
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            // Header Image
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 300,
+              child: Image.asset(
+                'assets/chicorypic.png',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: Colors.grey.shade200,
+                  // Using shade instead of opacity
+                  child: const Icon(Icons.image, size: 60, color: Colors.grey),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-              child: new BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                backgroundColor: Colors.black,
-                showUnselectedLabels: true,
-                selectedItemColor: Colors.green.shade700,
-                unselectedItemColor: Colors.green.shade700,
-                onTap: (index) {
-                  switch (index) {
-                    case 0:
-                      // Navigate to About the Guide page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AboutTheGuide()),
-                      );
-                      break;
-                    case 1:
-                      // Navigate to WebPage
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => WebPage()),
-                      );
-                      break;
-                    case 2:
-                      // Navigate to Toolkit page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ToolList()),
-                      );
-                      break;
+              ),
+            ),
 
-                    // ...
-                  }
-                },
-                items: [
-                  BottomNavigationBarItem(
-                    label: 'Seed Guide',
-                    icon: Icon(Icons.home),
+            // Content
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GlobalWidgets.buildSectionTitle('Grasslands Choice'),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'An erect winter active cultivar bred for improved cool season growth.',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
-                  BottomNavigationBarItem(
-                    label: 'Web Hub',
-                    icon: Icon(Icons.search),
+                  const SizedBox(height: 10),
+
+                  GlobalWidgets.buildDivider(),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GlobalWidgets.buildBulletPoint(
+                          'An erect winter active cultivar bred for improved cool season growth, disease tolerance and recovery after grazing.'),
+                    ],
                   ),
-                  BottomNavigationBarItem(
-                    label: 'Tools',
-                    icon: Icon(Icons.calculate),
+
+                  const SizedBox(height: 10),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Where it fits'),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'A valuable addition to most pasture seed mixes.',
+                    style: TextStyle(fontSize: 15),
                   ),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Agronomic information'),
+                  const SizedBox(height: 20),
+                  GlobalWidgets.buildInfoRow('Leaf Size', 'Large'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow('Winter Activity', 'Medium'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow('Persistence', '2 to 3 years'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow(
+                      'Growth Peaks', 'Spring to Autumn'),
+                  const SizedBox(height: 10),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Animal safety'),
+                  const SizedBox(height: 10),
+
+                  const Text(
+                    'Suitable for:',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildAnimalIcons([
+                    'Dairy',
+                    'Beef',
+                    'Sheep',
+                    'Deer',
+                    'Goat',
+                    'Horse',
+                    'Alpaca'
+                  ]),
+
+                  GlobalWidgets.buildDivider(),
+
+                  GlobalWidgets.buildSectionTitle('Sowing information'),
+                  const SizedBox(height: 20),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing rate alone', '8 - 10 kg/ha'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing rate mixture', '1 - 2 kg/ha'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow('Sowing depth', '10 mm'),
+                  const SizedBox(height: 10),
+                  GlobalWidgets.buildInfoRow(
+                      'Sowing season', 'Autumn or Spring'),
+
+                  // Bottom spacing
+                  const SizedBox(height: 80),
                 ],
               ),
-            )));
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
+    );
   }
 }

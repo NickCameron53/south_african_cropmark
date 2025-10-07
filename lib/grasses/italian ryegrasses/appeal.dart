@@ -19,8 +19,6 @@ class AppealScreen extends StatefulWidget {
 }
 
 class _AppealScreenState extends State<AppealScreen> {
-  // Animal list for this specific crop
-  final List<String> suitableAnimals = ['Dairy', 'Beef', 'Sheep'];
 
   Future<void> _launchURL(String url) async {
     try {

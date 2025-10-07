@@ -177,7 +177,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Supercruise',
-                                  link: supercruise(
+                                  link: SupercruiseScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -190,7 +190,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Feast II',
-                                  link: feast2(
+                                  link: Feast2Screen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -203,7 +203,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Lush',
-                                  link: lushar37(
+                                  link: LushScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -216,7 +216,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Moata',
-                                  link: moata(
+                                  link: MoataScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -229,7 +229,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Manta',
-                                  link: manta(
+                                  link: MantaScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -242,7 +242,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Grasslands Asset',
-                                  link: asset(
+                                  link: GrasslandsAssetScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -255,7 +255,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Perun',
-                                  link: perun(
+                                  link: PerunScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -268,12 +268,12 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Tabu +',
-                                  link: tabu(
+                                  link: TabuScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
                                   description:
-                                      'large upright strong tillers and very leafy, with good yields in autumn- mid summer over many regions.',
+                                      'Large upright strong tillers and very leafy, with good yields in autumn- mid summer over many regions.',
                                   date: 'Medium +11',
                                   ploidy: 'diploid'),
                             ),
@@ -281,7 +281,7 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
                             Container(
                               child: cultivarcard(
                                   title: 'Indulgence\u2122',
-                                  link: indulgence(
+                                  link: IndulgenceScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -303,7 +303,6 @@ class _ItalianRyegrassAllState extends State<ItalianRyegrassAll> {
         ],
       ),
       bottomNavigationBar: GlobalWidgets.buildBottomNavigationBar(context),
-
     );
   }
 }
