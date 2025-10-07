@@ -1,9 +1,9 @@
+import 'package:southafrica_seed_guide/legumes/other%20legumes/balansaclover.dart';
 import '../../global_widgets.dart';
 import '../../legumes/other%20legumes/arrowleafclover.dart';
 import '../../legumes/other%20legumes/caucasianclover.dart';
 import '../../legumes/other%20legumes/persianclover.dart';
 import '../../legumes/other%20legumes/strawberryclover.dart';
-import '../../legumes/other%20legumes/taipan.dart';
 import '../../legumes/other%20legumes/viper.dart';
 import '../../select%20species/Legume/cultivar_card_otherlegumes.dart';
 import 'package:flutter/material.dart';
@@ -127,7 +127,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Caucasian Clover',
-                                  link: caucasianclover(
+                                  link: CaucasiancloverScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -140,7 +140,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Strawberry Clover',
-                                  link: strawberryclover(
+                                  link: StrawberrycloverScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -153,7 +153,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Lotus',
-                                  link: lotus(
+                                  link: LotusScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -166,7 +166,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Zulu II Arrowleaf Clover',
-                                  link: arrowleafclover(
+                                  link: ArrowleafcloverScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -179,7 +179,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Laser Persian Clover',
-                                  link: persianclover(
+                                  link: PersiancloverScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -192,7 +192,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Taipan Balansa Clover',
-                                  link: taipan(
+                                  link: TaipanScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -205,7 +205,7 @@ class _otherlegumesState extends State<otherlegumes> {
                             Container(
                               child: cultivarcardotherlegumes(
                                   title: 'Viper Balansa Clover',
-                                  link: viper(
+                                  link: ViperScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
