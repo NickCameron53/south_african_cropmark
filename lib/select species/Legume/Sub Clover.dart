@@ -1,11 +1,6 @@
 import '../../global_widgets.dart';
-import '../../legumes/sub%20clover/antas.dart';
-import '../../legumes/sub%20clover/bindoon.dart';
-import '../../legumes/sub%20clover/coolamon.dart';
-import '../../legumes/sub%20clover/denmark.dart';
 import '../../legumes/sub%20clover/narrikup.dart';
 import '../../legumes/sub%20clover/rosabrook.dart';
-import '../../legumes/sub%20clover/rouse.dart';
 import '../../legumes/sub%20clover/woogenellup.dart';
 import '../../select%20species/Legume/cultivar_card_subclover.dart';
 import 'package:flutter/material.dart';
@@ -125,49 +120,11 @@ class _subcloverState extends State<subclover> {
                                     fontWeight: FontWeight.bold,
                                     color: Colors.green[700])),
                             SizedBox(height: 40),
-                            Container(
-                              child: cultivarcardsubclover(
-                                  title: 'Bindoon',
-                                  link: bindoon(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'Highly productive cultivar suited to summer-dry areas with well drained soils.',
-                                  maturity: 'Early to Mid',
-                                  persistence: '1 year'),
-                            ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcardsubclover(
-                                  title: 'Antas',
-                                  link: antas(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'Belongs to the sub species Brachycalycinum, and is a black seeded sub clover.',
-                                  maturity: 'Mid to Late',
-                                  persistence: '1 year'),
-                            ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcardsubclover(
-                                  title: 'Coolamon',
-                                  link: coolamon(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'A winter active cultivar with high seedling regeneration and hard seeded content to provide a large seed bank for subsequent years.',
-                                  maturity: 'Mid',
-                                  persistence: '1 year'),
-                            ),
-                            SizedBox(height: 40),
+
                             Container(
                               child: cultivarcardsubclover(
                                   title: 'Woogenellup',
-                                  link: woogenellup(
+                                  link: WoogenellupScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -180,7 +137,7 @@ class _subcloverState extends State<subclover> {
                             Container(
                               child: cultivarcardsubclover(
                                   title: 'Narrikup',
-                                  link: narrikup(
+                                  link: NarrikupScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -189,37 +146,12 @@ class _subcloverState extends State<subclover> {
                                   maturity: 'Mid',
                                   persistence: '1 year'),
                             ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcardsubclover(
-                                  title: 'Rouse',
-                                  link: rouse(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'Waterlogging-tolerant ‘white-seeded’ yanninicum sub-species of sub clover.',
-                                  maturity: 'Mid to Late',
-                                  persistence: '1 year'),
-                            ),
-                            SizedBox(height: 40),
-                            Container(
-                              child: cultivarcardsubclover(
-                                  title: 'Denmark',
-                                  link: denmark(
-                                    country: widget.country,
-                                    region: widget.region,
-                                  ),
-                                  description:
-                                      'High yielding variety. Moderate hard seed levels (15%). Is adapted to higher rainfall situations.',
-                                  maturity: 'Late',
-                                  persistence: '1 year'),
-                            ),
+
                             SizedBox(height: 40),
                             Container(
                               child: cultivarcardsubclover(
                                   title: 'Rosabrook',
-                                  link: rosabrook(
+                                  link: RosabrookScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),

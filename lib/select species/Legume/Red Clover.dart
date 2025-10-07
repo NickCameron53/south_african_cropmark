@@ -140,7 +140,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Grasslands Relish',
-                                  link: relish(
+                                  link: RelishScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -154,7 +154,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Morrow',
-                                  link: morrow(
+                                  link: MorrowScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -167,7 +167,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Rajah',
-                                  link: rajah(
+                                  link: RajahScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -180,7 +180,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Rossi\u2122',
-                                  link: rossi(
+                                  link: RossiScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -193,7 +193,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Grasslands Amigain',
-                                  link: amigain(
+                                  link: AmigainScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
@@ -206,7 +206,7 @@ class _redcloverState extends State<redclover> {
                             Container(
                               child: cultivarcardclover(
                                   title: 'Grasslands Sensation',
-                                  link: sensation(
+                                  link: SensationScreen(
                                     country: widget.country,
                                     region: widget.region,
                                   ),
